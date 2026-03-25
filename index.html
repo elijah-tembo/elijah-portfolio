@@ -523,14 +523,15 @@
                 // This runs if message is sent successfully
                 document.getElementById("success-popup").style.display = "flex"; // Show success popup
                 // Show success alert
-                function closePopup(){
-                    document.getElementById("success-popup").style.display = "none";
-                    };
             }, function(error){
                 // This runs if message fails to send
                 alert('Oops! Something went wrong. Error: ' + JSON.stringify(error));
                 // Show error message for debugging
             });
+            function closePopup(){
+                document.getElementById("success-popup").style.display = "none";
+                // Hide success popup when close button is clicked
+            };
 
             this.reset();
             // Reset form fields after submission
