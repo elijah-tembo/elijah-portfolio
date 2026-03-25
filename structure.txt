@@ -1,0 +1,22 @@
+
+# Portfolio Structure
+
+Your website will have:
+
+1. Hero Section (Your Photo + Introduction)
+2. About Section
+3. Services Section
+4. Portfolio Section
+5. Skills Section
+6. Contact Section
+7. Footer
+
+Style:
+
+* Dark Professional Theme
+* Clean Modern Design
+* Smooth Animations
+* Fully Responsive
+
+---
+
