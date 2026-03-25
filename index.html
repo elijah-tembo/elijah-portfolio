@@ -454,17 +454,7 @@
 
 <!-- SCRIPT FILES -->
 
-<!-- EmailJS SDK -->
-        <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js">
-        </script>
-
-        <script type="text/javascript">
-        // Initialize EmailJS with your User ID
-        (function(){
-            emailjs.init("YOUR_USER_ID"); // Replace YOUR_USER_ID with your actual ID
-        })();
-        </script>
+        <!-- EmailJS SDK -->
         <!-- ============================= -->
         <!-- EmailJS SDK Script -->
         <!-- ============================= -->
@@ -472,16 +462,19 @@
         <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js">
         </script>
-        <!-- This script imports EmailJS library from CDN
-            It allows you to send emails directly from the browser
-            without needing a server or PHP -->
+        <!-- This script loads EmailJS library from CDN
+            It allows sending emails directly from browser
+            No backend or PHP required -->
 
         <script type="text/javascript">
-            /* Initialize EmailJS with your User ID */
+        /* =============================
+        Initialize EmailJS
+        ============================= */
+
         (function(){
-            emailjs.init("YOUR_USER_ID"); 
-            // Replace YOUR_USER_ID with the actual User ID from EmailJS
-            // This identifies your account and allows sending emails
+            emailjs.init("aiuy-9Ek4VkNl-1pj"); 
+            // Initialize EmailJS using your Public Key
+            // This connects your website to your EmailJS account
         })();
         </script>
 
@@ -491,33 +484,31 @@
         ============================= */
 
         document.getElementById('contact-form').addEventListener('submit', function(event){
-            // Select the form by id="contact-form"
-            // Add an event listener for "submit" events
-            // When the user clicks Send, this function runs
+            // Select the form using id="contact-form"
+            // Add event listener to detect form submission
 
             event.preventDefault(); 
-            // Prevent the default HTML form submission
-            // This stops the page from reloading
+            // Prevent default form submission
+            // Stops page reload when clicking submit
 
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-            // emailjs.sendForm() → sends form data to EmailJS
-            // 'YOUR_SERVICE_ID' → the email service you created in EmailJS
-            // 'YOUR_TEMPLATE_ID' → the template you created in EmailJS
-            // 'this' → refers to the current form element
+            emailjs.sendForm('service_lfgf17s', 'template_mafunjl', this)
+            // Send form data using EmailJS
+            // 'service_lfgf17s' → Your Service ID
+            // 'template_mafunjl' → Your Template ID
+            // 'this' → Refers to the form element
 
             .then(function(){
-                // Runs if the email is sent successfully
+                // This runs if message is sent successfully
                 alert('Message sent successfully!');
-                // Shows success message to the user
+                // Show success alert
             }, function(error){
-                // Runs if sending fails
+                // This runs if message fails to send
                 alert('Oops! Something went wrong. Error: ' + JSON.stringify(error));
-                // Shows error message including details for debugging
+                // Show error message for debugging
             });
 
             this.reset();
-            // Clears the form fields after submission
-            // Prevents users from accidentally sending the same message twice
+            // Reset form fields after submission
         });
         </script>
 
