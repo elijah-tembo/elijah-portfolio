@@ -379,23 +379,40 @@
         <div class="contact-content">
         <!-- Holds form and info side by side -->
 
-            <!-- Contact Form -->
-            <form class="contact-form">
-                <!-- Form to collect messages -->
 
-                <input type="text" placeholder="Your Name" required>
-                <!-- Name field -->
+ 
+        <!-- ============================= -->
+        <!-- Contact Form Section -->
+        <!-- ============================= -->
 
-                <input type="email" placeholder="Your Email" required>
-                <!-- Email field -->
+        <form id="contact-form" class="contact-form">
+            <!-- Main form container
+                id="contact-form" → used in JavaScript to target this form
+                class="contact-form" → used for CSS styling -->
 
-                <textarea placeholder="Your Message" required></textarea>
-                <!-- Message field -->
+            <input type="text" name="user_name" placeholder="Your Name" required>
+            <!-- Input field for user's name
+                name="user_name" → matches variable in EmailJS template
+                placeholder → shows greyed-out text inside input
+                required → ensures field must be filled before submission -->
 
-                <button type="submit" class="btn">Send Message</button>
-                <!-- Submit button -->
+            <input type="email" name="user_email" placeholder="Your Email" required>
+            <!-- Input field for user's email
+                type="email" → ensures valid email format
+                name="user_email" → matches variable in EmailJS template
+                required → prevents empty submission -->
 
-            </form>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <!-- Textarea for user's message
+                name="message" → matches variable in EmailJS template
+                placeholder → shows greyed-out text
+                required → must fill before submitting -->
+
+            <button type="submit" class="btn">Send Message</button>
+            <!-- Submit button
+                type="submit" → triggers form submission
+                class="btn" → allows styling with CSS -->
+        </form>
 
             <!-- Contact Info -->
             <div class="contact-info">
@@ -433,6 +450,76 @@
         </div>
     </div>
 </footer>
+
+
+<!-- SCRIPT FILES -->
+
+<!-- EmailJS SDK -->
+        <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js">
+        </script>
+
+        <script type="text/javascript">
+        // Initialize EmailJS with your User ID
+        (function(){
+            emailjs.init("YOUR_USER_ID"); // Replace YOUR_USER_ID with your actual ID
+        })();
+        </script>
+        <!-- ============================= -->
+        <!-- EmailJS SDK Script -->
+        <!-- ============================= -->
+
+        <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js">
+        </script>
+        <!-- This script imports EmailJS library from CDN
+            It allows you to send emails directly from the browser
+            without needing a server or PHP -->
+
+        <script type="text/javascript">
+            /* Initialize EmailJS with your User ID */
+        (function(){
+            emailjs.init("YOUR_USER_ID"); 
+            // Replace YOUR_USER_ID with the actual User ID from EmailJS
+            // This identifies your account and allows sending emails
+        })();
+        </script>
+
+        <script>
+        /* =============================
+        Contact Form Submission Script
+        ============================= */
+
+        document.getElementById('contact-form').addEventListener('submit', function(event){
+            // Select the form by id="contact-form"
+            // Add an event listener for "submit" events
+            // When the user clicks Send, this function runs
+
+            event.preventDefault(); 
+            // Prevent the default HTML form submission
+            // This stops the page from reloading
+
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            // emailjs.sendForm() → sends form data to EmailJS
+            // 'YOUR_SERVICE_ID' → the email service you created in EmailJS
+            // 'YOUR_TEMPLATE_ID' → the template you created in EmailJS
+            // 'this' → refers to the current form element
+
+            .then(function(){
+                // Runs if the email is sent successfully
+                alert('Message sent successfully!');
+                // Shows success message to the user
+            }, function(error){
+                // Runs if sending fails
+                alert('Oops! Something went wrong. Error: ' + JSON.stringify(error));
+                // Shows error message including details for debugging
+            });
+
+            this.reset();
+            // Clears the form fields after submission
+            // Prevents users from accidentally sending the same message twice
+        });
+        </script>
 
 </body>
 
