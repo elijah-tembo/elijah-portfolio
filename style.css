@@ -675,6 +675,57 @@ ul li a{
 
 
 /* ============================= */
+/* Success Popup Styling */
+/* ============================= */
+.success-popup {
+    position: fixed; /* Fix position on screen */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    width: 100%; /* Full screen width */
+    height: 100%; /* Full screen height */
+    background: rgba(0,0,0,0.8); /* Dark overlay */
+    display: none; /* Hidden by default */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 999; /* Appear above everything */
+}
+
+.popup-content {
+    background: #111; /* Dark background */
+    padding: 30px; /* Inner spacing */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center text */
+    animation: popupFade 0.4s ease; /* Smooth animation */
+}
+
+.popup-content h3 {
+    color: #00e5ff; /* Accent color */
+}
+
+.popup-content button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background: #00e5ff;
+    color: #000;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Animation */
+@keyframes popupFade {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ============================= */
 /* Footer Styling */
 /* ============================= */
 footer{

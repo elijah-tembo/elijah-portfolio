@@ -428,6 +428,28 @@
 </section>
 
 
+
+<!-- ============================= -->
+<!-- Success Popup Message -->
+<!-- ============================= -->
+<div id="success-popup" class="success-popup">
+    <!-- Main popup container -->
+
+    <div class="popup-content">
+        <!-- Popup content box -->
+
+        <h3>Message Sent Successfully!</h3>
+        <!-- Success message title -->
+
+        <p>Thank you for contacting me. I will get back to you shortly.</p>
+        <!-- Success message description -->
+
+        <button onclick="closePopup()">Close</button>
+        <!-- Close button -->
+    </div>
+</div>
+
+
 <!-- ============================= -->
 <!-- Footer Section -->
 <!-- ============================= -->
@@ -499,8 +521,11 @@
 
             .then(function(){
                 // This runs if message is sent successfully
-                alert('Message sent successfully!');
+                document.getElementById("success-popup").style.display = "flex"; // Show success popup
                 // Show success alert
+                function closePopup(){
+                    document.getElementById("success-popup").style.display = "none";
+                    };
             }, function(error){
                 // This runs if message fails to send
                 alert('Oops! Something went wrong. Error: ' + JSON.stringify(error));
