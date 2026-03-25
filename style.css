@@ -12,9 +12,37 @@ body{
     color:white; /* White text */
 }
 
+/* Prevent horizontal scrolling on mobile */
+html, body{
+    overflow-x: hidden;
+    /* Prevents page from sliding left/right on mobile */
+    scroll-behavior:smooth;
+    /* Smooth scrolling when clicking navigation links */
+}
+
 /* Header styling */
 header{
     padding:20px 10%; /* Top/bottom and left/right spacing */
+}
+
+/* ============================= */
+/* Sticky Navbar */
+/* ============================= */
+header{
+position:sticky;
+/* Makes header stick when scrolling */
+
+top:0;
+/* Stick to top */
+
+background:#283541;
+/* Prevent transparency */
+
+z-index:1000;
+/* Keep above other content */
+
+box-shadow:0 2px 10px rgba(0,0,0,0.5);
+/* Adds subtle shadow */
 }
 
 /* Navigation styling */
@@ -22,6 +50,74 @@ nav{
     display:flex; /* Places items in one row */
     justify-content:space-between; /* Space between logo and menu */
     align-items:center; /* Align vertically */
+}
+
+/* ============================= */
+/* Mobile Menu */
+/* ============================= */
+
+.menu-toggle {
+    display: none; /* Hide hamburger icon on desktop */
+    font-size: 28px; /* Increase size for better visibility */
+    cursor: pointer; /* Show pointer on hover */
+    color: white; /* White color */
+}
+
+/* Mobile Responsive Navigation */
+@media(max-width:768px){
+
+nav{
+position:relative;
+}
+
+nav ul{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#000;
+flex-direction:column;
+display:none;
+padding:20px 0;
+z-index:1000;
+}
+
+nav ul.active{
+display:flex;
+}
+
+nav ul li{
+margin:15px 0;
+text-align:center;
+}
+
+.menu-toggle{
+display:block;
+}
+
+}
+
+/* Mobile Responsive */
+@media(max-width:768px){
+
+.nav-links {
+    display: none; /* Hide menu by default */
+    flex-direction: column; /* Stack menu vertically */
+    background: #000; /* Background color */
+    position: absolute; /* Position below navbar */
+    top: 70px; /* Distance from top */
+    width: 100%; /* Full width */
+    left: 0; /* Align left */
+}
+
+.nav-links.active {
+    display: flex; /* Show menu when active */
+}
+
+.menu-toggle {
+    display: block; /* Show hamburger icon */
+}
+
 }
 
 /* Menu list styling */
@@ -36,10 +132,31 @@ ul li{
 }
 
 /* Menu links styling */
+/* Navigation hover effect */
+
 ul li a{
-    text-decoration:none; /* Remove underline */
-    color:white; /* Text color */
-    font-weight:500;
+    position:relative;
+    transition:0.3s;
+}
+
+ul li a:hover{
+    color:#00bcd4;
+}
+
+/* Underline animation */
+ul li a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0;
+    height:2px;
+    background:#00bcd4;
+    transition:0.3s;
+}
+
+ul li a:hover::after{
+    width:100%;
 }
 
 /* Logo styling */
@@ -48,7 +165,72 @@ ul li a{
     font-weight:bold;
 }
 
+
+/* ============================= */
+/* Scroll Reveal Animation */
+/* ============================= */
+
+.reveal{
+opacity:0;
+/* Hidden initially */
+
+transform:translateY(50px);
+/* Start slightly below */
+
+transition:all 0.8s ease;
+/* Smooth animation */
+}
+
+.reveal.active{
+opacity:1;
+/* Show */
+
+transform:translateY(0);
+/* Move to normal position */
+}
+
+
 /* Main content styling */
+/* ============================= */
+/* Hero Section */
+/* ============================= */
+
+.hero{
+padding:60px 10%;
+}
+
+.hero-content{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.hero-text{
+flex:1;
+}
+
+.hero-image{
+flex:1;
+text-align:center;
+}
+
+.hero-image img{
+width:350px;
+max-width:100%;
+border-radius:10px;
+}
+
+@media(max-width:768px){
+
+.hero-content{
+flex-direction:column;
+text-align:center;
+}
+
+}
+
 /* Hero Section */
 .hero{
     padding:60px 10%;
@@ -83,6 +265,7 @@ ul li a{
 .hero-buttons{
     margin-top:20px;
 }
+
 
 /* Button Styling */
 .btn{
@@ -260,13 +443,30 @@ ul li a{
 
 .about-container{
     display:flex;
-    /* Places image and text side by side */
-
     align-items:center;
-    /* Aligns them vertically */
-
     gap:50px;
-    /* Space between image and text */
+    flex-wrap:wrap;
+}
+
+.about-image img{
+    width:350px;
+    max-width:100%;
+    border-radius:10px;
+}
+
+/* Mobile About Fix */
+
+@media(max-width:768px){
+
+.about-container{
+    flex-direction:column;
+    text-align:center;
+}
+
+.about-image img{
+    margin-bottom:20px;
+}
+
 }
 
 .about-image img{

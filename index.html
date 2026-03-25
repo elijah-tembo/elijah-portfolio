@@ -25,18 +25,23 @@
 
     <!-- Header Section (Top Navigation Bar) -->
     <header>
-
         <!-- Navigation Bar -->
         <nav>
 
             <!-- Logo / Name -->
-            <h2 class="logo">EZT</h2>
+            <h2 class="logo" id="home">EZT</h2>
+
+            <!-- Mobile Menu Button -->
+            <div class="menu-toggle" onclick="toggleMenu()">
+                ☰
+            </div>
+            <!-- Hamburger icon onclick="toggleMenu()" → opens mobile menu -->
 
             <!-- Navigation Menu -->
             <ul>
 
                 <!-- Menu Item -->
-                <li><a href="#">Home</a></li>
+                <li><a href="#home">Home</a></li>
 
                 <!-- Menu Item -->
                 <li><a href="#about">About</a></li>
@@ -74,7 +79,7 @@
             <!-- Call to Action Buttons -->
             <div class="hero-buttons">
                 <!-- Portfolio Button -->
-                <a href="#" class="btn">View Portfolio</a>
+                <a href="#portfolio" class="btn">View Portfolio</a>
                 <!-- Contact Button -->
                 <a href="#" class="btn btn-outline">Hire Me</a>
             </div>
@@ -536,6 +541,10 @@
             this.reset();
             // Reset form fields after submission
         });
+
+        function toggleMenu(){
+            document.querySelector('ul').classList.toggle('active');
+            }
         </script>
 
 </body>
