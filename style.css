@@ -182,6 +182,8 @@ ul li{
 ul li a{
     position:relative;
     transition:0.3s;
+    text-decoration: none;
+    color: white;
 }
 
 ul li a:hover{
@@ -679,6 +681,26 @@ color:#00bcd4;
     /* Accent color */
 }
 
+.service-icon{
+    font-size:40px;
+    /* Icon size */
+
+    margin-bottom:15px;
+    /* Space below icon */
+
+    display:block;
+    transition:0.3s;
+    /* Smooth animation */
+}
+
+.service-card:hover .service-icon{
+    font-size:50px;
+    /* Enlarge on hover */
+    
+    transform:scale(1.1) rotateY(10deg);
+    /* Add visual effect */
+}
+
 .service-card p{
     line-height:1.6;
     /* Easy to read text */
@@ -914,6 +936,21 @@ color:#00bcd4;
     /* Stack input fields vertically */
     gap:15px;
     /* Space between inputs */
+    font-family: Arial, Helvetica, sans-serif;
+    transition:0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+    outline:none;
+    background:#2a2a2a;
+    box-shadow:0 0 10px rgba(0, 188, 212, 0.3);
+    /* Focus state styling */
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+    color:#888;
 }
 
 .contact-form input,
@@ -930,6 +967,17 @@ color:#00bcd4;
     height:120px;
     resize:none;
     /* Prevent resizing */
+}
+
+.contact-info a{
+    color:#00bcd4;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.contact-info a:hover{
+    color:#0097a7;
+    text-decoration:underline;
 }
 
 .contact-info{
@@ -979,24 +1027,40 @@ color:#00bcd4;
 
 .popup-content {
     background: #111; /* Dark background */
-    padding: 30px; /* Inner spacing */
+    padding: 40px; /* Inner spacing */
     border-radius: 10px; /* Rounded corners */
     text-align: center; /* Center text */
     animation: popupFade 0.4s ease; /* Smooth animation */
+    border: 2px solid #00bcd4; /* Accent border */
+    box-shadow: 0 10px 40px rgba(0, 188, 212, 0.2);
 }
 
 .popup-content h3 {
     color: #00e5ff; /* Accent color */
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.popup-content p {
+    color: #ccc;
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
 .popup-content button {
-    margin-top: 15px;
-    padding: 10px 20px;
+    padding: 12px 30px;
     border: none;
-    background: #00e5ff;
+    background: #00bcd4;
     color: #000;
     cursor: pointer;
     border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.popup-content button:hover {
+    background: #0097a7;
+    transform: translateY(-2px);
 }
 
 /* Animation */
@@ -1019,18 +1083,81 @@ footer{
     background:#111;
     /* Dark background for footer */
 
-    padding:30px 10%;
+    padding:40px 10%;
     /* Space inside footer */
 
     text-align:center;
     /* Center all text */
+
+    margin-top:60px;
+    /* Space above footer */
+
+    border-top:1px solid #333;
+    /* Subtle border at top */
 }
 
-footer p{
-    color:white;
-    /* White text for copyright */
+.footer-content{
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+}
 
+.footer-about h3{
+    color:#00bcd4;
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.footer-about p{
+    color:#ccc;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.footer-links h4,
+.footer-contact h4{
+    color:#00bcd4;
     margin-bottom:15px;
+    font-size:16px;
+}
+
+.footer-links ul{
+    list-style:none;
+    padding:0;
+}
+
+.footer-links li{
+    margin-bottom:8px;
+}
+
+.footer-links a{
+    color:#ccc;
+    text-decoration:none;
+    transition:0.3s;
+    font-size:14px;
+}
+
+.footer-links a:hover{
+    color:#00bcd4;
+}
+
+.footer-contact p{
+    color:#ccc;
+    margin-bottom:5px;
+    font-size:14px;
+}
+
+.footer-contact a{
+    color:#ccc;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.footer-contact a:hover{
+    color:#00bcd4;
+    text-decoration:underline;
 }
 
 .footer-social a{
@@ -1042,11 +1169,24 @@ footer p{
 
     text-decoration:none;
     transition:0.3s;
+    display:inline-block;
+    /* Make clickable area larger */
 }
 
 .footer-social a:hover{
     color:#0097a7;
     /* Hover color for effect */
+    
+    transform:translateY(-3px);
+    /* Lift effect on hover */
+}
+
+footer p{
+    color:#888;
+    /* Copyright text color */
+
+    margin-top:20px;
+    font-size:12px;
 }
 
 
@@ -1111,6 +1251,10 @@ text-decoration:none;
     .services-box {
         flex-direction: column;
         /* Stack service cards vertically */
+    }
+
+    .service-card {
+        gap: 15px;
     }
 
     /* Portfolio Section adjustments */
@@ -1193,12 +1337,29 @@ text-decoration:none;
 
     /* Footer adjustments */
     footer p {
-        font-size:14px;
+        font-size:12px;
     }
 
     .footer-social a {
-        font-size:14px;
-        margin:0 5px;
+        font-size:12px;
+        margin:0 3px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-about h3,
+    .footer-links h4,
+    .footer-contact h4 {
+        font-size: 16px;
+    }
+
+    .footer-about p,
+    .footer-links a,
+    .footer-contact p {
+        font-size: 13px;
     }
 }
 

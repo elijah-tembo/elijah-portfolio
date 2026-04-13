@@ -26,19 +26,32 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         // This runs if message is sent successfully
         document.getElementById("success-popup").style.display = "flex"; // Show success popup
         // Show success alert
+        
+        // Auto-close popup after 3 seconds
+        setTimeout(function(){
+            closePopup();
+        }, 3000);
+        
     }, function(error){
         // This runs if message fails to send
-        alert('Oops! Something went wrong. Error: ' + JSON.stringify(error));
-        // Show error message for debugging
+        console.error('EmailJS error:', error);
+        
+        // Show error popup instead of alert
+        var errorPopup = document.createElement('div');
+        errorPopup.className = 'success-popup';
+        errorPopup.style.display = 'flex';
+        errorPopup.innerHTML = '<div class="popup-content" style="border-color: #ff6b6b;"><h3 style="color: #ff6b6b;">Message Failed</h3><p>Unable to send your message. Please try again or contact via email.</p><button onclick="this.parentElement.parentElement.remove()">Close</button></div>';
+        document.body.appendChild(errorPopup);
     });
-    function closePopup(){
-        document.getElementById("success-popup").style.display = "none";
-        // Hide success popup when close button is clicked
-    };
-
+    
     this.reset();
     // Reset form fields after submission
 });
+
+function closePopup(){
+    document.getElementById("success-popup").style.display = "none";
+    // Hide success popup when close button is clicked
+}
 
 function toggleMenu(){
     document.querySelector('ul').classList.toggle('active');

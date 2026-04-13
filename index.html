@@ -99,9 +99,9 @@
             <!-- Call to Action Buttons -->
             <div class="hero-buttons">
                 <!-- Portfolio Button -->
-                <a href="#portfolio" class="btn">View Portfolio</a>
+                <a href="#portfolio" class="btn" aria-label="View my portfolio">View Portfolio</a>
                 <!-- Contact Button -->
-                <a href="#" class="btn btn-outline">Hire Me</a>
+                <a href="#contact" class="btn btn-outline" aria-label="Contact me to hire">Hire Me</a>
             </div>
         </div>
         <!-- Image Content -->
@@ -153,7 +153,7 @@
             </p>
 
             <!-- About Button -->
-            <a href="#" class="btn">Download CV</a>
+            <a href="documents/CV.pdf" class="btn" download aria-label="Download my CV">Download CV</a>
         </div>
     </div>
 </section>
@@ -195,6 +195,7 @@
             <div class="service-card">
             <!-- Individual service card -->
 
+                <div class="service-icon">🌐</div>
                 <h3>Website Design</h3>
                 <!-- Service Title -->
 
@@ -210,6 +211,7 @@
             <div class="service-card">
             <!-- Individual service card -->
 
+                <div class="service-icon">🎨</div>
                 <h3>Graphics Design</h3>
                 <!-- Service Title -->
 
@@ -225,6 +227,7 @@
             <div class="service-card">
             <!-- Individual service card -->
 
+                <div class="service-icon">✨</div>
                 <h3>Branding</h3>
                 <!-- Service Title -->
 
@@ -461,10 +464,10 @@
             <div class="contact-info">
                 <!-- Display email, phone, social links -->
 
-                <p><strong>Email:</strong> elijahzebrontembo@gmail.com</p>
-                <p><strong>Phone:</strong> +260 973 159 521</p>
-                <p><strong>WhatsApp:</strong> +260 973 159 521</p>
-                <p><strong>LinkedIn:</strong> linkedin.com/in/elijahztembo</p>
+                <p><strong>Email:</strong> <a href="mailto:elijahzebrontembo@gmail.com">elijahzebrontembo@gmail.com</a></p>
+                <p><strong>Phone:</strong> <a href="tel:+260973159521">+260 973 159 521</a></p>
+                <p><strong>WhatsApp:</strong> <a href="https://wa.me/260973159521" target="_blank" rel="noopener noreferrer">+260 973 159 521</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/elijahztembo" target="_blank" rel="noopener noreferrer">linkedin.com/in/elijahztembo</a></p>
             </div>
         </div>
     </div>
@@ -502,17 +505,47 @@
     <div class="footer-container fade-in">
     <!-- Centers content -->
 
-        <p>&copy; 2026 Elijah Zebron Tembo. All Rights Reserved.</p>
-        <!-- Copyright -->
+        <div class="footer-content">
+            <!-- Footer main content -->
+
+            <div class="footer-about">
+                <!-- About section in footer -->
+                <h3>Elijah Zebron Tembo</h3>
+                <p>Professional Web & Graphics Designer creating modern digital experiences.</p>
+            </div>
+
+            <div class="footer-links">
+                <!-- Quick links -->
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <!-- Contact info -->
+                <h4>Get In Touch</h4>
+                <p><a href="mailto:elijahzebrontembo@gmail.com">elijahzebrontembo@gmail.com</a></p>
+                <p><a href="tel:+260973159521">+260 973 159 521</a></p>
+                <p>Lusaka, Zambia</p>
+            </div>
+        </div>
 
         <div class="footer-social">
         <!-- Social media links -->
 
-            <a href="https://linkedin.com/in/elijahztembo" target="_blank">LinkedIn</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-            <a href="https://wa.me/0973159521" target="_blank">💬WhatsApp</a>
+            <a href="https://linkedin.com/in/elijahztembo" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile">LinkedIn</a>
+            <a href="https://twitter.com/elijahztembo" target="_blank" rel="noopener noreferrer" aria-label="Follow me on Twitter">Twitter</a>
+            <a href="https://instagram.com/elijahztembo" target="_blank" rel="noopener noreferrer" aria-label="Follow me on Instagram">Instagram</a>
+            <a href="https://wa.me/260973159521" target="_blank" rel="noopener noreferrer" aria-label="Chat with me on WhatsApp">💬WhatsApp</a>
         </div>
+
+        <p>&copy; 2026 Elijah Zebron Tembo. All Rights Reserved.</p>
+        <!-- Copyright -->
     </div>
 </footer>
 
