@@ -8,14 +8,8 @@
 
 /* Body styling */
 body{
-    background:linear-gradient( /* Create gradient background */
-    135deg, /* Gradient angle */
-    #0b0b0b, /* Dark color start */
-    #0f2027, /* Medium dark color */
-    #203a43, /* Medium color */
-    #01090c /* Dark color end */
-    );
-    color:white; /* Set text color to white */
+    background:#f7f7f7; /* Light neutral background for the full page */
+    color:#111; /* Dark text for readability */
     font-family: Arial, Helvetica, sans-serif; /* Set font family */
     line-height:1.6; /* Set line height for readability */
 }
@@ -31,7 +25,7 @@ html{
 position:fixed; /* Fixed position covers entire screen */
 width:100%; /* Full width */
 height:100%; /* Full height */
-background:#0b0b0b; /* Dark background */
+background:#ffffff; /* Light background for loader */
 display:flex; /* Flexbox for centering */
 justify-content:center; /* Center horizontally */
 align-items:center; /* Center vertically */
@@ -41,7 +35,7 @@ z-index:9999; /* High z-index to stay on top */
 .spinner{
 width:50px; /* Spinner width */
 height:50px; /* Spinner height */
-border:5px solid #222; /* Border color */
+border:5px solid rgba(0,0,0,0.1); /* Light border color */
 border-top:5px solid #00bcd4; /* Top border color for animation */
 border-radius:50%; /* Make it circular */
 animation:spin 1s linear infinite; /* Apply spinning animation */
@@ -88,10 +82,10 @@ header{
     position:fixed; /* Always fixed at top */
     top:0; /* Stick to very top */
     width:100%; /* Full width */
-    background:rgba(0,0,0,0.88); /* Semi-transparent background */
+    background:rgba(255,255,255,0.95); /* Light translucent navbar */
     backdrop-filter:blur(16px); /* Blur effect */
-    box-shadow:0 12px 40px rgba(0,0,0,0.35); /* Shadow for depth */
-    border-bottom:1px solid rgba(0,188,212,0.18); /* Subtle border */
+    box-shadow:0 12px 35px rgba(0,0,0,0.08); /* Soft shadow for depth */
+    border-bottom:1px solid rgba(0,0,0,0.08); /* Subtle border */
     z-index:1000; /* Keep above content */
 }
 
@@ -113,7 +107,9 @@ nav{
     color: white; /* White color */
 }
 
-/* Mobile Responsive Navigation */
+/* ==========================================
+ Mobile Responsive Navigation
+ ============================================ */
 @media(max-width:768px){ /* Media query for tablets and phones */
 nav{
 position:relative; /* Relative positioning for mobile */
@@ -124,10 +120,10 @@ top:70px; /* Position below navbar */
 right:0; /* Align to right side */
 width:280px; /* Fixed width for right-side menu */
 height:calc(100vh - 70px); /* Full height minus navbar */
-background:rgba(0,0,0,0.95); /* Semi-transparent black background */
+background:rgba(255,255,255,0.98); /* Light menu background */
 backdrop-filter:blur(10px); /* Blur effect for modern look */
 border-radius:15px 0 0 15px; /* Rounded left corners */
-box-shadow:0 5px 25px rgba(0,0,0,0.6); /* Enhanced shadow */
+box-shadow:0 12px 35px rgba(0,0,0,0.12); /* Soft shadow */
 flex-direction:column; /* Stack items vertically */
 display:none; /* Hidden by default */
 padding:30px 0; /* Vertical padding */
@@ -148,7 +144,7 @@ padding:0 20px; /* Horizontal padding */
 nav ul li a{
 padding:12px 20px; /* Reduced vertical padding */
 display:block; /* Make full width clickable */
-color:#fff; /* White text */
+color:#111; /* Dark text on light menu */
 text-decoration:none; /* Remove underline */
 transition:background 0.3s ease, color 0.3s ease; /* Smooth transitions */
 border-radius:8px; /* Rounded corners */
@@ -158,8 +154,8 @@ box-sizing:border-box; /* Include padding in width */
 }
 
 nav ul li a:hover{
-background:rgba(0,188,212,0.3); /* Light blue hover background */
-color:#00bcd4; /* Accent color on hover */
+background:rgba(0,188,212,0.15); /* Light blue hover background */
+color:#007a88; /* Accent hover color */
 }
 
 nav ul li a:hover{
@@ -171,7 +167,7 @@ color:#00bcd4; /* Accent color on hover */
 display:block; /* Show hamburger */
 font-size:28px; /* Size */
 cursor:pointer; /* Pointer cursor */
-color:#fff; /* White color */
+color:#111; /* Dark hamburger icon */
 transition:color 0.3s ease; /* Smooth color change */
 }
 
@@ -201,7 +197,7 @@ ul li a{
     position:relative; /* For pseudo-element positioning */
     transition:0.3s ease; /* Smooth color transition */
     text-decoration:none; /* Remove underline */
-    color:white; /* White text */
+    color:#111; /* Dark text for light header */
     font-weight:500; /* Medium font weight */
     letter-spacing:0.03em; /* Slight letter spacing */
     padding:10px 0; /* Vertical padding */
@@ -242,7 +238,7 @@ ul li a:hover::after{
 .logo{
     font-size:22px; /* Logo font size */
     font-weight:bold; /* Bold font weight */
-    color:white; /* White color */
+    color:#111; /* Dark color for logo */
     text-decoration:none; /* Remove underline */
 }
 
@@ -295,7 +291,7 @@ transform:translateY(0);
     left:0; /* Left edge */
     right:0; /* Right edge */
     bottom:0; /* Bottom edge */
-    background:linear-gradient(135deg, rgba(0,188,212,0.05) 0%, rgba(0,0,0,0.1) 100%); /* Gradient overlay */
+    background:linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(245,245,245,0.9) 100%); /* Soft white overlay */
     z-index:-1; /* Behind content */
 }
 
@@ -337,7 +333,7 @@ transform:translateY(0);
     line-height:1.8; /* Line height for readability */
     margin-bottom:35px; /* Bottom margin */
     font-size:18px; /* Font size */
-    color:#ddd; /* Light gray color */
+    color:#333; /* Dark text for white background */
     max-width:500px; /* Maximum width */
 }
 
@@ -361,8 +357,8 @@ transform:translateY(0);
     max-width:450px; /* Maximum width */
     height:auto; /* Maintain aspect ratio */
     border-radius:20px; /* Rounded corners */
-    box-shadow:0 20px 40px rgba(0,0,0,0.4); /* Shadow for depth */
-    border:3px solid rgba(0,188,212,0.2); /* Subtle border */
+    box-shadow:0 16px 30px rgba(0,0,0,0.12); /* Soft shadow for white theme */
+    border:1px solid rgba(0,0,0,0.08); /* Light border */
     transition:0.5s ease; /* Smooth transitions */
     position:relative; /* For z-index */
 }
@@ -606,7 +602,7 @@ transform:translateY(0);
 /* ============================= */
 .about{
     padding:80px 10%; /* Top/bottom and left/right padding */
-    background:#0b0b0b; /* Dark background */
+    background:#ffffff; /* White section background */
     position:relative; /* For pseudo-elements */
 }
 
@@ -617,7 +613,7 @@ transform:translateY(0);
     left:0; /* Left edge */
     right:0; /* Right edge */
     bottom:0; /* Bottom edge */
-    background:linear-gradient(135deg, rgba(17,17,17,0.9) 0%, rgba(0,0,0,0.95) 100%); /* Gradient overlay */
+    background:rgba(255,255,255,0.9); /* Soft white overlay */
     z-index:-1; /* Behind content */
 }
 
@@ -681,7 +677,7 @@ transform:translateY(0);
 .about-text h2{
     font-size:40px;
     margin-bottom:25px;
-    color:#00bcd4;
+    color:#111;
     font-weight:600;
 }
 
@@ -689,7 +685,7 @@ transform:translateY(0);
     line-height:1.8;
     margin-bottom:20px;
     font-size:17px;
-    color:#ddd;
+    color:#4a4a4a;
 }
 
 .about-text .btn{
@@ -736,23 +732,23 @@ transform:translateY(0);
     display:flex;
     justify-content:space-around;
     text-align:center;
-    background:#111;
-    border-top:1px solid #333;
-    border-bottom:1px solid #333;
+    background:#ffffff;
+    border-top:1px solid rgba(0,0,0,0.08);
+    border-bottom:1px solid rgba(0,0,0,0.08);
 }
 
 .counter-box{
     padding:20px;
     border-radius:15px;
-    background:linear-gradient(135deg, rgba(0,188,212,0.1) 0%, rgba(0,0,0,0.3) 100%);
-    border:1px solid rgba(0,188,212,0.2);
+    background:#f9fcff;
+    border:1px solid rgba(0,188,212,0.18);
     transition:0.3s ease;
     min-width:150px;
 }
 
 .counter-box:hover{
     transform:translateY(-5px);
-    box-shadow:0 10px 25px rgba(0,188,212,0.2);
+    box-shadow:0 10px 25px rgba(0,188,212,0.12);
     border-color:#00bcd4;
 }
 
@@ -837,8 +833,8 @@ transform:translateY(0);
     padding:60px 10%; /* Top/bottom and left/right padding */
     /* Adds spacing inside section */
 
-    background:#111; /* Dark gray background */
-    /* Slight different background for contrast */
+    background:#ffffff; /* Light background for services section */
+    /* Clean white section */
 }
 
 .services-container h2{
@@ -864,7 +860,7 @@ transform:translateY(0);
 }
 
 .service-card{
-    background:#1a1a1a; /* Dark background */
+    background:#ffffff; /* White card background */
     /* Card background */
 
     padding:30px; /* Internal padding */
@@ -873,6 +869,8 @@ transform:translateY(0);
     border-radius:10px; /* Rounded corners */
     /* Rounded corners */
 
+    border:1px solid rgba(0,0,0,0.08);
+    box-shadow:0 12px 25px rgba(0,0,0,0.06);
     transition:0.3s; /* Smooth transitions */
     /* Smooth hover effect */
 }
@@ -928,6 +926,7 @@ transform:translateY(0);
 .portfolio{
     padding:60px 10%;
     /* Adds spacing inside section */
+    background:#ffffff;
 }
 
 .portfolio-container h2{
@@ -1028,9 +1027,9 @@ transform:translateY(0);
 /* ============================= */
 .case-study{
     padding:60px 10%;
-    background:#0c1115;
-    border-top:1px solid rgba(0,188,212,0.12);
-    border-bottom:1px solid rgba(0,188,212,0.12);
+    background:#ffffff;
+    border-top:1px solid rgba(0,0,0,0.08);
+    border-bottom:1px solid rgba(0,0,0,0.08);
 }
 
 .case-study-container{
@@ -1046,7 +1045,7 @@ transform:translateY(0);
 .case-study-text{
     flex:1;
     min-width:300px;
-    color:#ddd;
+    color:#333;
 }
 
 .case-study-text h2{
@@ -1059,7 +1058,7 @@ transform:translateY(0);
 .case-study-text ul{
     margin-bottom:20px;
     line-height:1.8;
-    color:#ccc;
+    color:#555;
 }
 
 .case-study-text ul{
@@ -1103,8 +1102,8 @@ transform:translateY(0);
     padding:60px 10%;
     /* Adds spacing inside section */
 
-    background:#111;
-    /* Different background for contrast */
+    background:#f8f9fb;
+    /* Light background for skills section */
 }
 
 .skills-container h2{
@@ -1154,8 +1153,8 @@ transform:translateY(0);
 }
 
 .skill-bar{
-    background:#222;
-    /* Background of bar */
+    background:#e5e5e5;
+    /* Light background of bar */
 
     height:8px;
     /* Bar height */
@@ -1180,8 +1179,8 @@ transform:translateY(0);
     padding:60px 10%;
     /* Adds spacing inside section */
 
-    background:#0b0b0b;
-    /* Matches main dark theme */
+    background:#ffffff;
+    /* White contact section */
 }
 
 .contact-container h2{
@@ -1220,24 +1219,24 @@ transform:translateY(0);
 .contact-form input:focus,
 .contact-form textarea:focus{
     outline:none;
-    background:#2a2a2a;
-    box-shadow:0 0 10px rgba(0, 188, 212, 0.3);
+    background:#eef6fb;
+    box-shadow:0 0 10px rgba(0, 188, 212, 0.22);
     /* Focus state styling */
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder{
-    color:#888;
+    color:#999;
 }
 
 .contact-form input,
 .contact-form textarea{
     padding:12px;
     border-radius:5px;
-    border:none;
-    background:#222;
-    color:white;
-    /* Dark professional input */
+    border:1px solid rgba(0,0,0,0.12);
+    background:#f4f7fb;
+    color:#111;
+    /* Light input fields */
 }
 
 .contact-form textarea{
@@ -1265,7 +1264,7 @@ transform:translateY(0);
     flex-direction:column;
     justify-content:center;
     gap:10px;
-    color:white;
+    color:#333;
 }
 
 .contact-info p{
@@ -1295,7 +1294,7 @@ transform:translateY(0);
     left: 0; /* Align to left */
     width: 100%; /* Full screen width */
     height: 100%; /* Full screen height */
-    background: rgba(0,0,0,0.8); /* Dark overlay */
+    background: rgba(0,0,0,0.25); /* Light overlay */
     display: none; /* Hidden by default */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
@@ -1303,13 +1302,13 @@ transform:translateY(0);
 }
 
 .popup-content {
-    background: #111; /* Dark background */
+    background: #ffffff; /* Light popup background */
     padding: 40px; /* Inner spacing */
     border-radius: 10px; /* Rounded corners */
     text-align: center; /* Center text */
     animation: popupFade 0.4s ease; /* Smooth animation */
-    border: 2px solid #00bcd4; /* Accent border */
-    box-shadow: 0 10px 40px rgba(0, 188, 212, 0.2);
+    border: 2px solid rgba(0, 188, 212, 0.25); /* Accent border */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
 .popup-content h3 {
@@ -1357,8 +1356,8 @@ transform:translateY(0);
 /* Footer Styling */
 /* ============================= */
 footer{
-    background:#111;
-    /* Dark background for footer */
+    background:#f5f6f8;
+    /* Light footer background */
 
     padding:40px 10%;
     /* Space inside footer */
@@ -1369,7 +1368,7 @@ footer{
     margin-top:60px;
     /* Space above footer */
 
-    border-top:1px solid #333;
+    border-top:1px solid rgba(0,0,0,0.08);
     /* Subtle border at top */
 }
 
