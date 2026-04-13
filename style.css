@@ -8,9 +8,66 @@
 
 /* Body styling */
 body{
-    background:#0b0b0b; /* Dark background */
-    color:white; /* White text */
+    background:linear-gradient(
+    135deg,
+    #0b0b0b,
+    #0f2027,
+    #203a43,
+    #01090c
+    );
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height:1.6;
 }
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* ============================= */
+/* Loading Screen */
+/* ============================= */
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#0b0b0b;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.spinner{
+width:50px;
+height:50px;
+border:5px solid #222;
+border-top:5px solid #00bcd4;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+/* ====================================================== */
+
+
+/* =============================
+Custom Cursor Animation (Premium Feel)
+================================ */
+.cursor{
+    position:fixed;
+    width:15px;
+    height:15px;
+    /* background:#00bcd4; */
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9999;
+    transition:0.1s;
+}
+
 
 /* Prevent horizontal scrolling on mobile */
 html, body{
@@ -29,20 +86,12 @@ header{
 /* Sticky Navbar */
 /* ============================= */
 header{
-position:sticky;
-/* Makes header stick when scrolling */
-
-top:0;
-/* Stick to top */
-
-background:#283541;
-/* Prevent transparency */
-
-z-index:1000;
-/* Keep above other content */
-
-box-shadow:0 2px 10px rgba(0,0,0,0.5);
-/* Adds subtle shadow */
+position:fixed; /* Always fixed at top */
+top:0; /* Stick to very top */
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:1000; /* Keep above content */
+width:100%; /* Full width */
 }
 
 /* Navigation styling */
@@ -55,7 +104,6 @@ nav{
 /* ============================= */
 /* Mobile Menu */
 /* ============================= */
-
 .menu-toggle {
     display: none; /* Hide hamburger icon on desktop */
     font-size: 28px; /* Increase size for better visibility */
@@ -65,11 +113,9 @@ nav{
 
 /* Mobile Responsive Navigation */
 @media(max-width:768px){
-
 nav{
 position:relative;
 }
-
 nav ul{
 position:absolute;
 top:70px;
@@ -99,7 +145,6 @@ display:block;
 
 /* Mobile Responsive */
 @media(max-width:768px){
-
 .nav-links {
     display: none; /* Hide menu by default */
     flex-direction: column; /* Stack menu vertically */
@@ -197,6 +242,7 @@ transform:translateY(0);
 
 .hero{
 padding:60px 10%;
+margin-top:80px;
 }
 
 .hero-content{
@@ -435,7 +481,6 @@ text-align:center;
 /* ============================= */
 /* About Section Styling */
 /* ============================= */
-
 .about{
     padding:60px 10%;
     /* Adds spacing inside the section */
@@ -507,8 +552,21 @@ text-align:center;
 }
 
 
-/* Slide Left Animation */
+.counter{
+padding:60px 10%;
+display:flex;
+justify-content:space-around;
+text-align:center;
+background:#111;
+}
 
+.counter-box h2{
+font-size:40px;
+color:#00bcd4;
+}
+
+
+/* Slide Left Animation */
 @keyframes slideLeft{
     from{
         opacity:0;
@@ -540,6 +598,35 @@ text-align:center;
 /* ============================= */
 /* Services Section */
 /* ============================= */
+
+/* 3D Hover Cards */  
+.service-card,
+.portfolio-item,
+.skills-left,
+.skills-right{
+    transition:0.4s;
+    transform-style:preserve-3d;
+}
+
+.service-card:hover,
+.portfolio-item:hover,
+.skills-left:hover,
+.skills-right:hover{
+    transform:rotateY(5deg) rotateX(5deg);
+}
+
+/* Smooth Fade-In Sections */
+.fade-in{
+    opacity:0;
+    transform:translateY(30px);
+    transition:1s;
+}
+.fade-in.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
 .services{
     padding:60px 10%;
     /* Adds spacing inside section */
@@ -960,6 +1047,20 @@ footer p{
 .footer-social a:hover{
     color:#0097a7;
     /* Hover color for effect */
+}
+
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+font-size:24px;
+padding:15px;
+border-radius:50%;
+z-index:1000;
+text-decoration:none;
 }
 
 

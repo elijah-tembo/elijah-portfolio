@@ -5,24 +5,44 @@
 <!-- Root element of the website, lang="en" means English -->
 
 <head>
-
-    <meta charset="UTF-8">
     <!-- Allows website to support all characters -->
+    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Mobile SEO -->
     <!-- Makes website responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Elijah Z Tembo | Portfolio</title>
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Elijah Zebron Tembo | Web & Graphics Designer">
+    <meta name="description" content="Professional Website and Graphics Designer. I create modern websites, branding, and UI designs for businesses.">
+    <meta name="keywords" content="Elijah Zebron Tembo, Web Designer, Graphic Designer, Portfolio, Frontend Developer">
+    <meta name="author" content="Elijah Zebron Tembo">
+
+    <!-- Open Graph (Social Sharing) -->
+    <meta property="og:title" content="Elijah Zebron Tembo Portfolio">
+    <meta property="og:description" content="Professional Web & Graphics Designer">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/preview.jpg">
+
     <!-- This is the title shown in browser tab -->
+    <title>Elijah Zebron Tembo | Portfolio</title>
 
-    <link rel="stylesheet" href="style.css">
     <!-- This links your CSS file to HTML -->
-
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
+    <div id="loader">
+    <div class="spinner"></div>
+    </div>
+
+    <div class="cursor"></div>
+
 <!-- Everything visible on the website goes inside body -->
 
+
+     <div class="scroll-bar"></div>
     <!-- Header Section (Top Navigation Bar) -->
     <header>
         <!-- Navigation Bar -->
@@ -56,13 +76,11 @@
                 <li><a href="#contact">Contact</a></li>
 
             </ul>
-
         </nav>
-
     </header>
 
     <!-- Hero Section -->
-<section class="hero">  <!-- This creates the main landing section -->
+<section id="home" class="hero">  <!-- This creates the main landing section -->
     <!-- Hero Content Container -->
     <div class="hero-content">
         <!-- Text Content -->
@@ -70,7 +88,7 @@
             <!-- Your Name -->
             <h1>Elijah Z Tembo</h1>
             <!-- Your Profession -->
-            <h3>Website & Graphics Designer</h3>
+            <h3 id="typing"></h3>
             <!-- Short Description -->
             <p>
                 I design modern websites and professional graphics 
@@ -92,11 +110,13 @@
     </div>
 </section>
 
+
+
+
 <!-- ============================= -->
 <!-- About Section -->
 <!-- ============================= -->
-
-<section class="about" id="about">
+<section class="about fade-in" id="about">
 <!-- This creates the About section -->
 
     <div class="about-container">
@@ -136,12 +156,28 @@
     </div>
 </section>
 
+<section class="counter fade-in">
+    <div class="counter-box">
+        <h2 class="count" data-target="50">0</h2>
+        <p>Clients</p>
+    </div>
+
+    <div class="counter-box">
+        <h2 class="count" data-target="100">0</h2>
+        <p>Projects</p>
+    </div>
+
+    <div class="counter-box">
+        <h2 class="count" data-target="3">0</h2>
+        <p>Years Experience</p>
+    </div>
+</section>
+
 
 <!-- ============================= -->
 <!-- Services Section -->
 <!-- ============================= -->
-
-<section class="services" id="services">
+<section class="services fade-in" id="services">
 <!-- Main services section -->
 
     <div class="services-container">
@@ -204,7 +240,7 @@
 <!-- ============================= -->
 <!-- Portfolio Section -->
 <!-- ============================= -->
-<section class="portfolio" id="portfolio">
+<section class="portfolio fade-in" id="portfolio">
 <!-- Main portfolio section -->
 
     <div class="portfolio-container">
@@ -287,7 +323,7 @@
 <!-- ============================= -->
 <!-- Skills Section -->
 <!-- ============================= -->
-<section class="skills">
+<section class="skills fade-in" id="skills">
 <!-- Main skills section -->
 
     <div class="skills-container">
@@ -372,7 +408,7 @@
 <!-- ============================= -->
 <!-- Contact Section -->
 <!-- ============================= -->
-<section class="contact" id="contact">
+<section class="contact fade-in" id="contact">
 <!-- Main contact section -->
 
     <div class="contact-container">
@@ -461,7 +497,7 @@
 <footer>
 <!-- Footer container -->
 
-    <div class="footer-container">
+    <div class="footer-container fade-in">
     <!-- Centers content -->
 
         <p>&copy; 2026 Elijah Zebron Tembo. All Rights Reserved.</p>
@@ -473,7 +509,7 @@
             <a href="https://linkedin.com/in/elijahztembo" target="_blank">LinkedIn</a>
             <a href="#">Twitter</a>
             <a href="#">Instagram</a>
-            <a href="#">WhatsApp</a>
+            <a href="https://wa.me/0973159521" target="_blank">💬WhatsApp</a>
         </div>
     </div>
 </footer>
@@ -493,60 +529,11 @@
             It allows sending emails directly from browser
             No backend or PHP required -->
 
-        <script type="text/javascript">
-        /* =============================
-        Initialize EmailJS
-        ============================= */
+        <script src="script.js"></script>
 
-        (function(){
-            emailjs.init("aiuy-9Ek4VkNl-1pj"); 
-            // Initialize EmailJS using your Public Key
-            // This connects your website to your EmailJS account
-        })();
-        </script>
-
-        <script>
-        /* =============================
-        Contact Form Submission Script
-        ============================= */
-
-        document.getElementById('contact-form').addEventListener('submit', function(event){
-            // Select the form using id="contact-form"
-            // Add event listener to detect form submission
-
-            event.preventDefault(); 
-            // Prevent default form submission
-            // Stops page reload when clicking submit
-
-            emailjs.sendForm('service_lfgf17s', 'template_mafunjl', this)
-            // Send form data using EmailJS
-            // 'service_lfgf17s' → Your Service ID
-            // 'template_mafunjl' → Your Template ID
-            // 'this' → Refers to the form element
-
-            .then(function(){
-                // This runs if message is sent successfully
-                document.getElementById("success-popup").style.display = "flex"; // Show success popup
-                // Show success alert
-            }, function(error){
-                // This runs if message fails to send
-                alert('Oops! Something went wrong. Error: ' + JSON.stringify(error));
-                // Show error message for debugging
-            });
-            function closePopup(){
-                document.getElementById("success-popup").style.display = "none";
-                // Hide success popup when close button is clicked
-            };
-
-            this.reset();
-            // Reset form fields after submission
-        });
-
-        function toggleMenu(){
-            document.querySelector('ul').classList.toggle('active');
-            }
-        </script>
-
+<a href="https://wa.me/0973159521" class="whatsapp" target="_blank">
+💬
+</a>
 </body>
 
 </html>

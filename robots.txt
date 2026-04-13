@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elijah-tembo.github.io/elijah-portfolio//sitemap.xml
