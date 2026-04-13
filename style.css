@@ -215,6 +215,16 @@ ul li a:hover::after{
     width:100%;
 }
 
+.portfolio-link{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+}
+
+.portfolio-link:hover .portfolio-item img{
+    transform:scale(1.03);
+}
+
 /* Logo styling */
 .logo{
     font-size:22px;
