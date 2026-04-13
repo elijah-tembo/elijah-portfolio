@@ -121,13 +121,18 @@ position:relative; /* Relative positioning for mobile */
 nav ul{
 position:absolute; /* Absolute positioning for dropdown */
 top:70px; /* Position below navbar */
-left:0; /* Align to left */
-width:100%; /* Full width */
-background:#000; /* Black background */
+right:0; /* Align to right side */
+width:280px; /* Fixed width for right-side menu */
+height:calc(100vh - 70px); /* Full height minus navbar */
+background:rgba(0,0,0,0.95); /* Semi-transparent black background */
+backdrop-filter:blur(10px); /* Blur effect for modern look */
+border-radius:15px 0 0 15px; /* Rounded left corners */
+box-shadow:0 5px 25px rgba(0,0,0,0.6); /* Enhanced shadow */
 flex-direction:column; /* Stack items vertically */
 display:none; /* Hidden by default */
-padding:20px 0; /* Vertical padding */
+padding:30px 0; /* Vertical padding */
 z-index:1000; /* High z-index */
+justify-content:flex-start; /* Align items to top */
 }
 
 nav ul.active{
@@ -136,33 +141,42 @@ display:flex; /* Show when active */
 
 nav ul li{
 margin:15px 0; /* Vertical margin */
-text-align:center; /* Center text */
+text-align:left; /* Left align text for right menu */
+padding:0 20px; /* Horizontal padding */
+}
+
+nav ul li a{
+padding:12px 20px; /* Reduced vertical padding */
+display:block; /* Make full width clickable */
+color:#fff; /* White text */
+text-decoration:none; /* Remove underline */
+transition:background 0.3s ease, color 0.3s ease; /* Smooth transitions */
+border-radius:8px; /* Rounded corners */
+margin:0; /* Remove margin */
+width:100%; /* Full width */
+box-sizing:border-box; /* Include padding in width */
+}
+
+nav ul li a:hover{
+background:rgba(0,188,212,0.3); /* Light blue hover background */
+color:#00bcd4; /* Accent color on hover */
+}
+
+nav ul li a:hover{
+background:rgba(0,188,212,0.3); /* Light blue hover background */
+color:#00bcd4; /* Accent color on hover */
 }
 
 .menu-toggle{
 display:block; /* Show hamburger */
+font-size:28px; /* Size */
+cursor:pointer; /* Pointer cursor */
+color:#fff; /* White color */
+transition:color 0.3s ease; /* Smooth color change */
 }
 
-}
-
-/* Mobile Responsive */
-@media(max-width:768px){ /* Another media query for mobile */
-.nav-links {
-    display: none; /* Hide menu by default */
-    flex-direction: column; /* Stack menu vertically */
-    background: #000; /* Background color */
-    position: absolute; /* Position below navbar */
-    top: 70px; /* Distance from top */
-    width: 100%; /* Full width */
-    left: 0; /* Align left */
-}
-
-.nav-links.active {
-    display: flex; /* Show menu when active */
-}
-
-.menu-toggle {
-    display: block; /* Show hamburger icon */
+.menu-toggle:hover{
+color:#00bcd4; /* Accent color on hover */
 }
 
 }

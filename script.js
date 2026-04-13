@@ -54,7 +54,7 @@ function closePopup(){ /* Function to close success popup */
 }
 
 function toggleMenu(){ /* Function to toggle mobile menu */
-    document.querySelector('ul').classList.toggle('active'); /* Toggle 'active' class on menu */
+    document.querySelector('nav ul').classList.toggle('active'); /* Toggle 'active' class on menu */
     }
 
 
