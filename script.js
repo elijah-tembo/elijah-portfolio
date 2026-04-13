@@ -1,87 +1,87 @@
-(function(){
-    emailjs.init("aiuy-9Ek4VkNl-1pj"); 
+(function(){ /* Immediately invoked function expression (IIFE) */
+    emailjs.init("aiuy-9Ek4VkNl-1pj"); /* Initialize EmailJS with public key */
     // Initialize EmailJS using your Public Key
     // This connects your website to your EmailJS account
-})();
+})(); /* End of IIFE */
 
 /* =============================
 Contact Form Submission Script
 ============================= */
 
-document.getElementById('contact-form').addEventListener('submit', function(event){
+document.getElementById('contact-form').addEventListener('submit', function(event){ /* Get form element and listen for submit */
     // Select the form using id="contact-form"
     // Add event listener to detect form submission
 
-    event.preventDefault(); 
+    event.preventDefault(); /* Prevent default form behavior */
     // Prevent default form submission
     // Stops page reload when clicking submit
 
-    emailjs.sendForm('service_lfgf17s', 'template_mafunjl', this)
+    emailjs.sendForm('service_lfgf17s', 'template_mafunjl', this) /* Send form using EmailJS */
     // Send form data using EmailJS
     // 'service_lfgf17s' → Your Service ID
     // 'template_mafunjl' → Your Template ID
     // 'this' → Refers to the form element
 
-    .then(function(){
+    .then(function(){ /* Success callback */
         // This runs if message is sent successfully
-        document.getElementById("success-popup").style.display = "flex"; // Show success popup
+        document.getElementById("success-popup").style.display = "flex"; /* Show success popup */
         // Show success alert
         
         // Auto-close popup after 3 seconds
-        setTimeout(function(){
-            closePopup();
-        }, 3000);
+        setTimeout(function(){ /* Set timeout for auto-close */
+            closePopup(); /* Call close function */
+        }, 3000); /* 3 seconds */
         
-    }, function(error){
+    }, function(error){ /* Error callback */
         // This runs if message fails to send
-        console.error('EmailJS error:', error);
+        console.error('EmailJS error:', error); /* Log error to console */
         
         // Show error popup instead of alert
-        var errorPopup = document.createElement('div');
-        errorPopup.className = 'success-popup';
-        errorPopup.style.display = 'flex';
-        errorPopup.innerHTML = '<div class="popup-content" style="border-color: #ff6b6b;"><h3 style="color: #ff6b6b;">Message Failed</h3><p>Unable to send your message. Please try again or contact via email.</p><button onclick="this.parentElement.parentElement.remove()">Close</button></div>';
-        document.body.appendChild(errorPopup);
+        var errorPopup = document.createElement('div'); /* Create error popup element */
+        errorPopup.className = 'success-popup'; /* Set class for styling */
+        errorPopup.style.display = 'flex'; /* Make it visible */
+        errorPopup.innerHTML = '<div class="popup-content" style="border-color: #ff6b6b;"><h3 style="color: #ff6b6b;">Message Failed</h3><p>Unable to send your message. Please try again or contact via email.</p><button onclick="this.parentElement.parentElement.remove()">Close</button></div>'; /* Set popup content */
+        document.body.appendChild(errorPopup); /* Add to page */
     });
     
-    this.reset();
+    this.reset(); /* Reset form fields */
     // Reset form fields after submission
 });
 
-function closePopup(){
-    document.getElementById("success-popup").style.display = "none";
+function closePopup(){ /* Function to close success popup */
+    document.getElementById("success-popup").style.display = "none"; /* Hide popup by setting display to none */
     // Hide success popup when close button is clicked
 }
 
-function toggleMenu(){
-    document.querySelector('ul').classList.toggle('active');
+function toggleMenu(){ /* Function to toggle mobile menu */
+    document.querySelector('ul').classList.toggle('active'); /* Toggle 'active' class on menu */
     }
 
 
 /* ============================= */
 /* Loader Screen */
 /* ============================= */
-window.addEventListener("load", function(){
-    document.getElementById("loader").style.display = "none";
+window.addEventListener("load", function(){ /* Wait for page to fully load */
+    document.getElementById("loader").style.display = "none"; /* Hide loader */
 });
 
 /* ============================= */
 /* Cursor Animation */
 /* ============================= */
-// document.addEventListener("mousemove", function(e){
-// document.querySelector(".cursor").style.left = e.pageX + "px";
-// document.querySelector(".cursor").style.top = e.pageY + "px";
+// document.addEventListener("mousemove", function(e){ /* Listen for mouse movement */
+// document.querySelector(".cursor").style.left = e.pageX + "px"; /* Update cursor position X */
+// document.querySelector(".cursor").style.top = e.pageY + "px"; /* Update cursor position Y */
 // });
 
 
 
 /* Fade Animation */
-const faders = document.querySelectorAll(".fade-in");
-    window.addEventListener("scroll", ()=>{
-        faders.forEach(el=>{
-        const top = el.getBoundingClientRect().top;
-            if(top < window.innerHeight - 100){
-            el.classList.add("show");
+const faders = document.querySelectorAll(".fade-in"); /* Select all elements with fade-in class */
+    window.addEventListener("scroll", ()=>{ /* Listen for scroll events */
+        faders.forEach(el=>{ /* Loop through each fade element */
+        const top = el.getBoundingClientRect().top; /* Get element's top position */
+            if(top < window.innerHeight - 100){ /* Check if element is in viewport */
+            el.classList.add("show"); /* Add show class to trigger animation */
             }
     });
 });
@@ -91,7 +91,7 @@ const faders = document.querySelectorAll(".fade-in");
 /* ============================= */
 /* Typing Animation */
 /* ============================= */
-const textArray = [
+const textArray = [ /* Array of texts to type */
 "Website & Graphics Designer",
 "Frontend Developer",
 "UI/UX Designer",
@@ -99,71 +99,73 @@ const textArray = [
 ];
 /* Texts that will rotate */
 
-let typingIndex = 0;
-let charIndex = 0;
+let typingIndex = 0; /* Index for current text in array */
+let charIndex = 0; /* Index for current character in text */
 
-function typeText(){
+function typeText(){ /* Function to type text character by character */
 
-if(charIndex < textArray[typingIndex].length){
+if(charIndex < textArray[typingIndex].length){ /* Check if there are more characters to type */
 
-document.getElementById("typing").textContent += textArray[typingIndex].charAt(charIndex);
+document.getElementById("typing").textContent += textArray[typingIndex].charAt(charIndex); /* Add next character */
 /* Add one letter */
 
-charIndex++;
+charIndex++; /* Increment character index */
 
-setTimeout(typeText, 80);
+setTimeout(typeText, 80); /* Call function again after delay */
 /* Speed of typing */
 
 }
 
-else{
+else{ /* If text is complete */
 
-setTimeout(eraseText, 1500);
+setTimeout(eraseText, 1500); /* Wait then start erasing */
 /* Wait before deleting */
 
 }
 
 }
 
-function eraseText(){
+function eraseText(){ /* Function to erase text character by character */
 
-if(charIndex > 0){
+if(charIndex > 0){ /* Check if there are characters to erase */
 
-document.getElementById("typing").textContent =
-textArray[typingIndex].substring(0, charIndex-1);
+document.getElementById("typing").textContent = /* Set text content */
+textArray[typingIndex].substring(0, charIndex-1); /* Remove last character */
 
-charIndex--;
+charIndex--; /* Decrement character index */
 
-setTimeout(eraseText, 40);
-
-}
-
-else{
-
-typingIndex++;
-
-if(typingIndex >= textArray.length)
-typingIndex = 0;
-
-setTimeout(typeText, 200);
+setTimeout(eraseText, 40); /* Call function again after delay */
 
 }
 
+else{ /* If text is erased */
+
+typingIndex++; /* Move to next text */
+
+if(typingIndex >= textArray.length) /* If at end of array */
+typingIndex = 0; /* Reset to beginning */
+
+setTimeout(typeText, 200); /* Start typing next text */
+
 }
 
-document.addEventListener("DOMContentLoaded", function(){
+}
 
-    if(textArray.length)
-        setTimeout(typeText, 1000);
+}
 
-    const homeLinks = document.querySelectorAll('a[href="#home"]');
-    const homeSection = document.getElementById('home');
+document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to load */
 
-    if (homeSection && homeLinks.length) {
-        homeLinks.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                homeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if(textArray.length) /* If there are texts to type */
+        setTimeout(typeText, 1000); /* Start typing after 1 second */
+
+    const homeLinks = document.querySelectorAll('a[href="#home"]'); /* Select all home links */
+    const homeSection = document.getElementById('home'); /* Get home section */
+
+    if (homeSection && homeLinks.length) { /* Check if elements exist */
+        homeLinks.forEach(link => { /* Loop through each link */
+            link.addEventListener('click', function(event) { /* Add click listener */
+                event.preventDefault(); /* Prevent default anchor behavior */
+                homeSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); /* Smooth scroll to home */
             });
         });
     }
@@ -175,25 +177,25 @@ document.addEventListener("DOMContentLoaded", function(){
 /* ============================= */
 /* Counter Animation */
 /* ============================= */
-window.addEventListener("load", function() {
-    const counters = document.querySelectorAll(".count");
+window.addEventListener("load", function() { /* Wait for page load */
+    const counters = document.querySelectorAll(".count"); /* Select all counter elements */
 
-    counters.forEach(counter => {
-        counter.innerText = "0";
+    counters.forEach(counter => { /* Loop through each counter */
+        counter.innerText = "0"; /* Start from 0 */
 
-        const updateCounter = () => {
-            const target = +counter.getAttribute("data-target");
-            const count = +counter.innerText;
-            const increment = target / 200;
+        const updateCounter = () => { /* Function to update counter */
+            const target = +counter.getAttribute("data-target"); /* Get target number */
+            const count = +counter.innerText; /* Get current number */
+            const increment = target / 200; /* Calculate increment */
 
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(updateCounter, 10);
+            if (count < target) { /* If not reached target */
+                counter.innerText = Math.ceil(count + increment); /* Update display */
+                setTimeout(updateCounter, 10); /* Call again after delay */
             } else {
-                counter.innerText = target;
+                counter.innerText = target; /* Set final value */
             }
         };
 
-        updateCounter();
+        updateCounter(); /* Start the animation */
     });
 });
