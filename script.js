@@ -151,7 +151,6 @@ setTimeout(typeText, 200); /* Start typing next text */
 
 }
 
-}
 
 document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to load */
 
