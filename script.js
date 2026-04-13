@@ -153,8 +153,20 @@ setTimeout(typeText, 200);
 
 document.addEventListener("DOMContentLoaded", function(){
 
-if(textArray.length)
-setTimeout(typeText, 1000);
+    if(textArray.length)
+        setTimeout(typeText, 1000);
+
+    const homeLinks = document.querySelectorAll('a[href="#home"]');
+    const homeSection = document.getElementById('home');
+
+    if (homeSection && homeLinks.length) {
+        homeLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                homeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    }
 
 });
 
@@ -163,36 +175,25 @@ setTimeout(typeText, 1000);
 /* ============================= */
 /* Counter Animation */
 /* ============================= */
-const counters = document.querySelectorAll(".count");
+window.addEventListener("load", function() {
+    const counters = document.querySelectorAll(".count");
 
-counters.forEach(counter => {
+    counters.forEach(counter => {
+        counter.innerText = "0";
 
-counter.innerText = "0";
+        const updateCounter = () => {
+            const target = +counter.getAttribute("data-target");
+            const count = +counter.innerText;
+            const increment = target / 200;
 
-const updateCounter = () => {
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(updateCounter, 10);
+            } else {
+                counter.innerText = target;
+            }
+        };
 
-const target = +counter.getAttribute("data-target");
-
-const count = +counter.innerText;
-
-const increment = target / 200;
-
-if(count < target){
-
-counter.innerText = Math.ceil(count + increment);
-
-setTimeout(updateCounter, 10);
-
-}
-
-else{
-
-counter.innerText = target;
-
-}
-
-};
-
-updateCounter();
-
+        updateCounter();
+    });
 });
