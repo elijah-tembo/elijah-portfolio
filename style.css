@@ -327,6 +327,9 @@ transform:translateY(0);
     margin-bottom:25px; /* Bottom margin */
     font-size:24px; /* Font size */
     font-weight:300; /* Light font weight */
+    min-height:3em; /* Reserve height for animated text */
+    white-space:nowrap; /* Prevent text height changes while typing */
+    overflow:hidden; /* Hide overflow if text is wider */
 }
 
 .hero-text p{
@@ -401,6 +404,7 @@ transform:translateY(0);
 
     .hero-text h3{
         font-size:20px;
+        white-space:normal; /* Allow wrapping on smaller screens */
     }
 
     .hero-text p{
@@ -465,6 +469,13 @@ transform:translateY(0);
 .btn-outline{
     background:transparent;
     border:1px solid #00bcd4;
+    color:#00bcd4; /* Make outline button text visible */
+    transition:0.3s;
+}
+
+.btn-outline:hover{
+    background:#00bcd4;
+    color:white;
 }
 
 /* Hero Image */
@@ -568,6 +579,9 @@ transform:translateY(0);
 
     border:1px solid #00bcd4; 
     /* Adds border */
+    color:#00bcd4; 
+    /* Make outline button text visible */
+    transition:0.3s;
 }
 
 
