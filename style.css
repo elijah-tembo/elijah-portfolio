@@ -75,6 +75,7 @@ header{
     padding:20px 10%; /* Top/bottom and left/right spacing */
 }
 
+
 /* ============================= */
 /* Sticky Navbar */
 /* ============================= */
@@ -222,6 +223,16 @@ ul li a::after{
 
 ul li a:hover::after{
     width:100%; /* Full width on hover */
+}
+
+ul li a.nav-active{
+    color:#0097a7; /* Active nav link color */
+    font-weight:600;
+}
+
+ul li a.nav-active::after{
+    width:100%;
+    background:#0097a7; /* Active underline color */
 }
 
 .portfolio-link{

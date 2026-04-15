@@ -169,6 +169,34 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
         });
     }
 
+    const navLinks = document.querySelectorAll('nav ul li a');
+    const sections = document.querySelectorAll('section[id]');
+
+    const observerOptions = {
+        root: null,
+        threshold: 0.35,
+    };
+
+    function clearActiveNav(){
+        navLinks.forEach(link => link.classList.remove('nav-active'));
+    }
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const sectionId = entry.target.getAttribute('id');
+            const navLink = document.querySelector(`nav ul li a[href="#${sectionId}"]`);
+
+            if(!navLink) return;
+
+            if(entry.isIntersecting){
+                clearActiveNav();
+                navLink.classList.add('nav-active');
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => sectionObserver.observe(section));
+
 });
 
 
