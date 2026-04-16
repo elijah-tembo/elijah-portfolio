@@ -345,19 +345,44 @@ window.addEventListener("load", function() { /* Wait for page load */
     });
 });
 
-// Test function to manually open modal
-function testModal() {
-    const imageModal = document.getElementById('image-modal');
-    const modalImage = document.getElementById('modal-image');
-    if (imageModal && modalImage) {
-        modalImage.src = 'images/flyers/Appreciation Flyer Gold.jpg';
-        imageModal.classList.add('active');
-        document.body.classList.add('modal-open');
-        console.log('Test modal opened');
-    } else {
-        console.error('Modal elements not found for test');
-    }
-}
+
+
+/* ============================= */
+/* Lightbox */
+/* ============================= */
+/* Select all portfolio images */
+const portfolioImages = document.querySelectorAll(".portfolio-item img");
+
+/* Select lightbox */
+const lightbox = document.getElementById("lightbox");
+
+/* Select lightbox image */
+const lightboxImg = document.getElementById("lightbox-img");
+
+/* Select close button */
+const closeLightbox = document.querySelector(".close-lightbox");
+
+/* Loop images */
+portfolioImages.forEach(image => {
+
+image.addEventListener("click", () => {
+
+/* Show lightbox */
+lightbox.style.display = "flex";
+
+/* Set image */
+lightboxImg.src = image.src;
+
+});
+
+});
+
+/* Close lightbox */
+closeLightbox.addEventListener("click", () => {
+
+lightbox.style.display = "none";
+
+});
 
 
 

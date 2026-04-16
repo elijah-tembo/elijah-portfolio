@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive page scaling for mobile -->
     <title>Flyer Design | Elijah Z Tembo</title> <!-- Browser tab title -->
     <link rel="stylesheet" href="style.css"> <!-- Main CSS stylesheet applied to this page -->
+    <!-- Font Awesome Icons Library - Provides moon/sun icons for dark mode -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="flyer-page"> <!-- Page content begins here -->
     <header> <!-- Header area containing navigation -->
         <nav> <!-- Navigation wrapper with logo and links -->
             <a href="index.html#home" class="logo" aria-label="Home">EZT</a> <!-- Logo link to the main homepage -->
+
+                <!-- Dark Mode Toggle Button -->
+                <div class="dark-mode-toggle">
+                    <i class="fas fa-moon" id="dark-mode-icon"></i>
+                </div>
             <div id="menu-toggle" class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</div>
             <ul> <!-- Navigation list container -->
                 <li><a href="index.html#home">Home</a></li> <!-- Homepage anchor link -->
@@ -146,5 +153,14 @@
     </footer>
 
     <script src="script.js"></script> <!-- Shared JavaScript file for interactive page behavior -->
+
+    <!-- ============================= -->
+    <!-- Image Lightbox -->
+    <!-- ============================= -->
+
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-img" id="lightbox-img">
+    </div>
 </body>
 </html>
