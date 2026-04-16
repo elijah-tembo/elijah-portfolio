@@ -54,8 +54,20 @@ function closePopup(){ /* Function to close success popup */
 }
 
 function toggleMenu(){ /* Function to toggle mobile menu */
-    document.querySelector('nav ul').classList.toggle('active'); /* Toggle 'active' class on menu */
+    const menu = document.querySelector('nav ul');
+    const toggle = document.getElementById('menu-toggle');
+    const isOpen = menu.classList.toggle('active'); /* Toggle 'active' class on menu */
+    toggle.textContent = isOpen ? '✕' : '☰';
+}
+
+function closeMobileMenu(){
+    const menu = document.querySelector('nav ul');
+    const toggle = document.getElementById('menu-toggle');
+    if(menu.classList.contains('active')){
+        menu.classList.remove('active');
+        toggle.textContent = '☰';
     }
+}
 
 
 /* ============================= */
@@ -171,6 +183,10 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
 
     const navLinks = document.querySelectorAll('nav ul li a');
     const sections = document.querySelectorAll('section[id]');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu); /* Close mobile menu when a navigation link is clicked */
+    });
 
     const observerOptions = {
         root: null,
