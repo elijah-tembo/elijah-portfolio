@@ -203,25 +203,30 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
 /* ============================= */
 /* Dark Mode Toggle */
 /* ============================= */
-/* Select dark mode icon */
-const darkModeIcon = document.getElementById("dark-mode-icon");
+// Get the dark mode toggle button element by its ID
+const darkModeIcon = document.getElementById("dark-mode-icon"); // Selects the moon icon element from HTML
 
-/* Add click event */
-darkModeIcon.addEventListener("click", () => {
+// Listen for when user clicks the dark mode toggle button
+darkModeIcon.addEventListener("click", () => { // Trigger function when user clicks the icon
 
-    /* Toggle dark mode class */
-    document.body.classList.toggle("dark-mode");
+    // Toggle the "dark-mode" class on the body element to switch themes
+    document.body.classList.toggle("dark-mode"); // Adds or removes dark-mode class
 
-    /* Change icon */
-    if(document.body.classList.contains("dark-mode")){
-        darkModeIcon.classList.remove("fa-moon");
-        darkModeIcon.classList.add("fa-sun");
-    }else{
-        darkModeIcon.classList.remove("fa-sun");
-        darkModeIcon.classList.add("fa-moon");
+    // Check if dark mode is now active (has dark-mode class)
+    if(document.body.classList.contains("dark-mode")){ // If dark mode is ON
+
+        // Change icon from moon to sun (because dark mode is active)
+        darkModeIcon.classList.remove("fa-moon"); // Remove moon icon class
+        darkModeIcon.classList.add("fa-sun"); // Add sun icon class
+
+    }else{ // If dark mode is OFF
+
+        // Change icon from sun back to moon (because light mode is active)
+        darkModeIcon.classList.remove("fa-sun"); // Remove sun icon class
+        darkModeIcon.classList.add("fa-moon"); // Add moon icon class
     }
 
-});
+}); // End of click event listener
 
 /* ============================= */
 /* Counter Animation */
@@ -251,24 +256,4 @@ window.addEventListener("load", function() { /* Wait for page load */
 
 
 
-/* ============================= */
-/* Back To Top Button */
-/* ============================= */
-const topBtn = document.getElementById("topBtn");
 
-window.addEventListener("scroll", function(){
-
-if(window.scrollY > 300){
-topBtn.style.display = "block";
-}else{
-topBtn.style.display = "none";
-}
-
-});
-
-topBtn.addEventListener("click", function(){
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-});

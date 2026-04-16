@@ -117,30 +117,217 @@ nav{
 /* ============================= */
 .dark-mode-toggle{
 cursor:pointer; /* Shows pointer cursor */
-font-size:20px; /* Icon size */
-color:#333; /* Default color */
+font-size:22px; /* Icon size */
+color:#333; /* Icon color in light mode */
 margin-left:20px; /* Space from menu */
+transition:color 0.3s ease; /* Smooth color transition */
+}
+
+.dark-mode-toggle:hover{
+color:#00bcd4; /* Cyan on hover */
 }
 
 /* Dark mode styles */
 body.dark-mode{
-background:#111; /* Dark background */
-color:#fff; /* White text */
+background:#0f0f0f; /* Slightly lighter dark background for readability */
+color:#e0e0e0; /* Light gray text for better readability */
 }
 
 /* Navbar dark mode */
 body.dark-mode nav{
-background:#000; /* Dark navbar */
+background:rgba(20, 20, 20, 0.95); /* Slightly lighter dark navbar with transparency */
+backdrop-filter:blur(16px); /* Better blur effect */
+border-bottom-color:rgba(255,255,255,0.1); /* Light border in dark mode */
+}
+
+/* Navigation links in dark mode */
+body.dark-mode nav ul li a{
+color:#e0e0e0; /* Light text for nav links */
+transition:0.3s ease; /* Smooth transition */
+}
+
+body.dark-mode nav ul li a:hover{
+color:#00bcd4; /* Cyan on hover */
+}
+
+body.dark-mode nav ul li a.nav-active{
+color:#00bcd4; /* Cyan for active link */
+}
+
+/* Logo in dark mode */
+body.dark-mode .logo{
+color:#e0e0e0; /* Light text for logo */
 }
 
 /* Section dark mode */
 body.dark-mode section{
-background:#111; /* Dark sections */
+background:#0f0f0f; /* Dark sections */
 }
 
 /* Card dark mode */
 body.dark-mode .card{
 background:#1a1a1a; /* Dark cards */
+border-color:rgba(255,255,255,0.1); /* Light border for visibility */
+}
+
+body.dark-mode .card:hover{
+border-color:#00bcd4; /* Cyan border on hover */
+}
+
+/* Headings in dark mode */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6{
+color:#f5f5f5; /* Bright white for headings */
+}
+
+/* Paragraphs in dark mode */
+body.dark-mode p{
+color:#d0d0d0; /* Light gray text */
+}
+
+/* Links in dark mode */
+body.dark-mode a{
+color:#00bcd4; /* Cyan for links */
+}
+
+body.dark-mode a:hover{
+color:#0097a7; /* Darker cyan on hover */
+}
+
+/* Buttons in dark mode */
+body.dark-mode .btn,
+body.dark-mode button{
+background:#00bcd4; /* Cyan background */
+color:#000; /* Dark text */
+border:none; /* No border */
+}
+
+body.dark-mode .btn:hover,
+body.dark-mode button:hover{
+background:#0097a7; /* Darker cyan on hover */
+}
+
+/* Form inputs in dark mode */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select{
+background:#1a1a1a; /* Dark background */
+color:#e0e0e0; /* Light text */
+border:1px solid rgba(255,255,255,0.2); /* Light border */
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder{
+color:#888; /* Gray placeholder text */
+}
+
+/* Hero section in dark mode */
+body.dark-mode .hero::before{
+background:linear-gradient(135deg, rgba(15,15,15,0.95) 0%, rgba(25,25,25,0.95) 100%); /* Dark gradient */
+}
+
+/* Hero text styling in dark mode */
+body.dark-mode .hero-text h1{
+background:linear-gradient(135deg, #00bcd4, #0097a7); /* Keep gradient */
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
+}
+
+body.dark-mode .hero-text h3{
+color:#00bcd4; /* Cyan for profession */
+}
+
+body.dark-mode .hero-text p{
+color:#d0d0d0; /* Light gray text */
+}
+
+/* Hero image in dark mode */
+body.dark-mode .hero-image img{
+box-shadow:0 16px 30px rgba(0,188,212,0.2); /* Cyan-tinted shadow */
+border-color:rgba(0,188,212,0.3); /* Cyan border */
+}
+
+body.dark-mode .hero-image img:hover{
+box-shadow:0 30px 60px rgba(0,188,212,0.4); /* Enhanced cyan shadow */
+}
+
+/* Dark mode toggle icon */
+body.dark-mode .dark-mode-toggle{
+color:#00bcd4; /* Cyan icon */
+}
+
+/* Dark mode mobile menu */
+body.dark-mode nav ul{
+background:rgba(20,20,20,0.98); /* Dark mobile menu */
+}
+
+/* Scrollbar styling in dark mode */
+body.dark-mode::-webkit-scrollbar-track{
+background:#1a1a1a;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb{
+background:#00bcd4;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover{
+background:#0097a7;
+}
+
+/* Footer in dark mode */
+body.dark-mode footer{
+background:#1a1a1a; /* Dark footer background */
+border-top-color:rgba(255,255,255,0.1); /* Light border */
+}
+
+body.dark-mode .footer-about p{
+color:#d0d0d0; /* Light gray text */
+}
+
+body.dark-mode .footer-links a{
+color:#d0d0d0; /* Light gray for footer links */
+}
+
+body.dark-mode .footer-links a:hover{
+color:#00bcd4; /* Cyan on hover */
+}
+
+body.dark-mode .footer-contact p{
+color:#d0d0d0; /* Light gray for contact info */
+}
+
+body.dark-mode .footer-bottom{
+color:#d0d0d0; /* Light gray for footer bottom text */
+border-top-color:rgba(255,255,255,0.1); /* Light border */
+}
+
+/* Success popup in dark mode */
+body.dark-mode .popup-content{
+background:#1a1a1a; /* Dark popup background */
+border-color:rgba(0,188,212,0.4); /* Cyan border */
+color:#d0d0d0; /* Light text */
+}
+
+body.dark-mode .popup-content h3{
+color:#00bcd4; /* Cyan heading */
+}
+
+body.dark-mode .popup-content p{
+color:#d0d0d0; /* Light gray text */
+}
+
+body.dark-mode .popup-content button{
+background:#00bcd4; /* Cyan button */
+color:#000; /* Dark text on button */
+}
+
+body.dark-mode .popup-content button:hover{
+background:#0097a7; /* Darker cyan on hover */
 }
 
 /* ==========================================
@@ -380,8 +567,9 @@ transform:translateY(0);
     line-height:1.8; /* Line height for readability */
     margin-bottom:35px; /* Bottom margin */
     font-size:18px; /* Font size */
-    color:#333; /* Dark text for white background */
+    color:#111; /* Darker text for better visibility */
     max-width:500px; /* Maximum width */
+    font-weight:500; /* Slightly bold for better readability */
 }
 
 .hero-buttons{
@@ -742,7 +930,8 @@ transform:translateY(0);
     line-height:1.8;
     margin-bottom:20px;
     font-size:17px;
-    color:#4a4a4a;
+    color:#222; /* Darker text for better visibility */
+    font-weight:500; /* Slightly bold */
 }
 
 .about-text .btn{
@@ -1233,28 +1422,245 @@ transform:translateY(0);
 /* ============================= */
 /* Testimonials */
 /* ============================= */
-.testimonial-container{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-justify-content:center;
+#testimonials {
+    padding: 80px 5%;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
 }
 
-.testimonial{
-background:#f5f5f5;
-padding:20px;
-border-radius:10px;
-width:300px;
-box-shadow:0 5px 10px rgba(0,0,0,0.1);
+#testimonials::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%230097a7" opacity="0.03"/><circle cx="75" cy="75" r="1" fill="%230097a7" opacity="0.03"/><circle cx="50" cy="10" r="0.5" fill="%230097a7" opacity="0.05"/><circle cx="10" cy="50" r="0.5" fill="%230097a7" opacity="0.05"/><circle cx="90" cy="30" r="0.5" fill="%230097a7" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
 }
 
-.testimonial p{
-font-style:italic;
+#testimonials .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
-.testimonial h4{
-margin-top:10px;
-color:#00bcd4;
+#testimonials h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 700;
+    position: relative;
+}
+
+#testimonials h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #0097a7, #00bcd4);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid rgba(0, 151, 167, 0.1);
+    overflow: hidden;
+}
+
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0097a7, #00bcd4);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card:hover::before {
+    transform: scaleX(1);
+}
+
+.testimonial-content {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.quote-icon {
+    color: #0097a7;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.testimonial-text {
+    color: #495057;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+    font-style: italic;
+    position: relative;
+}
+
+.testimonial-text::before {
+    content: '"';
+    font-size: 4rem;
+    color: #0097a7;
+    position: absolute;
+    top: -20px;
+    left: -15px;
+    opacity: 0.1;
+    font-family: Georgia, serif;
+}
+
+.rating {
+    margin-top: 20px;
+    color: #ffc107;
+    font-size: 1.2rem;
+}
+
+.rating i {
+    margin-right: 2px;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0097a7, #00bcd4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.author-info h4 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.author-role {
+    color: #6c757d;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+/* Dark mode testimonials */
+.dark-mode #testimonials {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.dark-mode #testimonials h2 {
+    color: #ffffff;
+}
+
+.dark-mode .section-subtitle {
+    color: #adb5bd;
+}
+
+.dark-mode .testimonial-card {
+    background: #2d2d2d;
+    border-color: rgba(0, 151, 167, 0.2);
+}
+
+.dark-mode .testimonial-text {
+    color: #e9ecef;
+}
+
+.dark-mode .testimonial-author h4 {
+    color: #ffffff;
+}
+
+.dark-mode .author-role {
+    color: #adb5bd;
+}
+
+.dark-mode .testimonial-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive testimonials */
+@media (max-width: 768px) {
+    #testimonials {
+        padding: 60px 5%;
+    }
+
+    #testimonials h2 {
+        font-size: 2rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .testimonial-card {
+        padding: 25px;
+    }
+
+    .testimonial-text {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #testimonials h2 {
+        font-size: 1.8rem;
+    }
+
+    .testimonial-card {
+        padding: 20px;
+    }
+
+    .author-avatar {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
 }
 
 
@@ -1545,9 +1951,7 @@ footer{
 }
 
 footer p{
-    color:#888;
-    /* Copyright text color */
-
+    color:#666; /* Darker text for better visibility */
     margin-top:20px;
     font-size:12px;
 }
@@ -1557,16 +1961,43 @@ footer p{
 Top Button 
 ================== */
 #topBtn{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#00bcd4;
-color:#fff;
-border:none;
-padding:10px 15px;
-border-radius:50%;
-cursor:pointer;
-display:none;
+position:fixed; /* Fixed position stays on screen while scrolling */
+bottom:100px; /* Distance from bottom - above WhatsApp */
+right:30px; /* Distance from right */
+background:#00bcd4; /* Cyan background */
+color:#000; /* Dark icon for visibility */
+border:none; /* No border */
+padding:0; /* Remove padding */
+border-radius:50%; /* Make circular */
+cursor:pointer; /* Pointer cursor on hover */
+font-size:28px; /* Larger icon size */
+width:60px; /* Fixed width */
+height:60px; /* Fixed height */
+line-height:60px; /* Center content vertically */
+text-align:center; /* Center content horizontally */
+z-index:9999; /* Very high z-index above all elements */
+transition:opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+box-shadow:0 8px 24px rgba(0,188,212,0.5); /* Enhanced shadow for depth */
+opacity:0; /* Start invisible */
+visibility:hidden; /* Start hidden but take no space */
+}
+
+#topBtn.show{
+opacity:1; /* Fade in */
+visibility:visible; /* Show element */
+}
+
+#topBtn:hover{
+background:#0097a7; /* Darker cyan on hover */
+transform:translateY(-3px); /* Lift effect */
+box-shadow:0 8px 20px rgba(0,188,212,0.6); /* Enhanced shadow */
+}
+
+/* Back-to-top button in dark mode */
+body.dark-mode #topBtn{
+background:#00bcd4; /* Keep cyan background */
+color:#000; /* Dark text for contrast */
+box-shadow:0 4px 12px rgba(0,188,212,0.5); /* Enhanced shadow in dark mode */
 }
 
 .whatsapp{
