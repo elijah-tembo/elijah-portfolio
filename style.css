@@ -623,6 +623,24 @@ transform:translateY(0);
     transform:scale(1.05); /* Scale up on hover */
 }
 
+.flyer-page .hero{
+    padding:50px 10% 40px;
+    margin-top:80px;
+}
+
+.flyer-page .case-study,
+.flyer-page .flyers{
+    padding:40px 10%;
+}
+
+.flyer-page .case-study-text{
+    max-width:680px;
+}
+
+.flyer-page .flyer-gallery{
+    margin-top:20px;
+}
+
 @media(max-width:768px){
     .hero-content{
         flex-direction:column;
