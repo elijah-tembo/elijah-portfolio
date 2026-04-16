@@ -1251,6 +1251,56 @@ transform:translateY(0);
     /* Lighter color */
 }
 
+.flyer-gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:30px;
+}
+
+.flyer-card{
+    display:block;
+    overflow:hidden;
+    border-radius:12px;
+    background:#fff;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration:none;
+}
+
+.flyer-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 14px 32px rgba(0,0,0,0.12);
+}
+
+.flyer-card img{
+    width:100%;
+    display:block;
+    transition:transform 0.4s ease;
+}
+
+.flyer-card:hover img{
+    transform:scale(1.03);
+}
+
+.flyer-info{
+    padding:16px;
+    text-align:center;
+}
+
+.flyer-info h3{
+    font-size:18px;
+    margin:0;
+    color:#111;
+}
+
+.section-subtitle{
+    text-align:center;
+    color:#666;
+    max-width:640px;
+    margin:10px auto 0;
+}
+
 /* Overlay Styling */
 .portfolio-overlay{
     position:absolute;
@@ -2086,7 +2136,8 @@ text-decoration:none;
     }
 
     /* Portfolio Section adjustments */
-    .portfolio-grid {
+    .portfolio-grid,
+    .flyer-gallery {
         grid-template-columns: 1fr;
         /* Make all portfolio items full width */
     }
