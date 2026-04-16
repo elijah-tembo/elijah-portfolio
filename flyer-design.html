@@ -10,7 +10,7 @@
     <header> <!-- Header area containing navigation -->
         <nav> <!-- Navigation wrapper with logo and links -->
             <a href="index.html#home" class="logo" aria-label="Home">EZT</a> <!-- Logo link to the main homepage -->
-            <div id="menu-toggle" class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</div>
+            <div id="menu-toggle" class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu" style="display: none; font-size: 32px; cursor: pointer; color: #333; background: rgba(255,255,255,0.9); border-radius: 6px; padding: 8px; margin-left: auto;">☰</div>
             <ul> <!-- Navigation list container -->
                 <li><a href="index.html#home">Home</a></li> <!-- Homepage anchor link -->
                 <li><a href="index.html#about">About</a></li> <!-- About section anchor link -->
@@ -42,6 +42,8 @@
         <div class="portfolio-container">
             <h2>Flyer Gallery</h2>
             <p class="section-subtitle">A selection of flyer designs created for clients.</p>
+            <!-- Temporary test button -->
+            <button onclick="testModal()" style="padding: 10px 20px; background: #00bcd4; color: white; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 20px;">Test Modal</button>
             <div class="flyer-gallery">
                 <a href="images/flyers/Mulengula Foundation Victoria.jpg" class="flyer-card" data-image-src="images/flyers/Mulengula Foundation Victoria.jpg">
                     <img src="images/flyers/Mulengula Foundation Victoria.jpg" alt="Mulengula Foundation Flyer">
@@ -105,7 +107,7 @@
 
     <div class="image-modal" id="image-modal">
         <div class="image-modal-content">
-            <button class="modal-close" id="modal-close" aria-label="Close image preview">✕</button>
+            <button class="modal-close" id="modal-close" aria-label="Close image preview" style="position: absolute; top: 20px; right: 20px; background: white; border: 2px solid #333; border-radius: 50%; width: 50px; height: 50px; font-size: 28px; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10000; color: #333; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">✕</button>
             <img id="modal-image" src="" alt="Flyer preview">
         </div>
     </div>

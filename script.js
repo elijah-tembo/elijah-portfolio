@@ -59,9 +59,14 @@ function closePopup(){ /* Function to close success popup */
 function toggleMenu(){ /* Function to toggle mobile menu */
     const menu = document.querySelector('nav ul');
     const toggle = document.getElementById('menu-toggle');
-    if (!menu || !toggle) return;
+    console.log('Toggle menu called', {menu, toggle});
+    if (!menu || !toggle) {
+        console.error('Menu or toggle not found');
+        return;
+    }
     const isOpen = menu.classList.toggle('active'); /* Toggle 'active' class on menu */
     toggle.textContent = isOpen ? '✕' : '☰';
+    console.log('Menu toggled:', isOpen);
 }
 
 function closeMobileMenu(){
@@ -200,27 +205,56 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
     const modalImage = document.getElementById('modal-image');
     const modalClose = document.getElementById('modal-close');
 
+    console.log('Modal elements found:', {imageModal, modalImage, modalClose});
+
     function closeImageModal(){
         if(!imageModal) return;
         imageModal.classList.remove('active');
         document.body.classList.remove('modal-open');
         if(modalImage) modalImage.src = '';
+        console.log('Modal closed');
     }
 
     document.querySelectorAll('.flyer-card').forEach(card => {
         card.addEventListener('click', function(event) {
             event.preventDefault();
             const src = this.dataset.imageSrc || this.querySelector('img')?.src;
-            if (!src || !imageModal || !modalImage) return;
+            console.log('Modal triggered for:', src);
+            if (!src || !imageModal || !modalImage) {
+                console.error('Modal elements missing:', {src, imageModal, modalImage});
+                return;
+            }
             modalImage.src = src;
             imageModal.classList.add('active');
             document.body.classList.add('modal-open');
+            console.log('Modal opened');
         });
     });
 
-    modalClose?.addEventListener('click', closeImageModal);
+    modalClose?.addEventListener('click', function() {
+        console.log('Close button clicked');
+        closeImageModal();
+    });
+
+    // Also add direct event listener as backup
+    const modalCloseDirect = document.getElementById('modal-close');
+    if (modalCloseDirect) {
+        modalCloseDirect.addEventListener('click', function() {
+            console.log('Close button clicked (direct)');
+            closeImageModal();
+        });
+    }
     imageModal?.addEventListener('click', function(event) {
         if (event.target === imageModal) {
+            console.log('Modal background clicked');
+            closeImageModal();
+        }
+    });
+
+    // Add keyboard support for closing modal
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && imageModal?.classList.contains('active')) {
+            console.log('Escape key pressed');
             closeImageModal();
         }
     });
@@ -308,6 +342,20 @@ window.addEventListener("load", function() { /* Wait for page load */
         updateCounter(); /* Start the animation */
     });
 });
+
+// Test function to manually open modal
+function testModal() {
+    const imageModal = document.getElementById('image-modal');
+    const modalImage = document.getElementById('modal-image');
+    if (imageModal && modalImage) {
+        modalImage.src = 'images/flyers/Appreciation Flyer Gold.jpg';
+        imageModal.classList.add('active');
+        document.body.classList.add('modal-open');
+        console.log('Test modal opened');
+    } else {
+        console.error('Modal elements not found for test');
+    }
+}
 
 
 
