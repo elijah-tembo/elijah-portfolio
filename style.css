@@ -1277,7 +1277,8 @@ transform:translateY(0);
 }
 
 .flyer-card{
-    display:block;
+    display:flex;
+    flex-direction:column;
     overflow:hidden;
     border-radius:12px;
     background:#fff;
@@ -1294,6 +1295,8 @@ transform:translateY(0);
 .flyer-card img{
     width:100%;
     display:block;
+    height:250px;
+    object-fit:cover;
     transition:transform 0.4s ease;
 }
 
@@ -1302,8 +1305,18 @@ transform:translateY(0);
 }
 
 .flyer-info{
-    padding:16px;
+    padding:16px 16px 20px;
     text-align:center;
+}
+
+.flyer-info h3{
+    margin:0;
+}
+
+@media(max-width:768px){
+    .flyer-card img{
+        height:auto;
+    }
 }
 
 .flyer-info h3{
