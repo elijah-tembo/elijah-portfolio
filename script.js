@@ -231,7 +231,8 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
         });
     });
 
-    modalClose?.addEventListener('click', function() {
+    modalClose?.addEventListener('click', function(event) {
+        event.stopPropagation();
         console.log('Close button clicked');
         closeImageModal();
     });
@@ -239,7 +240,8 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
     // Also add direct event listener as backup
     const modalCloseDirect = document.getElementById('modal-close');
     if (modalCloseDirect) {
-        modalCloseDirect.addEventListener('click', function() {
+        modalCloseDirect.addEventListener('click', function(event) {
+            event.stopPropagation();
             console.log('Close button clicked (direct)');
             closeImageModal();
         });
