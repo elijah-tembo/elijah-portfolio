@@ -1341,6 +1341,30 @@ left: 10px;
 }
 
 
+/* ================= PROJECT FILTER ================= */
+.project-filter{
+text-align: center;
+margin-bottom: 40px;
+}
+.filter-btn{
+padding: 10px 20px;
+margin: 5px;
+border: none;
+background: #eee;
+cursor: pointer;
+border-radius: 5px;
+transition: 0.3s;
+}
+.filter-btn:hover{
+background: #0097a7;
+color: white;
+}
+.filter-btn.active{
+background: #0097a7;
+color: white;
+}
+
+
 /* ============================= */
 /* Portfolio Section */
 /* ============================= */

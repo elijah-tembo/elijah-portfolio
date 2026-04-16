@@ -386,4 +386,42 @@ lightbox.style.display = "none";
 
 
 
+// ================= PROJECT FILTER =================
+const filterBtns = document.querySelectorAll(".filter-btn");
+const projects = document.querySelectorAll(".project-item");
+
+filterBtns.forEach(btn => {
+
+btn.addEventListener("click", ()=>{
+
+// remove active class
+filterBtns.forEach(button =>{
+button.classList.remove("active");
+});
+
+// add active class
+btn.classList.add("active");
+
+const filter = btn.getAttribute("data-filter");
+
+projects.forEach(project => {
+
+if(filter === "all"){
+project.style.display = "block";
+}
+else if(project.getAttribute("data-category") === filter){
+project.style.display = "block";
+}
+else{
+project.style.display = "none";
+}
+
+});
+
+});
+
+});
+
+
+
 
