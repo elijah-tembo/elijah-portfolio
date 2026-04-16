@@ -109,7 +109,13 @@ nav{
     display: none; /* Hide hamburger icon on desktop */
     font-size: 28px; /* Increase size for better visibility */
     cursor: pointer; /* Show pointer on hover */
-    color: white; /* White color */
+    color: #111; /* Dark color for visibility on navbar */
+}
+
+@media(max-width:768px) {
+    .menu-toggle {
+        display: block;
+    }
 }
 
 /* ============================= */
@@ -1311,6 +1317,70 @@ transform:translateY(0);
 
 .flyer-info h3{
     margin:0;
+}
+
+.image-modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,0.75);
+    backdrop-filter:blur(8px);
+    z-index:2000;
+    padding:20px;
+}
+
+.image-modal.active{
+    display:flex;
+}
+
+.image-modal-content{
+    position:relative;
+    max-width:95%;
+    max-height:95%;
+    background:rgba(0,0,0,0.85);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 25px 90px rgba(0,0,0,0.5);
+}
+
+.image-modal-content img{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+    max-height:85vh;
+}
+
+.modal-close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    background:rgba(255,255,255,0.95);
+    border:none;
+    border-radius:50%;
+    width:44px;
+    height:44px;
+    font-size:24px;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    color:#111;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    pointer-events:auto;
+    transition:transform 0.2s ease, background 0.2s ease;
+}
+
+.modal-close:hover{
+    transform:scale(1.1);
+}
+
+body.modal-open{
+    overflow:hidden;
 }
 
 @media(max-width:768px){

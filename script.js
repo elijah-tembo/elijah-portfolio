@@ -8,19 +8,21 @@
 Contact Form Submission Script
 ============================= */
 
-document.getElementById('contact-form').addEventListener('submit', function(event){ /* Get form element and listen for submit */
-    // Select the form using id="contact-form"
-    // Add event listener to detect form submission
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(event){ /* Get form element and listen for submit */
+        // Select the form using id="contact-form"
+        // Add event listener to detect form submission
 
-    event.preventDefault(); /* Prevent default form behavior */
-    // Prevent default form submission
-    // Stops page reload when clicking submit
+        event.preventDefault(); /* Prevent default form behavior */
+        // Prevent default form submission
+        // Stops page reload when clicking submit
 
-    emailjs.sendForm('service_lfgf17s', 'template_mafunjl', this) /* Send form using EmailJS */
-    // Send form data using EmailJS
-    // 'service_lfgf17s' → Your Service ID
-    // 'template_mafunjl' → Your Template ID
-    // 'this' → Refers to the form element
+        emailjs.sendForm('service_lfgf17s', 'template_mafunjl', this) /* Send form data using EmailJS */
+        // Send form data using EmailJS
+        // 'service_lfgf17s' → Your Service ID
+        // 'template_mafunjl' → Your Template ID
+        // 'this' → Refers to the form element
 
     .then(function(){ /* Success callback */
         // This runs if message is sent successfully
@@ -46,7 +48,8 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     
     this.reset(); /* Reset form fields */
     // Reset form fields after submission
-});
+    });
+}
 
 function closePopup(){ /* Function to close success popup */
     document.getElementById("success-popup").style.display = "none"; /* Hide popup by setting display to none */
@@ -56,6 +59,7 @@ function closePopup(){ /* Function to close success popup */
 function toggleMenu(){ /* Function to toggle mobile menu */
     const menu = document.querySelector('nav ul');
     const toggle = document.getElementById('menu-toggle');
+    if (!menu || !toggle) return;
     const isOpen = menu.classList.toggle('active'); /* Toggle 'active' class on menu */
     toggle.textContent = isOpen ? '✕' : '☰';
 }
@@ -63,6 +67,7 @@ function toggleMenu(){ /* Function to toggle mobile menu */
 function closeMobileMenu(){
     const menu = document.querySelector('nav ul');
     const toggle = document.getElementById('menu-toggle');
+    if(!menu || !toggle) return;
     if(menu.classList.contains('active')){
         menu.classList.remove('active');
         toggle.textContent = '☰';
@@ -74,7 +79,10 @@ function closeMobileMenu(){
 /* Loader Screen */
 /* ============================= */
 window.addEventListener("load", function(){ /* Wait for page to fully load */
-    document.getElementById("loader").style.display = "none"; /* Hide loader */
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.display = "none"; /* Hide loader */
+    }
 });
 
 /* ============================= */
@@ -188,6 +196,35 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
         link.addEventListener('click', closeMobileMenu); /* Close mobile menu when a navigation link is clicked */
     });
 
+    const imageModal = document.getElementById('image-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalClose = document.getElementById('modal-close');
+
+    function closeImageModal(){
+        if(!imageModal) return;
+        imageModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+        if(modalImage) modalImage.src = '';
+    }
+
+    document.querySelectorAll('.flyer-card').forEach(card => {
+        card.addEventListener('click', function(event) {
+            event.preventDefault();
+            const src = this.dataset.imageSrc || this.querySelector('img')?.src;
+            if (!src || !imageModal || !modalImage) return;
+            modalImage.src = src;
+            imageModal.classList.add('active');
+            document.body.classList.add('modal-open');
+        });
+    });
+
+    modalClose?.addEventListener('click', closeImageModal);
+    imageModal?.addEventListener('click', function(event) {
+        if (event.target === imageModal) {
+            closeImageModal();
+        }
+    });
+
     const observerOptions = {
         root: null,
         threshold: 0.35,
@@ -222,27 +259,29 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
 // Get the dark mode toggle button element by its ID
 const darkModeIcon = document.getElementById("dark-mode-icon"); // Selects the moon icon element from HTML
 
-// Listen for when user clicks the dark mode toggle button
-darkModeIcon.addEventListener("click", () => { // Trigger function when user clicks the icon
+if (darkModeIcon) {
+    // Listen for when user clicks the dark mode toggle button
+    darkModeIcon.addEventListener("click", () => { // Trigger function when user clicks the icon
 
-    // Toggle the "dark-mode" class on the body element to switch themes
-    document.body.classList.toggle("dark-mode"); // Adds or removes dark-mode class
+        // Toggle the "dark-mode" class on the body element to switch themes
+        document.body.classList.toggle("dark-mode"); // Adds or removes dark-mode class
 
-    // Check if dark mode is now active (has dark-mode class)
-    if(document.body.classList.contains("dark-mode")){ // If dark mode is ON
+        // Check if dark mode is now active (has dark-mode class)
+        if(document.body.classList.contains("dark-mode")){ // If dark mode is ON
 
-        // Change icon from moon to sun (because dark mode is active)
-        darkModeIcon.classList.remove("fa-moon"); // Remove moon icon class
-        darkModeIcon.classList.add("fa-sun"); // Add sun icon class
+            // Change icon from moon to sun (because dark mode is active)
+            darkModeIcon.classList.remove("fa-moon"); // Remove moon icon class
+            darkModeIcon.classList.add("fa-sun"); // Add sun icon class
 
-    }else{ // If dark mode is OFF
+        }else{ // If dark mode is OFF
 
-        // Change icon from sun back to moon (because light mode is active)
-        darkModeIcon.classList.remove("fa-sun"); // Remove sun icon class
-        darkModeIcon.classList.add("fa-moon"); // Add moon icon class
-    }
+            // Change icon from sun back to moon (because light mode is active)
+            darkModeIcon.classList.remove("fa-sun"); // Remove sun icon class
+            darkModeIcon.classList.add("fa-moon"); // Add moon icon class
+        }
 
-}); // End of click event listener
+    }); // End of click event listener
+}
 
 /* ============================= */
 /* Counter Animation */
