@@ -192,7 +192,6 @@ border-color:#00bcd4; /* Cyan border on hover */
 }
 
 /* Headings in dark mode */
-body.dark-mode h1,
 body.dark-mode h2,
 body.dark-mode h3,
 body.dark-mode h4,
@@ -200,6 +199,40 @@ body.dark-mode h5,
 body.dark-mode h6{
 color:#f5f5f5; /* Bright white for headings */
 }
+
+/* Services section in dark mode */
+body.dark-mode .services h3{
+color:#00bcd4; /* Light gray text */
+}
+body.dark-mode .services p{
+color:#303030; /* Light gray text */
+}
+
+/* Countdown section in dark mode */
+body.dark-mode .counter h2{
+color:#00bcd4; /* Light gray text */
+}
+body.dark-mode .counter p{
+color:#303030; /* Light gray text */
+}  
+
+/* About section in dark mode */
+body.dark-mode .about h2{
+color:#00bcd4; /* Light gray text */
+}
+body.dark-mode .about p{
+color:#303030; /* Light gray text */
+}
+
+/* portfolio section in dark mode */
+body.dark-mode .portfolio h2{
+color:#ffffff; /* Light gray text */
+}
+body.dark-mode .portfolio h3,
+body.dark-mode .portfolio p{
+color:#303030; /* Light gray text */
+}
+
 
 /* Paragraphs in dark mode */
 body.dark-mode p{
@@ -212,7 +245,7 @@ color:#00bcd4; /* Cyan for links */
 }
 
 body.dark-mode a:hover{
-color:#0097a7; /* Darker cyan on hover */
+color:#fffffff1; /* Darker cyan on hover */
 }
 
 /* Buttons in dark mode */
@@ -280,7 +313,13 @@ color:#00bcd4; /* Cyan icon */
 
 /* Dark mode mobile menu */
 body.dark-mode nav ul{
-background:rgba(20,20,20,0.98); /* Dark mobile menu */
+background:rgba(14, 14, 14, 0.762); /* Dark mobile menu */
+}
+body.dark-mode nav{
+background:rgba(14, 14, 14, 0.762); /* Dark mobile menu */
+}
+body.dark-mode header{
+background:rgba(14, 14, 14, 0.762); /* Dark mobile menu */
 }
 
 /* Scrollbar styling in dark mode */
