@@ -101,11 +101,46 @@ nav{
 }
 
 /* ============================= */
+
+
+
+
 .menu-toggle {
     display: none; /* Hide hamburger icon on desktop */
     font-size: 28px; /* Increase size for better visibility */
     cursor: pointer; /* Show pointer on hover */
     color: white; /* White color */
+}
+
+/* ============================= */
+/* Dark Mode Toggle */
+/* ============================= */
+.dark-mode-toggle{
+cursor:pointer; /* Shows pointer cursor */
+font-size:20px; /* Icon size */
+color:#333; /* Default color */
+margin-left:20px; /* Space from menu */
+}
+
+/* Dark mode styles */
+body.dark-mode{
+background:#111; /* Dark background */
+color:#fff; /* White text */
+}
+
+/* Navbar dark mode */
+body.dark-mode nav{
+background:#000; /* Dark navbar */
+}
+
+/* Section dark mode */
+body.dark-mode section{
+background:#111; /* Dark sections */
+}
+
+/* Card dark mode */
+body.dark-mode .card{
+background:#1a1a1a; /* Dark cards */
 }
 
 /* ==========================================

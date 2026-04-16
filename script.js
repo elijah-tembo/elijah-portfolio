@@ -200,6 +200,28 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
 });
 
 
+/* ============================= */
+/* Dark Mode Toggle */
+/* ============================= */
+/* Select dark mode icon */
+const darkModeIcon = document.getElementById("dark-mode-icon");
+
+/* Add click event */
+darkModeIcon.addEventListener("click", () => {
+
+    /* Toggle dark mode class */
+    document.body.classList.toggle("dark-mode");
+
+    /* Change icon */
+    if(document.body.classList.contains("dark-mode")){
+        darkModeIcon.classList.remove("fa-moon");
+        darkModeIcon.classList.add("fa-sun");
+    }else{
+        darkModeIcon.classList.remove("fa-sun");
+        darkModeIcon.classList.add("fa-moon");
+    }
+
+});
 
 /* ============================= */
 /* Counter Animation */
