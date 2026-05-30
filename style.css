@@ -323,7 +323,7 @@ body.dark-mode .counter-box p{
 }
 
 body.dark-mode .about p{
-color:#d0d0d0; /* Light gray text for dark mode */
+    color:#111; /* Dark text for the white about background in dark mode */
 }
 
 /* portfolio section in dark mode */
@@ -991,7 +991,7 @@ transform:translateY(0);
     line-height:1.8;
     margin-bottom:20px;
     font-size:17px;
-    color:#222; /* Darker text for better visibility */
+    color:#111; /* Darker text for stronger visibility */
     font-weight:500; /* Slightly bold */
 }
 
