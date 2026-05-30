@@ -5,17 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive viewport settings for mobile devices -->
     <title>Logo Design | Elijah Z Tembo</title> <!-- Page title shown in the browser tab -->
     <link rel="stylesheet" href="style.css"> <!-- Link to the shared stylesheet for consistent styling -->
+    <!-- Font Awesome Icons Library - Provides moon/sun icons for dark mode -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body> <!-- Start of the page content -->
     <header> <!-- Header section containing the main navigation -->
         <nav> <!-- Navigation wrapper element -->
-            <a href="index.html#home" class="logo" aria-label="Home">EZT</a> <!-- Logo link back to the homepage -->
+            <a href="index.html#home" class="logo" aria-label="Home">EZT</a>
+
+             <!-- Dark Mode Toggle Button -->
+            <div class="dark-mode-toggle">
+                <i class="fas fa-moon" id="dark-mode-icon"></i>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
             <ul> <!-- Navigation list of site sections -->
-                <li><a href="index.html#home">Home</a></li> <!-- Link to the homepage section -->
-                <li><a href="index.html#about">About</a></li> <!-- Link to the about section -->
-                <li><a href="index.html#services">Services</a></li> <!-- Link to the services section -->
-                <li><a href="index.html#portfolio">Portfolio</a></li> <!-- Link to the portfolio section -->
-                <li><a href="index.html#contact">Contact</a></li> <!-- Link to the contact section -->
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
