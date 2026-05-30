@@ -1,0 +1,170 @@
+<!DOCTYPE html> <!-- Defines the file as an HTML5 document -->
+<html lang="en"> <!-- Root HTML element with English language attribute -->
+<head> <!-- Page metadata and stylesheet links -->
+    <meta charset="UTF-8"> <!-- Character encoding set to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive page scaling for mobile -->
+    <title>Flyer Design | Elijah Z Tembo</title> <!-- Browser tab title -->
+    <link rel="stylesheet" href="style.css"> <!-- Main CSS stylesheet applied to this page -->
+    <!-- Font Awesome Icons Library - Provides moon/sun icons for dark mode -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="flyer-page"> <!-- Page content begins here -->
+    <div class="cursor"></div>
+
+     <div class="scroll-bar"></div>
+
+    <header> <!-- Header area containing navigation -->
+        <nav> <!-- Navigation wrapper with logo and links -->
+            <a href="index.html#home" class="logo" aria-label="Home">EZT</a> <!-- Logo link to the main homepage -->
+
+                <!-- Dark Mode Toggle Button -->
+                <div class="dark-mode-toggle">
+                    <i class="fas fa-moon" id="dark-mode-icon"></i>
+                </div>
+            <div id="menu-toggle" class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</div>
+            <ul> <!-- Navigation list container -->
+                <li><a href="index.html#home">Home</a></li> <!-- Homepage anchor link -->
+                <li><a href="index.html#about">About</a></li> <!-- About section anchor link -->
+                <li><a href="index.html#services">Services</a></li> <!-- Services section anchor link -->
+                <li><a href="index.html#portfolio">Portfolio</a></li> <!-- Portfolio section anchor link -->
+                <li><a href="index.html#contact">Contact</a></li> <!-- Contact section anchor link -->
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero"> <!-- Top hero section for the flyer design page -->
+        <div class="hero-content"> <!-- Layout wrapper for hero text and image -->
+            <div class="hero-text"> <!-- Hero text column -->
+                <h1>Flyer Design</h1> <!-- Main title for this detail page -->
+                <h3>Eye-catching event and promotional graphics that communicate clearly.</h3> <!-- Subtitle describing the service -->
+                <p>Discover flyer and print design examples that capture attention and strengthen brand messaging.</p> <!-- Short description of the service -->
+                <div class="hero-buttons"> <!-- Buttons for quick navigation -->
+                    <a href="index.html#portfolio" class="btn">Back to Portfolio</a> <!-- Returns to the main portfolio section -->
+                    <a href="index.html#contact" class="btn btn-outline">Contact Me</a> <!-- Takes the user to the contact section -->
+                </div>
+            </div>
+            <div class="hero-image"> <!-- Hero image container -->
+                <img src="images/flyers/Appreciation Flyer Gold.jpg" alt="Flyer design preview"> <!-- Sample image for flyer design -->
+            </div>
+        </div>
+    </section>
+
+    <section class="flyers" id="flyers">
+        <div class="portfolio-container"> <!-- Container for the flyer gallery section -->
+            <h2>Flyer Gallery</h2>
+            <p class="section-subtitle">A selection of flyer designs created for clients.</p>
+            <div class="flyer-gallery"> <!-- Grid layout for flyer thumbnails -->
+                <a href="images/flyers/Mulengula Foundation Victoria.jpg" class="flyer-card" data-image-src="images/flyers/Mulengula Foundation Victoria.jpg">
+                    <img src="images/flyers/Mulengula Foundation Victoria.jpg" alt="Mulengula Foundation Flyer">
+                    <div class="flyer-info"><h3>Foundation Flyer</h3></div>
+                </a>
+                <a href="images/flyers/Appreciation Flyer Gold.jpg" class="flyer-card" data-image-src="images/flyers/Appreciation Flyer Gold.jpg">
+                    <img src="images/flyers/Appreciation Flyer Gold.jpg" alt="Appreciation Flyer Gold">
+                    <div class="flyer-info"><h3>Appreciation Flyer</h3></div>
+                </a>
+                <a href="images/flyers/SelfieChallenge.jpg" class="flyer-card" data-image-src="images/flyers/SelfieChallenge.jpg">
+                    <img src="images/flyers/SelfieChallenge.jpg" alt="Selfie Challenge Flyer">
+                    <div class="flyer-info"><h3>Selfie Challenge</h3></div>
+                </a>
+                <a href="images/flyers/Apostle Fred.jpg" class="flyer-card" data-image-src="images/flyers/Apostle Fred.jpg">
+                    <img src="images/flyers/Apostle Fred.jpg" alt="Apostle Fred Flyer">
+                    <div class="flyer-info"><h3>Apostle Fred</h3></div>
+                </a>
+                <a href="images/flyers/CHICHI.jpg" class="flyer-card" data-image-src="images/flyers/CHICHI.jpg">
+                    <img src="images/flyers/CHICHI.jpg" alt="CHICHI Flyer">
+                    <div class="flyer-info"><h3>CHICHI Flyer</h3></div>
+                </a>
+                <a href="images/flyers/countDown flyer.jpg" class="flyer-card" data-image-src="images/flyers/countDown flyer.jpg">
+                    <img src="images/flyers/countDown flyer.jpg" alt="Countdown Flyer">
+                    <div class="flyer-info"><h3>Countdown Flyer</h3></div>
+                </a>
+                <a href="images/flyers/Birthday flyer.jpg" class="flyer-card" data-image-src="images/flyers/Birthday flyer.jpg">
+                    <img src="images/flyers/Birthday flyer.jpg" alt="Birthday Flyer">
+                    <div class="flyer-info"><h3>Birthday Flyer</h3></div>
+                </a>
+                <a href="images/flyers/DC FAITH.jpg" class="flyer-card" data-image-src="images/flyers/DC FAITH.jpg">
+                    <img src="images/flyers/DC FAITH.jpg" alt="DC Faith Flyer">
+                    <div class="flyer-info"><h3>DC Faith</h3></div>
+                </a>
+                <a href="images/flyers/Graduation flyers (2).jpg" class="flyer-card" data-image-src="images/flyers/Graduation flyers (2).jpg">
+                    <img src="images/flyers/Graduation flyers (2).jpg" alt="Graduation Flyer 2">
+                    <div class="flyer-info"><h3>Graduation Flyer</h3></div>
+                </a>
+                <a href="images/flyers/BdFlyer1.jpg" class="flyer-card" data-image-src="images/flyers/BdFlyer1.jpg">
+                    <img src="images/flyers/BdFlyer1.jpg" alt="Birthday Flyer 1">
+                    <div class="flyer-info"><h3>Birthday Flyer 1</h3></div>
+                </a>
+                <a href="images/flyers/Appreciation Flyer Platinum+.jpg" class="flyer-card" data-image-src="images/flyers/Appreciation Flyer Platinum+.jpg">
+                    <img src="images/flyers/Appreciation Flyer Platinum+.jpg" alt="Appreciation Flyer Platinum">
+                    <div class="flyer-info"><h3>Appreciation Platinum</h3></div>
+                </a>
+                <a href="images/flyers/Appreciation Flyer Blue.jpg" class="flyer-card" data-image-src="images/flyers/Appreciation Flyer Blue.jpg">
+                    <img src="images/flyers/Appreciation Flyer Blue.jpg" alt="Appreciation Flyer Blue">
+                    <div class="flyer-info"><h3>Appreciation Blue</h3></div>
+                </a>
+                <a href="images/flyers/Dc Mwape.jpg" class="flyer-card" data-image-src="images/flyers/Dc Mwape.jpg">
+                    <img src="images/flyers/Dc Mwape.jpg" alt="Dc Mwape Flyer">
+                    <div class="flyer-info"><h3>DC Mwape</h3></div>
+                </a>
+                <a href="images/flyers/Graduation flyers (1).jpg" class="flyer-card" data-image-src="images/flyers/Graduation flyers (1).jpg">
+                    <img src="images/flyers/Graduation flyers (1).jpg" alt="Graduation Flyer 1">
+                    <div class="flyer-info"><h3>Graduation Flyer 1</h3></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="image-modal" id="image-modal">
+        <div class="image-modal-content">
+            <img id="modal-image" src="" alt="Flyer preview">
+            <button class="modal-close" id="modal-close" aria-label="Close image preview">✕</button>
+        </div>
+    </div>
+
+    <section class="portfolio fade-in"> <!-- Additional related projects section -->
+        <div class="portfolio-container"> <!-- Container for similar flyer projects -->
+            <h2>More Flyer Work</h2> <!-- Section title -->
+            <div class="portfolio-grid"> <!-- Grid for project cards -->
+                <div class="portfolio-item"> <!-- First project card -->
+                    <img src="images/project-1 website.jpg" alt="Flyer project 1"> <!-- Project image thumbnail -->
+                    <div class="portfolio-overlay"> <!-- Hover overlay content -->
+                        <h3>Conference Flyer</h3> <!-- Project name -->
+                        <p>Bold event promotion</p> <!-- Brief description -->
+                    </div>
+                </div>
+                <div class="portfolio-item"> <!-- Second project card -->
+                    <img src="images/project-1 website.jpg" alt="Flyer project 2"> <!-- Project image thumbnail -->
+                    <div class="portfolio-overlay"> <!-- Hover overlay content -->
+                        <h3>Sale Poster</h3> <!-- Project name -->
+                        <p>Attention-grabbing layout</p> <!-- Brief description -->
+                    </div>
+                </div>
+                <div class="portfolio-item"> <!-- Third project card -->
+                    <img src="images/project-1 website.jpg" alt="Flyer project 3"> <!-- Project image thumbnail -->
+                    <div class="portfolio-overlay"> <!-- Hover overlay content -->
+                        <h3>Social Media Graphic</h3> <!-- Project name -->
+                        <p>Shareable brand content</p> <!-- Brief description -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer> <!-- Footer section at the bottom of the page -->
+        <div class="footer-container fade-in"> <!-- Footer content wrapper -->
+            <p>&copy; 2026 Elijah Zebron Tembo. All Rights Reserved.</p> <!-- Copyright statement -->
+        </div>
+    </footer>
+
+    <script src="script.js"></script> <!-- Shared JavaScript file for interactive page behavior -->
+
+    <!-- ============================= -->
+    <!-- Image Lightbox -->
+    <!-- ============================= -->
+
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-img" id="lightbox-img">
+    </div>
+</body>
+</html>

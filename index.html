@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<!-- This tells the browser we are using HTML5 -->
+
+<html lang="en">
+<!-- Root element of the website, lang="en" means English -->
+
+<head>
+    <!-- Allows website to support all characters -->
+    <meta charset="UTF-8">
+
+    <!-- Mobile SEO -->
+    <!-- Makes website responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+
+    <!-- SEO Meta Tags -->
+    <meta name="google-site-verification" content="36f_RR1oMVHHlZ0h3ckMqVhAgnhhWt3Qiu4xHW2wLhc" />
+    <meta name="title" content="Elijah Zebron Tembo | Web & Graphics Designer">
+    <meta name="description" content="Professional Website and Graphics Designer. I create modern websites, branding, and UI designs for businesses.">
+    <meta name="keywords" content="Elijah Zebron Tembo, Web Designer, Graphic Designer, Portfolio, Frontend Developer">
+    <meta name="author" content="Elijah Zebron Tembo">
+
+    <!-- Open Graph (Social Sharing) -->
+    <meta property="og:title" content="Elijah Zebron Tembo Portfolio">
+    <meta property="og:description" content="Professional Web & Graphics Designer">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/preview.jpg">
+
+    <!-- This is the title shown in browser tab -->
+    <title>Elijah Zebron Tembo | Portfolio</title>
+
+    <!-- This links your CSS file to HTML -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Font Awesome Icons Library - Provides moon/sun icons for dark mode -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="loader">
+    <div class="spinner"></div>
+    </div>
+
+    <div class="cursor"></div>
+
+<!-- Everything visible on the website goes inside body -->
+
+
+     <div class="scroll-bar"></div>
+    <!-- Header Section (Top Navigation Bar) -->
+    <header>
+        <!-- Navigation Bar -->
+        <nav>
+
+            <!-- Logo / Name -->
+            <a href="#home" class="logo" aria-label="Go to home">EZT</a>
+
+             <!-- Dark Mode Toggle Button -->
+            <div class="dark-mode-toggle">
+                <i class="fas fa-moon" id="dark-mode-icon"></i>
+            </div>
+
+
+            <!-- Mobile Menu Button -->
+    <!-- ============================= -->
+    <!-- Professional Animated Hamburger Menu -->
+    <!-- ============================= -->
+
+            <div class="menu-toggle" onclick="toggleMenu()">
+            <!-- Main hamburger container -->
+                <span></span>
+                <!-- Top line -->
+                <span></span>
+                <!-- Middle line -->
+                <span></span>
+                <!-- Bottom line -->
+            </div>
+            <!-- Hamburger icon onclick="toggleMenu()" → opens mobile menu -->
+
+            <!-- Navigation Menu -->
+            <ul>
+
+                <!-- Menu Item -->
+                <li><a href="#home">Home</a></li>
+
+                <!-- Menu Item -->
+                <li><a href="#about">About</a></li>
+
+                <!-- Menu Item -->
+                <li><a href="#experience">Experience</a></li>
+
+                <!-- Menu Item -->
+                <li><a href="#services">Services</a></li>
+
+                <!-- Menu Item -->
+                <li><a href="#portfolio">Projects</a></li>
+
+                <!-- Menu Item -->
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+<section id="home" class="hero">  <!-- This creates the main landing section -->
+    <!-- Hero Content Container -->
+    <div class="hero-content">
+        <!-- Text Content -->
+        <div class="hero-text">  <!-- This holds both text and image -->
+            <!-- Your Name -->
+            <h1>Elijah Z Tembo</h1>
+            <!-- Your Profession -->
+            <h3 id="typing"></h3>
+            <!-- Short Description -->
+            <p>
+                I design modern websites and professional graphics 
+                that help businesses and brands stand out.
+            </p>
+            <!-- Call to Action Buttons -->
+            <div class="hero-buttons">
+                <!-- Portfolio Button -->
+                <a href="#portfolio" class="btn" aria-label="View my portfolio">View Portfolio</a>
+                <!-- Contact Button -->
+                <a href="#contact" class="btn btn-outline" aria-label="Contact me to hire">Hire Me</a>
+            </div>
+        </div>
+        <!-- Image Content -->
+        <div class="hero-image">
+            <!-- Your Photo -->
+            <img src="images/hero-3.jpg" alt="Elijah Z Tembo">
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- ============================= -->
+<!-- About Section -->
+<!-- ============================= -->
+<section class="about fade-in" id="about">
+<!-- This creates the About section -->
+
+    <div class="about-container">
+    <!-- Container to hold image and text -->
+        <div class="about-image">
+        <!-- Left side image container -->
+
+            <img src="images/hero-3 close-up.png" alt="Elijah Z Tembo">
+            <!-- Your profile image -->
+
+        </div>
+
+        <div class="about-text">
+        <!-- Right side text container -->
+
+            <h2>About Me</h2>
+            <!-- Section heading -->
+
+            <p>
+            <!-- About description -->
+            I'm Elijah Zebron Tembo, a professional Website and Graphics Designer 
+            passionate about creating modern, clean and user-friendly designs. 
+            I help businesses, churches and brands stand out with professional 
+            websites and creative graphics.
+            </p>
+
+            <p>
+            <!-- Second paragraph -->
+            I specialize in website design, brand identity, flyers, logos, 
+            and social media graphics. My goal is to deliver high-quality 
+            designs that communicate clearly and attract attention.
+            </p>
+
+            <!-- About Button -->
+            <a href="documents/CV.pdf" class="btn" download aria-label="Download my CV">Download CV</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= EXPERIENCE / TIMELINE SECTION ================= -->
+<section id="experience" class="experience fade-in">
+
+    <!-- Section Title -->
+    <div class="section-title">
+        <h2>My Experience</h2>
+        <p>My journey and professional growth</p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="timeline">
+
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Web Developer</h3>
+                <span>2024 - Present</span>
+                <p>
+                    Building responsive websites using HTML, CSS, JavaScript and modern web technologies.
+                </p>
+            </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Graphic Designer</h3>
+                <span>2023 - Present</span>
+                <p>
+                    Designing social media graphics, banners, and professional marketing materials.
+                </p>
+            </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Automotive Mechanics Student</h3>
+                <span>2025 - Present</span>
+                <p>
+                    Studying automotive mechanics and gaining hands-on experience.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============== COUNTER =============== -->
+<section class="counter fade-in">
+    <div class="counter-box">
+        <h2 class="count" data-target="50">0</h2>
+        <p>Clients</p>
+    </div>
+
+    <div class="counter-box">
+        <h2 class="count" data-target="100">0</h2>
+        <p>Projects</p>
+    </div>
+
+    <div class="counter-box">
+        <h2 class="count" data-target="3">0</h2>
+        <p>Years Experience</p>
+    </div>
+</section>
+
+
+
+
+<!-- ============================= -->
+<!-- Services Section -->
+<!-- ============================= -->
+<section class="services fade-in" id="services">
+<!-- Main services section -->
+
+    <div class="services-container">
+    <!-- Container to center content -->
+
+        <h2>My Services</h2>
+        <!-- Section heading -->
+
+        <div class="services-box">
+        <!-- Holds all service cards -->
+
+            <!-- Service 1 -->
+            <div class="service-card">
+            <!-- Individual service card -->
+
+                <div class="service-icon">🌐</div>
+                <h3>Website Design</h3>
+                <!-- Service Title -->
+
+                <p>
+                <!-- Service description -->
+                I design modern, responsive and professional websites 
+                for businesses, churches and personal brands.
+                </p>
+
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+            <!-- Individual service card -->
+
+                <div class="service-icon">🎨</div>
+                <h3>Graphics Design</h3>
+                <!-- Service Title -->
+
+                <p>
+                <!-- Service description -->
+                I create professional flyers, logos, posters and 
+                social media graphics that attract attention.
+                </p>
+
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+            <!-- Individual service card -->
+
+                <div class="service-icon">✨</div>
+                <h3>Branding</h3>
+                <!-- Service Title -->
+
+                <p>
+                <!-- Service description -->
+                I help businesses build strong brand identity 
+                through professional and consistent designs.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ================= PROJECT FILTER ================= -->
+<!-- <div class="project-filter">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="business">Web Design</button>
+    <button class="filter-btn" data-filter="flyers">Graphic Design</button>
+    <button class="filter-btn" data-filter="web">UI Design</button>
+</div> -->
+
+
+
+<!-- ============================= -->
+<!-- Portfolio Section -->
+<!-- ============================= -->
+<section class="portfolio fade-in" id="portfolio">
+<!-- Main portfolio section -->
+
+    <div class="portfolio-container">
+    <!-- Container to center content -->
+
+        <h2>My Projects</h2>
+        <!-- Section heading -->
+
+        <div class="portfolio-grid">
+        <!-- Grid container for projects -->
+
+            <!-- Project 1 -->
+            <a href="website-design.html" class="portfolio-link" aria-label="View website design projects">
+                <div class="portfolio-item" data-category="business">
+                    <!-- Individual project card -->
+                    <img src="images/project-1 website.jpg" alt="Website Design">
+                    <!-- Project image -->
+                    <div class="portfolio-overlay">
+                        <!-- Hover overlay -->
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Website Design</h3>
+                        <!-- Project title -->
+                        <p>Business Website</p>
+                        <!-- Project description -->
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="flyer-design.html" class="portfolio-link" aria-label="View flyer design projects">
+                <div class="portfolio-item" data-category="flyers">
+                    <img src="images/flyers/Appreciation Flyer Gold.jpg" alt="Flyer Design">
+                    <div class="portfolio-overlay">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Flyer Design</h3>
+                        <p>Church Conference Flyer</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 3 -->
+            <a href="logo-design.html" class="portfolio-link" aria-label="View logo design projects">
+                <div class="portfolio-item" data-category="logos">
+                    <img src="images/project-1 website.jpg" alt="Logo Design">
+                    <div class="portfolio-overlay">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Logo Design</h3>
+                        <p>Company Logo</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 4 -->
+            <a href="portfolio-design.html" class="portfolio-link" aria-label="View portfolio website projects">
+                <div class="portfolio-item" data-category="web">
+                    <img src="images/project-1 website.jpg" alt="Portfolio Website">
+                    <div class="portfolio-overlay">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Website Design</h3>
+                        <p>Portfolio Website</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================= -->
+<!-- Skills Section -->
+<!-- ============================= -->
+<section class="skills fade-in" id="skills">
+<!-- Main skills section -->
+
+    <div class="skills-container">
+    <!-- Container for content -->
+
+        <h2>My Skills</h2>
+        <!-- Section heading -->
+
+        <div class="skills-content">
+        <!-- Holds skills columns -->
+
+            <!-- Left Column -->
+            <div class="skills-left">
+            <!-- Website skills -->
+
+                <h3>Website Design</h3>
+                <!-- Category heading -->
+
+                <!-- Skill Item -->
+                <div class="skill">
+                    <p>HTML</p>
+                    <div class="skill-bar">
+                        <span style="width:90%"></span>
+                        <!-- span → This is the filled part of the progress bar -->
+                        <!-- style="width:90%" → This controls how much the bar fills -->
+                        <!-- 90% → Means the bar fills 90% of the container -->
+                    </div>
+                </div>
+
+                <!-- Skill Item -->
+                <div class="skill">
+                    <p>CSS</p>
+                    <div class="skill-bar">
+                        <span style="width:85%"></span>
+                        <!-- 85% → Means the bar fills 85% of the container -->
+                    </div>
+                </div>
+
+                <!-- Skill Item -->
+                <div class="skill">
+                    <p>JavaScript</p>
+                    <div class="skill-bar">
+                        <span style="width:45%"></span>
+                        <!-- 45% → Means the bar fills 45% of the container -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column -->
+            <div class="skills-right">
+            <!-- Graphics skills -->
+
+                <h3>Graphics Design</h3>
+
+                <div class="skill">
+                    <p>Photoshop</p>
+                    <div class="skill-bar">
+                        <span style="width:90%"></span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <p>Illustrator</p>
+                    <div class="skill-bar">
+                        <span style="width:75%"></span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <p>InDesign</p>
+                    <div class="skill-bar">
+                        <span style="width: 70%"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================= -->
+<!-- Testimonials Section -->
+<!-- ============================= -->
+
+<section id="testimonials" class="fade-in">
+    <div class="container">
+        <h2>What Clients Say</h2>
+        <p class="section-subtitle">Hear from the people I've worked with</p>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"Elijah is very professional and delivers quality work. His attention to detail and creative approach made our project stand out."</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <span class="author-role">Marketing Director</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"Highly recommend Elijah for web design projects. He transformed our vision into a beautiful, functional website that exceeded expectations."</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Michael Chen</h4>
+                        <span class="author-role">Startup Founder</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"Fast, reliable and creative designer. Elijah delivered our project on time and the results were outstanding. Will definitely work with him again!"</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Emily Rodriguez</h4>
+                        <span class="author-role">Business Owner</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================= -->
+<!-- Contact Section -->
+<!-- ============================= -->
+<section class="contact fade-in" id="contact">
+<!-- Main contact section -->
+
+    <div class="contact-container">
+    <!-- Container for all content -->
+
+        <h2>Contact Me</h2>
+        <!-- Section heading -->
+
+        <div class="contact-content">
+        <!-- Holds form and info side by side -->
+
+
+
+
+
+        <!-- ============================= -->
+        <!-- Contact Form Section -->
+        <!-- ============================= -->
+
+        <form id="contact-form" class="contact-form">
+            <!-- Main form container
+                id="contact-form" → used in JavaScript to target this form
+                class="contact-form" → used for CSS styling -->
+
+            <input type="text" name="user_name" placeholder="Your Name" required>
+            <!-- Input field for user's name
+                name="user_name" → matches variable in EmailJS template
+                placeholder → shows greyed-out text inside input
+                required → ensures field must be filled before submission -->
+
+            <input type="email" name="user_email" placeholder="Your Email" required>
+            <!-- Input field for user's email
+                type="email" → ensures valid email format
+                name="user_email" → matches variable in EmailJS template
+                required → prevents empty submission -->
+
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <!-- Textarea for user's message
+                name="message" → matches variable in EmailJS template
+                placeholder → shows greyed-out text
+                required → must fill before submitting -->
+
+            <button type="submit" class="btn">Send Message</button>
+            <!-- Submit button
+                type="submit" → triggers form submission
+                class="btn" → allows styling with CSS -->
+        </form>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <!-- Display email, phone, social links -->
+                <p><strong>Phone:</strong> <a href="tel:+260973159521">+260 973 159 521</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/elijahztembo" target="_blank" rel="noopener noreferrer">linkedin.com/in/elijahztembo</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ============================= -->
+<!-- Success Popup Message -->
+<!-- ============================= -->
+<div id="success-popup" class="success-popup">
+    <!-- Main popup container -->
+
+    <div class="popup-content">
+        <!-- Popup content box -->
+
+        <h3>Message Sent Successfully!</h3>
+        <!-- Success message title -->
+
+        <p>Thank you for contacting me. I will get back to you shortly.</p>
+        <!-- Success message description -->
+
+        <button onclick="closePopup()">Close</button>
+        <!-- Close button -->
+    </div>
+</div>
+
+
+<!-- ============================= -->
+<!-- Footer Section -->
+<!-- ============================= -->
+<footer>
+<!-- Footer container -->
+
+    <div class="footer-container fade-in">
+    <!-- Centers content -->
+
+        <div class="footer-content">
+            <!-- Footer main content -->
+
+            <div class="footer-about">
+                <!-- About section in footer -->
+                <h3>Elijah Zebron Tembo</h3>
+                <p>Professional Web & Graphics Designer creating modern digital experiences.</p>
+            </div>
+
+            <div class="footer-links">
+                <!-- Quick links -->
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <!-- Contact info -->
+                <h4>Get In Touch</h4>
+                <p>Lusaka, Zambia</p>
+            </div>
+        </div>
+
+        <div class="footer-social">
+        <!-- Social media links -->
+
+            <a href="https://linkedin.com/in/elijahztembo" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile">LinkedIn</a>
+            <a href="https://twitter.com/elijahztembo" target="_blank" rel="noopener noreferrer" aria-label="Follow me on Twitter">Twitter</a>
+            <a href="https://instagram.com/elijahztembo" target="_blank" rel="noopener noreferrer" aria-label="Follow me on Instagram">Instagram</a>
+            <a href="https://wa.me/+260973159521" target="_blank" rel="noopener noreferrer" aria-label="Chat with me on WhatsApp">💬WhatsApp</a>
+        </div>
+
+        <p>&copy; 2026 Elijah Zebron Tembo. All Rights Reserved.</p>
+        <!-- Copyright -->
+    </div>
+</footer>
+
+
+<!-- SCRIPT FILES -->
+
+        <!-- EmailJS SDK -->
+        <!-- ============================= -->
+        <!-- EmailJS SDK Script -->
+        <!-- ============================= -->
+
+        <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js">
+        </script>
+        <!-- This script loads EmailJS library from CDN
+            It allows sending emails directly from browser
+            No backend or PHP required -->
+
+        <script src="script.js"></script>
+
+<a href="https://wa.me/+260973159521" class="whatsapp" target="_blank">
+💬
+</a>
+</body>
+
+</html>
