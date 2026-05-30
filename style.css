@@ -95,12 +95,6 @@ html, body{
     scroll-behavior:smooth; /* Smooth scrolling when clicking navigation links */
 }
 
-/* Header styling */
-header{
-    padding:20px 10%; /* Top/bottom and left/right spacing */
-}
-
-
 /* ============================= */
 /* Sticky Navbar */
 /* ============================= */
@@ -304,7 +298,7 @@ body.dark-mode .services h3{
 color:#00bcd4; /* Light gray text */
 }
 body.dark-mode .services p{
-color:#303030; /* Light gray text */
+color:#d0d0d0; /* Light gray text for dark mode */
 }
 
 /* Countdown section in dark mode */
@@ -312,15 +306,24 @@ body.dark-mode .counter h2{
 color:#00bcd4; /* Light gray text */
 }
 body.dark-mode .counter p{
-color:#303030; /* Light gray text */
+color:#d0d0d0; /* Light gray text for dark mode */
 }  
 
 /* About section in dark mode */
 body.dark-mode .about h2{
 color:#00bcd4; /* Light gray text */
 }
+body.dark-mode .counter-box{
+    background:#1a1a1a;
+    border-color:rgba(0,188,212,0.25);
+}
+
+body.dark-mode .counter-box p{
+    color:#b0b0b0;
+}
+
 body.dark-mode .about p{
-color:#303030; /* Light gray text */
+color:#d0d0d0; /* Light gray text for dark mode */
 }
 
 /* portfolio section in dark mode */
@@ -329,7 +332,7 @@ color:#ffffff; /* Light gray text */
 }
 body.dark-mode .portfolio h3,
 body.dark-mode .portfolio p{
-color:#303030; /* Light gray text */
+color:#d0d0d0; /* Light gray text for dark mode */
 }
 
 
@@ -835,135 +838,9 @@ transform:translateY(0);
     }
 }
 
-/* Hero Section */
-.hero{
-    padding:60px 10%;
-}
-
-/* Hero Content Layout */
-.hero-content{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-/* Hero Text */
-.hero-text h1{
-    font-size:45px;
-    margin-bottom:10px;
-}
-
-/* Profession Text */
-.hero-text h3{
-    color:#00bcd4;
-    margin-bottom:20px;
-}
-
-/* Description Text */
-.hero-text p{
-    line-height:1.6;
-    margin-bottom:20px;
-}
-
-/* Buttons Container */
-.hero-buttons{
-    margin-top:20px;
-}
-
-
+/* ============================= */
 /* Button Styling */
-.btn{
-    display:inline-block;
-    padding:12px 25px;
-    background:#00bcd4;
-    color:white;
-    text-decoration:none;
-    margin-right:10px;
-    border-radius:5px;
-}
-
-/* Outline Button */
-.btn-outline{
-    background:transparent;
-    border:1px solid #00bcd4;
-    color:#00bcd4; /* Make outline button text visible */
-    transition:0.3s;
-}
-
-.btn-outline:hover{
-    background:#00bcd4;
-    color:white;
-}
-
-/* Hero Image */
-.hero-image img{
-    width:350px;
-    border-radius:10px;
-}
-
 /* ============================= */
-/* Hero Section Styling */
-/* ============================= */
-/* Hero Section Container */
-.hero{
-    padding:60px 10%; 
-    /* Adds space inside the hero section 
-       60px top & bottom
-       10% left & right */
-}
-
-
-/* Hero Content Layout */
-.hero-content{
-    display:flex; 
-    /* Places text and image side by side */
-
-    justify-content:space-between; 
-    /* Pushes text to left and image to right */
-
-    align-items:center; 
-    /* Vertically aligns text and image */
-}
-
-
-/* Hero Text Heading (Your Name) */
-.hero-text h1{
-    font-size:45px; 
-    /* Makes your name large */
-
-    margin-bottom:10px; 
-    /* Space below your name */
-}
-
-
-/* Profession Text */
-.hero-text h3{
-    color:#00bcd4; 
-    /* Gives your title a professional accent color */
-
-    margin-bottom:20px; 
-    /* Space below profession text */
-}
-
-
-/* Description Text */
-.hero-text p{
-    line-height:1.6; 
-    /* Makes text easier to read */
-
-    margin-bottom:20px; 
-    /* Adds space below description */
-}
-
-
-/* Buttons Container */
-.hero-buttons{
-    margin-top:20px; 
-    /* Adds space above buttons */
-}
-
-
-/* Main Button Styling */
 .btn{
     display:inline-block; 
     /* Makes link behave like button */
@@ -986,7 +863,6 @@ transform:translateY(0);
     border-radius:5px; 
     /* Rounded corners */
 }
-
 
 /* Outline Button */
 .btn-outline{
@@ -1297,7 +1173,7 @@ left: 10px;
 }
 
 .counter-box p{
-    color:#ccc;
+    color:#666;
     font-size:16px;
     font-weight:300;
     text-transform:uppercase;
@@ -2225,7 +2101,7 @@ body.modal-open{
 }
 
 .popup-content p {
-    color: #ccc;
+    color: #333;
     margin-bottom: 20px;
     line-height: 1.6;
 }
@@ -2294,7 +2170,7 @@ footer{
 }
 
 .footer-about p{
-    color:#ccc;
+    color:#555;
     line-height:1.6;
     font-size:14px;
 }
@@ -2316,7 +2192,7 @@ footer{
 }
 
 .footer-links a{
-    color:#ccc;
+    color:#555;
     text-decoration:none;
     transition:0.3s;
     font-size:14px;
@@ -2327,13 +2203,13 @@ footer{
 }
 
 .footer-contact p{
-    color:#ccc;
+    color:#555;
     margin-bottom:5px;
     font-size:14px;
 }
 
 .footer-contact a{
-    color:#ccc;
+    color:#555;
     text-decoration:none;
     transition:0.3s;
 }
