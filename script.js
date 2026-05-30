@@ -26,6 +26,7 @@ if (contactForm) {
 
     .then(function(){ /* Success callback */
         // This runs if message is sent successfully
+        contactForm.reset(); /* Reset form fields after successful send */
         document.getElementById("success-popup").style.display = "flex"; /* Show success popup */
         // Show success alert
         
@@ -45,9 +46,6 @@ if (contactForm) {
         errorPopup.innerHTML = '<div class="popup-content" style="border-color: #ff6b6b;"><h3 style="color: #ff6b6b;">Message Failed</h3><p>Unable to send your message. Please try again or contact via email.</p><button onclick="this.parentElement.parentElement.remove()">Close</button></div>'; /* Set popup content */
         document.body.appendChild(errorPopup); /* Add to page */
     });
-    
-    this.reset(); /* Reset form fields */
-    // Reset form fields after submission
     });
 }
 
@@ -328,57 +326,72 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
 /* ============================= */
 /* Dark Mode Toggle */
 /* ============================= */
-// Get the dark mode toggle button element by its ID
-const darkModeIcon = document.getElementById("dark-mode-icon"); // Selects the moon icon element from HTML
+// Restore dark mode preference on page load
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
+}
+
+const darkModeIcon = document.getElementById("dark-mode-icon");
 
 if (darkModeIcon) {
-    // Listen for when user clicks the dark mode toggle button
-    darkModeIcon.addEventListener("click", () => { // Trigger function when user clicks the icon
-
-        // Toggle the "dark-mode" class on the body element to switch themes
-        document.body.classList.toggle("dark-mode"); // Adds or removes dark-mode class
-
-        // Check if dark mode is now active (has dark-mode class)
-        if(document.body.classList.contains("dark-mode")){ // If dark mode is ON
-
-            // Change icon from moon to sun (because dark mode is active)
-            darkModeIcon.classList.remove("fa-moon"); // Remove moon icon class
-            darkModeIcon.classList.add("fa-sun"); // Add sun icon class
-
-        }else{ // If dark mode is OFF
-
-            // Change icon from sun back to moon (because light mode is active)
-            darkModeIcon.classList.remove("fa-sun"); // Remove sun icon class
-            darkModeIcon.classList.add("fa-moon"); // Add moon icon class
+    // Sync icon to current theme state
+    if (document.body.classList.contains("dark-mode")) {
+        darkModeIcon.classList.remove("fa-moon");
+        darkModeIcon.classList.add("fa-sun");
+    } else {
+        darkModeIcon.classList.remove("fa-sun");
+        darkModeIcon.classList.add("fa-moon");
+    }
+    
+    darkModeIcon.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+        localStorage.setItem("darkMode", isDark);
+        
+        if (isDark) {
+            darkModeIcon.classList.remove("fa-moon");
+            darkModeIcon.classList.add("fa-sun");
+        } else {
+            darkModeIcon.classList.remove("fa-sun");
+            darkModeIcon.classList.add("fa-moon");
         }
-
-    }); // End of click event listener
+    });
 }
 
 /* ============================= */
 /* Counter Animation */
 /* ============================= */
+function startCounter(counterElement) {
+    counterElement.innerText = "0"; /* Start from 0 */
+    const target = +counterElement.getAttribute("data-target"); /* Get target number */
+    
+    const updateCounter = () => { /* Function to update counter */
+        const count = +counterElement.innerText; /* Get current number */
+        const increment = target / 200; /* Calculate increment */
+        
+        if (count < target) { /* If not reached target */
+            counterElement.innerText = Math.ceil(count + increment); /* Update display */
+            setTimeout(updateCounter, 10); /* Call again after delay */
+        } else {
+            counterElement.innerText = target; /* Set final value */
+        }
+    };
+    updateCounter(); /* Start the animation */
+}
+
 window.addEventListener("load", function() { /* Wait for page load */
     const counters = document.querySelectorAll(".count"); /* Select all counter elements */
-
-    counters.forEach(counter => { /* Loop through each counter */
-        counter.innerText = "0"; /* Start from 0 */
-
-        const updateCounter = () => { /* Function to update counter */
-            const target = +counter.getAttribute("data-target"); /* Get target number */
-            const count = +counter.innerText; /* Get current number */
-            const increment = target / 200; /* Calculate increment */
-
-            if (count < target) { /* If not reached target */
-                counter.innerText = Math.ceil(count + increment); /* Update display */
-                setTimeout(updateCounter, 10); /* Call again after delay */
-            } else {
-                counter.innerText = target; /* Set final value */
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startCounter(entry.target);
+                counterObserver.unobserve(entry.target);
             }
-        };
-
-        updateCounter(); /* Start the animation */
+        });
     });
+    
+    counters.forEach(counter => counterObserver.observe(counter));
 });
 
 
@@ -414,11 +427,11 @@ lightboxImg.src = image.src;
 });
 
 /* Close lightbox */
-closeLightbox.addEventListener("click", () => {
-
-lightbox.style.display = "none";
-
-});
+if (closeLightbox) {
+    closeLightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+    });
+}
 
 
 

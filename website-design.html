@@ -5,11 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive scaling on mobile devices -->
     <title>Website Design | Elijah Z Tembo</title> <!-- Page title shown in browser tab -->
     <link rel="stylesheet" href="style.css"> <!-- Link to the main stylesheet for page styling -->
+    <!-- Font Awesome Icons Library - Provides moon/sun icons for dark mode -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body> <!-- Page body begins -->
     <header> <!-- Header container for the navigation bar -->
         <nav> <!-- Navigation wrapper holds logo and menu links -->
             <a href="index.html#home" class="logo" aria-label="Home">EZT</a> <!-- Logo link back to the home section of the main page -->
+            
+            <!-- Dark Mode Toggle Button -->
+            <div class="dark-mode-toggle">
+                <i class="fas fa-moon" id="dark-mode-icon"></i>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
             <ul> <!-- Navigation menu list -->
                 <li><a href="index.html#home">Home</a></li> <!-- Link to the top of the homepage -->
                 <li><a href="index.html#about">About</a></li> <!-- Link to the About section on the homepage -->
