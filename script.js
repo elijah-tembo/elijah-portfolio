@@ -320,43 +320,42 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
 
     sections.forEach(section => sectionObserver.observe(section));
 
-});
-
-
-/* ============================= */
-/* Dark Mode Toggle */
-/* ============================= */
-// Restore dark mode preference on page load
-if (localStorage.getItem("darkMode") === "true") {
-    document.body.classList.add("dark-mode");
-}
-
-const darkModeIcon = document.getElementById("dark-mode-icon");
-
-if (darkModeIcon) {
-    // Sync icon to current theme state
-    if (document.body.classList.contains("dark-mode")) {
-        darkModeIcon.classList.remove("fa-moon");
-        darkModeIcon.classList.add("fa-sun");
-    } else {
-        darkModeIcon.classList.remove("fa-sun");
-        darkModeIcon.classList.add("fa-moon");
+    /* ============================= */
+    /* Dark Mode Toggle */
+    /* ============================= */
+    // Restore dark mode preference on page load
+    if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
     }
-    
-    darkModeIcon.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        const isDark = document.body.classList.contains("dark-mode");
-        localStorage.setItem("darkMode", isDark);
-        
-        if (isDark) {
+
+    const darkModeIcon = document.getElementById("dark-mode-icon");
+
+    if (darkModeIcon) {
+        // Sync icon to current theme state
+        if (document.body.classList.contains("dark-mode")) {
             darkModeIcon.classList.remove("fa-moon");
             darkModeIcon.classList.add("fa-sun");
         } else {
             darkModeIcon.classList.remove("fa-sun");
             darkModeIcon.classList.add("fa-moon");
         }
-    });
-}
+        
+        darkModeIcon.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            const isDark = document.body.classList.contains("dark-mode");
+            localStorage.setItem("darkMode", isDark);
+            
+            if (isDark) {
+                darkModeIcon.classList.remove("fa-moon");
+                darkModeIcon.classList.add("fa-sun");
+            } else {
+                darkModeIcon.classList.remove("fa-sun");
+                darkModeIcon.classList.add("fa-moon");
+            }
+        });
+    }
+
+});
 
 /* ============================= */
 /* Counter Animation */
