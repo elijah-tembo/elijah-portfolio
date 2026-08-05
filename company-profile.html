@@ -1,0 +1,165 @@
+<!DOCTYPE html> <!-- Declares the HTML document type -->
+<html lang="en"> <!-- Sets the document language to English -->
+<head> <!-- Metadata and stylesheet links for the page -->
+    <meta charset="UTF-8"> <!-- Encodes the page using UTF-8 characters -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive scaling on mobile devices -->
+    <title>Company Profiles | Elijah Z Tembo</title> <!-- Browser tab title -->
+    <link rel="stylesheet" href="style.css"> <!-- Shared stylesheet to style page elements -->
+    <!-- Font Awesome Icons Library - Provides moon/sun icons for dark mode -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body> <!-- Opening body tag for page content -->
+    <header> <!-- Header area containing navigation -->
+        <nav> <!-- Navigation wrapper -->
+            <a href="index.html#home" class="logo" aria-label="Home">EZT</a>
+
+             <!-- Dark Mode Toggle Button -->
+            <div class="dark-mode-toggle">
+                <i class="fas fa-moon" id="dark-mode-icon"></i>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul> <!-- List of navigation links -->
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero"> <!-- Hero section for company profile design details -->
+        <div class="hero-content"> <!-- Container for hero section content layout -->
+            <div class="hero-text"> <!-- Text content block in hero section -->
+                <h1>Company Profiles</h1> <!-- Main heading -->
+                <h3>Professional business profiles that tell your brand story clearly.</h3> <!-- Supporting subheading -->
+                <p>Explore company profile and corporate brochure work created for established businesses and growing brands.</p> <!-- Introductory paragraph -->
+                <div class="hero-buttons"> <!-- Hero section button group -->
+                    <a href="index.html#portfolio" class="btn">Back to Portfolio</a> <!-- Button back to portfolio section -->
+                    <a href="index.html#contact" class="btn btn-outline">Contact Me</a> <!-- Button to contact section -->
+                </div>
+            </div>
+            <div class="hero-image"> <!-- Hero image container -->
+                <img src="images/project-1 website.jpg" alt="Company profile preview"> <!-- Example company profile image -->
+            </div>
+        </div>
+    </section>
+
+    <section class="documents fade-in" id="company-profiles"> <!-- Company profile documents section -->
+        <div class="portfolio-container"> <!-- Reuse container spacing -->
+            <h2>Company Profile Documents</h2>
+            <p class="section-subtitle">Clients can preview or download company profile booklets created for other businesses.</p>
+            <div class="document-grid"> <!-- Document preview cards -->
+                <article class="document-card"> <!-- First document card -->
+                    <div class="document-card-info">
+                        <h3>Camp Communique Booklet</h3>
+                        <p>Brand profile document and showcase booklet designed for Camp Communique.</p>
+                        <div class="document-actions">
+                            <button type="button" class="btn btn-preview" data-preview-target="camp-preview">Preview</button>
+                            <button type="button" class="btn btn-view" data-view-target="camp-preview">View PDF</button>
+                            <a href="documents/company_profiles/CAMP%20COMMUNIQUE%20Booklet%20Project.pdf" class="btn btn-outline" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="document-preview-wrapper">
+                        <iframe data-src="documents/company_profiles/CAMP%20COMMUNIQUE%20Booklet%20Project.pdf#view=FitH" id="camp-preview" title="Camp Communique Booklet Preview" class="document-preview"></iframe>
+                    </div>
+                </article>
+                <article class="document-card"> <!-- Second document card -->
+                    <div class="document-card-info">
+                        <h3>KCE Company Profile</h3>
+                        <p>Company profile showcase created for KCE, including brand messaging and services.</p>
+                        <div class="document-actions">
+                            <button type="button" class="btn btn-preview" data-preview-target="kce-preview">Preview</button>
+                            <button type="button" class="btn btn-view" data-view-target="kce-preview">View PDF</button>
+                            <a href="documents/company_profiles/KCE%20COMPANY%20PROFILE.pdf" class="btn btn-outline" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="document-preview-wrapper">
+                        <iframe data-src="documents/company_profiles/KCE%20COMPANY%20PROFILE.pdf#view=FitH" id="kce-preview" title="KCE Company Profile Preview" class="document-preview"></iframe>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="documents fade-in" id="brochures"> <!-- Brochure documents section -->
+        <div class="portfolio-container"> <!-- Reuse container spacing -->
+            <h2>Brochures</h2>
+            <p class="section-subtitle">Design brochures created for product catalogs, furniture brands, and corporate marketing.</p>
+            <div class="document-grid"> <!-- Document preview cards -->
+                <article class="document-card"> <!-- Third document card -->
+                    <div class="document-card-info">
+                        <h3>Aluminium Glass and Metal Brochure</h3>
+                        <p>Product brochure highlighting aluminium, glass, and metal design solutions.</p>
+                        <div class="document-actions">
+                            <button type="button" class="btn btn-preview" data-preview-target="aluminium-preview">Preview</button>
+                            <button type="button" class="btn btn-view" data-view-target="aluminium-preview">View PDF</button>
+                            <a href="documents/brochures/Aluminium%20Glass%20and%20Metal.pdf" class="btn btn-outline" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="document-preview-wrapper">
+                        <iframe data-src="documents/brochures/Aluminium%20Glass%20and%20Metal.pdf#view=FitH" id="aluminium-preview" title="Aluminium Glass and Metal Brochure Preview" class="document-preview"></iframe>
+                    </div>
+                </article>
+                <article class="document-card"> <!-- Fourth document card -->
+                    <div class="document-card-info">
+                        <h3>Cabinet Brochure</h3>
+                        <p>Detailed brochure showing cabinetry product ranges and design options.</p>
+                        <div class="document-actions">
+                            <button type="button" class="btn btn-preview" data-preview-target="cabinet-preview">Preview</button>
+                            <button type="button" class="btn btn-view" data-view-target="cabinet-preview">View PDF</button>
+                            <a href="documents/brochures/Cabinet%20Brochure.pdf" class="btn btn-outline" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="document-preview-wrapper">
+                        <iframe data-src="documents/brochures/Cabinet%20Brochure.pdf#view=FitH" id="cabinet-preview" title="Cabinet Brochure Preview" class="document-preview"></iframe>
+                    </div>
+                </article>
+                <article class="document-card"> <!-- Fifth document card -->
+                    <div class="document-card-info">
+                        <h3>Kitchen Furniture Brochure</h3>
+                        <p>Brochure featuring kitchen furniture layouts and interior styling.</p>
+                        <div class="document-actions">
+                            <button type="button" class="btn btn-preview" data-preview-target="kitchen-preview">Preview</button>
+                            <button type="button" class="btn btn-view" data-view-target="kitchen-preview">View PDF</button>
+                            <a href="documents/brochures/Kitchen%20Furniure.pdf" class="btn btn-outline" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="document-preview-wrapper">
+                        <iframe data-src="documents/brochures/Kitchen%20Furniure.pdf#view=FitH" id="kitchen-preview" title="Kitchen Furniture Brochure Preview" class="document-preview"></iframe>
+                    </div>
+                </article>
+                <article class="document-card"> <!-- Sixth document card -->
+                    <div class="document-card-info">
+                        <h3>Kuma Tombstone Catalogue</h3>
+                        <p>Catalogue showcasing tombstone design, materials, and customization options.</p>
+                        <div class="document-actions">
+                            <button type="button" class="btn btn-preview" data-preview-target="kuma-preview">Preview</button>
+                            <button type="button" class="btn btn-view" data-view-target="kuma-preview">View PDF</button>
+                            <a href="documents/brochures/Kuma%20Tombstone%20Catalogue.pdf" class="btn btn-outline" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="document-preview-wrapper">
+                        <iframe data-src="documents/brochures/Kuma%20Tombstone%20Catalogue.pdf#view=FitH" id="kuma-preview" title="Kuma Tombstone Catalogue Preview" class="document-preview"></iframe>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer> <!-- Footer section with copyright text -->
+        <div class="footer-container fade-in"> <!-- Footer content container -->
+            <p>&copy; 2026 Elijah Zebron Tembo. All Rights Reserved.</p> <!-- Copyright statement -->
+        </div>
+    </footer>
+
+    <script src="script.js"></script> <!-- Shared JavaScript file included for page functionality -->
+</body>
+</html>

@@ -235,6 +235,23 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
         link.addEventListener('click', closeMobileMenu); /* Close mobile menu when a navigation link is clicked */
     });
 
+    const previewButtons = document.querySelectorAll('.btn-preview');
+    previewButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.dataset.previewTarget;
+            const iframe = document.getElementById(targetId);
+            if (!iframe) return;
+            const src = iframe.dataset.src;
+            if (!src) return;
+            const currentSrc = iframe.getAttribute('src');
+            if (!currentSrc) {
+                iframe.setAttribute('src', src);
+                this.textContent = 'Loaded';
+            }
+            iframe.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    });
+
     const imageModal = document.getElementById('image-modal');
     const modalImage = document.getElementById('modal-image');
     const modalClose = document.getElementById('modal-close');
