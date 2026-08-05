@@ -237,37 +237,94 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
 
     const previewButtons = document.querySelectorAll('.btn-preview');
     previewButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', async function() {
             const targetId = this.dataset.previewTarget;
-            const iframe = document.getElementById(targetId);
-            if (!iframe) return;
-            const src = iframe.dataset.src;
+            const previewElement = document.getElementById(targetId);
+            console.log('Preview click', targetId, previewElement);
+            if (!previewElement) return;
+            const src = previewElement.dataset.src;
+            console.log('Preview source', src);
             if (!src) return;
-            const currentSrc = iframe.getAttribute('src');
-            if (!currentSrc) {
-                iframe.setAttribute('src', src);
-                this.textContent = 'Loaded';
+            this.disabled = true;
+            this.classList.add('loading');
+            try {
+                // Try inline preview; if it fails open in new tab as fallback
+                const ok = await tryLoadPdfInto(previewElement, src, {openOnFail:true});
+                if (ok) this.textContent = 'Loaded';
+            } finally {
+                this.disabled = false;
+                this.classList.remove('loading');
             }
-            iframe.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            previewElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
     });
 
     const viewButtons = document.querySelectorAll('.btn-view');
     viewButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', async function() {
             const targetId = this.dataset.viewTarget;
-            const iframe = document.getElementById(targetId);
-            if (!iframe) return;
-            const src = iframe.dataset.src;
+            const previewElement = document.getElementById(targetId);
+            console.log('View click', targetId, previewElement);
+            if (!previewElement) return;
+            const src = previewElement.dataset.src;
+            console.log('View source', src);
             if (!src) return;
-            const currentSrc = iframe.getAttribute('src');
-            if (!currentSrc) {
-                iframe.setAttribute('src', src);
+            // Immediately open new tab so user can view, then try inline load in background
+            try {
+                window.open(src, '_blank');
+            } catch (e) {
+                console.warn('window.open blocked', e);
             }
-            iframe.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            await tryLoadPdfInto(previewElement, src, {openOnFail:false});
+            previewElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
     });
 
+        /**
+         * Try to load a PDF into an <object> preview element.
+         * If network fetch succeeds we set the element data attribute so the PDF renders inline.
+         * On failure, optionally open in new tab as a fallback.
+         */
+        async function tryLoadPdfInto(el, src, opts = { openOnFail: false }) {
+            // Prefer a lightweight HEAD request to check accessibility
+            try {
+                const head = await fetch(src, { method: 'HEAD' });
+                if (head && head.ok) {
+                    el.setAttribute('data', src);
+                    el.dataset.loaded = 'true';
+                    return true;
+                }
+            } catch (e) {
+                console.warn('HEAD request failed for', src, e);
+            }
+
+            // Try a small ranged GET as a fallback (some servers don't accept HEAD)
+            try {
+                const get = await fetch(src, { method: 'GET', headers: { Range: 'bytes=0-1023' } });
+                if (get && (get.ok || get.status === 206)) {
+                    el.setAttribute('data', src);
+                    el.dataset.loaded = 'true';
+                    return true;
+                }
+            } catch (e) {
+                console.warn('GET range request failed for', src, e);
+            }
+
+            // If we reach here, inline preview likely won't work. Open in new tab if requested.
+            if (opts.openOnFail) {
+                try {
+                    window.open(src, '_blank');
+                } catch (e) {
+                    console.error('Unable to open new tab for', src, e);
+                }
+            }
+
+            // Leave fallback message in the preview element
+            if (!el.querySelector('p')) {
+                el.innerHTML = '<p>Preview not available. Use the Download button to open the document.</p>';
+            }
+            return false;
+        }
     const imageModal = document.getElementById('image-modal');
     const modalImage = document.getElementById('modal-image');
     const modalClose = document.getElementById('modal-close');
