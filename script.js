@@ -1,3 +1,20 @@
+
+
+
+
+/* ============================= */
+/* Dark Mode — Early Restore     */
+/* ============================= */
+
+/* This runs immediately when the script loads, before the page renders.     */
+/* It checks if the user previously chose dark mode and applies it right     */
+/* away — preventing a flash of white/light mode on page load.               */
+
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
+}
+
+
 (function(){ /* Immediately invoked function expression (IIFE) */
     emailjs.init("aiuy-9Ek4VkNl-1pj"); /* Initialize EmailJS with public key */
     // Initialize EmailJS using your Public Key
