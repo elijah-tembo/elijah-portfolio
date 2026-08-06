@@ -265,96 +265,85 @@ document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to loa
         link.addEventListener('click', closeMobileMenu); /* Close mobile menu when a navigation link is clicked */
     });
 
-    const previewButtons = document.querySelectorAll('.btn-preview');
-    previewButtons.forEach(button => {
-        button.addEventListener('click', async function() {
-            const targetId = this.dataset.previewTarget;
-            const previewElement = document.getElementById(targetId);
-            console.log('Preview click', targetId, previewElement);
-            if (!previewElement) return;
-            const src = previewElement.dataset.src;
-            console.log('Preview source', src);
-            if (!src) return;
-            this.disabled = true;
-            this.classList.add('loading');
-            try {
-                // Try inline preview; if it fails open in new tab as fallback
-                const ok = await tryLoadPdfInto(previewElement, src, {openOnFail:true});
-                if (ok) this.textContent = 'Loaded';
-            } finally {
-                this.disabled = false;
-                this.classList.remove('loading');
-            }
-            previewElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-    });
+/* ============================= */
+/* PDF Preview & View Buttons    */
+/* ============================= */
 
-    const viewButtons = document.querySelectorAll('.btn-view');
-    viewButtons.forEach(button => {
-        button.addEventListener('click', async function() {
-            const targetId = this.dataset.viewTarget;
-            const previewElement = document.getElementById(targetId);
-            console.log('View click', targetId, previewElement);
-            if (!previewElement) return;
-            const src = previewElement.dataset.src;
-            console.log('View source', src);
-            if (!src) return;
-            // Immediately open new tab so user can view, then try inline load in background
-            try {
-                window.open(src, '_blank');
-            } catch (e) {
-                console.warn('window.open blocked', e);
-            }
-            await tryLoadPdfInto(previewElement, src, {openOnFail:false});
-            previewElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-    });
+/* Select all Preview buttons */
+const previewButtons = document.querySelectorAll('.btn-preview');
 
-        /**
-         * Try to load a PDF into an <object> preview element.
-         * If network fetch succeeds we set the element data attribute so the PDF renders inline.
-         * On failure, optionally open in new tab as a fallback.
-         */
-        async function tryLoadPdfInto(el, src, opts = { openOnFail: false }) {
-            // Prefer a lightweight HEAD request to check accessibility
-            try {
-                const head = await fetch(src, { method: 'HEAD' });
-                if (head && head.ok) {
-                    el.setAttribute('data', src);
-                    el.dataset.loaded = 'true';
-                    return true;
-                }
-            } catch (e) {
-                console.warn('HEAD request failed for', src, e);
-            }
+previewButtons.forEach(button => {
+    button.addEventListener('click', function() {
 
-            // Try a small ranged GET as a fallback (some servers don't accept HEAD)
-            try {
-                const get = await fetch(src, { method: 'GET', headers: { Range: 'bytes=0-1023' } });
-                if (get && (get.ok || get.status === 206)) {
-                    el.setAttribute('data', src);
-                    el.dataset.loaded = 'true';
-                    return true;
-                }
-            } catch (e) {
-                console.warn('GET range request failed for', src, e);
-            }
+        /* Get the id of the iframe to target */
+        /* e.g. data-preview-target="camp-preview" */
+        const targetId = this.dataset.previewTarget;
 
-            // If we reach here, inline preview likely won't work. Open in new tab if requested.
-            if (opts.openOnFail) {
-                try {
-                    window.open(src, '_blank');
-                } catch (e) {
-                    console.error('Unable to open new tab for', src, e);
-                }
-            }
+        /* Find the iframe element */
+        const iframe = document.getElementById(targetId);
 
-            // Leave fallback message in the preview element
-            if (!el.querySelector('p')) {
-                el.innerHTML = '<p>Preview not available. Use the Download button to open the document.</p>';
-            }
-            return false;
+        /* Find the wrapper div that contains the iframe */
+        const wrapper = iframe ? iframe.closest('.document-preview-wrapper') : null;
+
+        if (!iframe || !wrapper) return;
+
+        /* If preview is already showing, hide it (toggle behaviour) */
+        if (wrapper.classList.contains('active')) {
+            wrapper.classList.remove('active');
+            iframe.src = ''; /* Clear the PDF to save memory */
+            this.textContent = 'Preview'; /* Reset button text */
+            return;
         }
+
+        /* Get the PDF path from the download link in the same card */
+        /* We reuse the href from the download button so there's only one source of truth */
+        const card = this.closest('.document-card');
+        const downloadLink = card ? card.querySelector('a[download]') : null;
+
+        if (!downloadLink) return;
+
+        /* Build the PDF src — append #toolbar=1 to show PDF controls */
+        const pdfSrc = downloadLink.getAttribute('href') + '#toolbar=1';
+
+        /* Set the iframe src — this triggers the PDF to load */
+        iframe.src = pdfSrc;
+
+        /* Show the wrapper */
+        wrapper.classList.add('active');
+
+        /* Update button text so user knows they can click again to close */
+        this.textContent = 'Close Preview';
+
+        /* Smoothly scroll down to the preview */
+        wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+});
+
+
+/* Select all View PDF buttons */
+const viewButtons = document.querySelectorAll('.btn-view');
+
+viewButtons.forEach(button => {
+    button.addEventListener('click', function() {
+
+        /* Get the download link from the same card */
+        const card = this.closest('.document-card');
+        const downloadLink = card ? card.querySelector('a[download]') : null;
+
+        if (!downloadLink) return;
+
+        /* Open the PDF in a new browser tab */
+        /* The browser will display it using its built-in PDF viewer */
+        window.open(downloadLink.getAttribute('href'), '_blank');
+    });
+});
+
+
+
+
+
+
+
     const imageModal = document.getElementById('image-modal');
     const modalImage = document.getElementById('modal-image');
     const modalClose = document.getElementById('modal-close');

@@ -2431,6 +2431,99 @@ text-decoration:none;
 }
 
 
+
+
+
+/* ============================= */
+/* Document Cards                */
+/* ============================= */
+
+/* Grid layout for document cards */
+.document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Individual document card */
+.document-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.document-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Text and buttons inside the card */
+.document-card-info {
+    padding: 20px;
+}
+
+.document-card-info h3 {
+    margin-bottom: 8px;
+    color: #111;
+    font-size: 18px;
+}
+
+.document-card-info p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+/* Row of action buttons */
+.document-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* PDF preview iframe container — hidden until Preview is clicked */
+.document-preview-wrapper {
+    display: none; /* Hidden by default */
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Show the preview wrapper when active class is added */
+.document-preview-wrapper.active {
+    display: block;
+}
+
+/* The iframe that renders the PDF */
+.document-preview {
+    width: 100%;
+    height: 500px;
+    border: none;
+    display: block;
+}
+
+/* Dark mode document cards */
+body.dark-mode .document-card {
+    background: #1a1a1a;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .document-card-info h3 {
+    color: #f0f0f0;
+}
+
+body.dark-mode .document-card-info p {
+    color: #aaaaaa;
+}
+
+
+
+
+
+
 /* ============================= */
 /* Responsive Design */
 /* ============================= */
