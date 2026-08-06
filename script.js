@@ -15,11 +15,18 @@ if (localStorage.getItem("darkMode") === "true") {
 }
 
 
-(function(){ /* Immediately invoked function expression (IIFE) */
-    emailjs.init("aiuy-9Ek4VkNl-1pj"); /* Initialize EmailJS with public key */
-    // Initialize EmailJS using your Public Key
-    // This connects your website to your EmailJS account
-})(); /* End of IIFE */
+/* ============================= */
+/* EmailJS Initialisation        */
+/* ============================= */
+
+/* Only initialise EmailJS if the library has been loaded on this page.  */
+/* Sub-pages like flyer-design.html don't include the EmailJS SDK,        */
+/* so without this check the script crashes immediately and nothing else  */
+/* in this file runs — including dark mode, the mobile menu, etc.         */
+
+if (typeof emailjs !== "undefined") {
+    emailjs.init("aiuy-9Ek4VkNl-1pj");
+}
 
 /* =============================
 Contact Form Submission Script
@@ -182,8 +189,12 @@ function typeText(){ /* Function to type text character by character */
 
 if(charIndex < textArray[typingIndex].length){ /* Check if there are more characters to type */
 
-document.getElementById("typing").textContent += textArray[typingIndex].charAt(charIndex); /* Add next character */
-/* Add one letter */
+/* Guard: only run if the #typing element exists on this page */
+/* Sub-pages don't have a #typing element, so without this check */
+/* the script crashes here and nothing below this point runs */
+const typingEl = document.getElementById("typing");
+if (!typingEl) return; /* Stop if element not found */
+typingEl.textContent += textArray[typingIndex].charAt(charIndex);
 
 charIndex++; /* Increment character index */
 
@@ -205,8 +216,10 @@ function eraseText(){ /* Function to erase text character by character */
 
 if(charIndex > 0){ /* Check if there are characters to erase */
 
-document.getElementById("typing").textContent = /* Set text content */
-textArray[typingIndex].substring(0, charIndex-1); /* Remove last character */
+/* Same guard for the erase function */
+const typingEl = document.getElementById("typing");
+if (!typingEl) return;
+typingEl.textContent = textArray[typingIndex].substring(0, charIndex-1);
 
 charIndex--; /* Decrement character index */
 
