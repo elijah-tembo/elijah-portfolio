@@ -13,6 +13,18 @@
 
 <body>
 
+    <!-- Simple password protection -->
+<!-- Blocks casual access to the admin page -->
+<!-- Change "yourpassword" to something only you know -->
+<script>
+    const password = prompt("Enter admin password:");
+    if (password !== "yourpassword") {
+        /* Wrong password — redirect back to homepage */
+        document.write("<p>Access denied.</p>");
+        window.location.href = "index.html";
+    }
+</script>
+
 <h2>Portfolio Admin Panel</h2>
 
 <!-- Add Project -->
