@@ -675,17 +675,17 @@ ul li a.nav-active::after{
 
 /* Logo styling */
 .logo{
-    display:block;
-    width:130px;
-    height:52px;
-    text-decoration:none;
+    display:block; /* Keeps the logo link as a stable navbar item for consistent alignment. */
+    width:230px; /* Makes the desktop logo wide enough for the ELINOV name and tagline to be readable. */
+    height:auto; /* Lets the link follow the image's natural aspect ratio instead of distorting the artwork. */
+    text-decoration:none; /* Prevents the logo link from receiving an underline. */
 }
 
 .logo-image{
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:contain;
+    display:block; /* Removes inline-image whitespace so the logo stays neatly aligned in the navbar. */
+    width:100%; /* Makes each theme-specific image use the responsive width of the logo link. */
+    height:auto; /* Preserves the original PNG aspect ratio so the tagline is not compressed. */
+    object-fit:contain; /* Keeps the complete logo artwork visible within its responsive width. */
 }
 
 .logo-image-dark{
@@ -698,6 +698,27 @@ body.dark-mode .logo-image-light{
 
 body.dark-mode .logo-image-dark{
     display:block;
+}
+
+/* Tablet and standard mobile logo sizing. */
+@media screen and (max-width:768px){
+    .logo{
+        width:200px; /* Reduces the logo on narrower screens while keeping the tagline readable. */
+    }
+}
+
+/* Small mobile logo sizing. */
+@media screen and (max-width:480px){
+    .logo{
+        width:180px; /* Leaves room for the theme toggle and hamburger without making the navbar crowded. */
+    }
+}
+
+/* Very small mobile logo sizing. */
+@media screen and (max-width:360px){
+    .logo{
+        width:165px; /* Prevents the combined navbar controls from exceeding the narrow viewport width. */
+    }
 }
 
 #home,
