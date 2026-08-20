@@ -1182,6 +1182,18 @@ padding: 20px;
 background: var(--card-bg);
 border-radius: 8px;
 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+max-width: 100%; /* Keeps the timeline card within its mobile column. */
+overflow-wrap: anywhere; /* Wraps long content so descriptions cannot escape the card. */
+}
+
+.timeline-content ul{
+display: block; /* Prevents the global navigation-list flex rule from affecting timeline responsibilities. */
+padding-left: 20px; /* Leaves room for list markers without pushing text outside the card. */
+}
+
+.timeline-content li{
+max-width: 100%; /* Keeps each responsibility inside the timeline card. */
+overflow-wrap: anywhere; /* Wraps long words or URLs on narrow screens. */
 }
 
 /* Title */
