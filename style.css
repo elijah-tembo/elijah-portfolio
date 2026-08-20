@@ -689,15 +689,15 @@ ul li a.nav-active::after{
 .logo{
     display:block; /* Keeps the logo link as a stable navbar item for consistent alignment. */
     width:230px; /* Makes the desktop logo wide enough for the ELINOV name and tagline to be readable. */
-    height:auto; /* Lets the link follow the image's natural aspect ratio instead of distorting the artwork. */
+    height:64px; /* Gives the navbar a stable height while leaving enough room for the logo artwork. */
     text-decoration:none; /* Prevents the logo link from receiving an underline. */
 }
 
 .logo-image{
     display:block; /* Removes inline-image whitespace so the logo stays neatly aligned in the navbar. */
     width:100%; /* Makes each theme-specific image use the responsive width of the logo link. */
-    height:auto; /* Preserves the original PNG aspect ratio so the tagline is not compressed. */
-    object-fit:contain; /* Keeps the complete logo artwork visible within its responsive width. */
+    height:100%; /* Fits the visible theme logo into the stable navbar logo area. */
+    object-fit:contain; /* Keeps the complete logo artwork visible without changing its aspect ratio. */
 }
 
 .logo-image-dark{
@@ -716,6 +716,7 @@ body.dark-mode .logo-image-dark{
 @media screen and (max-width:768px){
     .logo{
         width:200px; /* Reduces the logo on narrower screens while keeping the tagline readable. */
+        height:58px; /* Keeps the responsive mobile navbar compact and vertically aligned. */
     }
 }
 
@@ -723,6 +724,7 @@ body.dark-mode .logo-image-dark{
 @media screen and (max-width:480px){
     .logo{
         width:180px; /* Leaves room for the theme toggle and hamburger without making the navbar crowded. */
+        height:54px; /* Prevents the small-screen navbar from becoming too tall. */
     }
 }
 
