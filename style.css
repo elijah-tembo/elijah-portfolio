@@ -100,12 +100,14 @@ html, body{
 /* ============================= */
 header{
     position:fixed; /* Always fixed at top */
-    top:0; /* Stick to very top */
-    width:100%; /* Full width */
+    top:18px; /* Adds breathing room above the sticky navbar so it does not touch the viewport edge. */
+    left:16px; /* Separates the navbar from the left viewport edge. */
+    width:calc(100% - 32px); /* Keeps equal space on both sides while preserving the sticky navbar. */
     background:rgba(255,255,255,0.95); /* Light translucent navbar */
     backdrop-filter:blur(16px); /* Blur effect */
     box-shadow:0 12px 35px rgba(0,0,0,0.08); /* Soft shadow for depth */
     border-bottom:1px solid rgba(0,0,0,0.08); /* Subtle border */
+    border-radius:16px; /* Softly rounds the inset navbar for a more intentional, less cramped appearance. */
     z-index:1000; /* Keep above content */
 }
 
@@ -116,7 +118,7 @@ nav{
     align-items:center; /* Align vertically */
     max-width:1200px; /* Maximum width */
     margin:0 auto; /* Center horizontally */
-    padding:0 10px; /* Padding left and right */
+    padding:0 16px; /* Adds comfortable horizontal space between navbar controls and the inset edges. */
 }
 
 /* ============================= */
@@ -530,6 +532,16 @@ background:#0097a7; /* Darker cyan on hover */
 /* MODERN MOBILE NAVIGATION */
 /* ============================= */
 @media(max-width:768px){
+
+header{
+top:12px; /* Keeps visible breathing room above the navbar on smaller screens. */
+left:10px; /* Prevents the mobile navbar from sitting against the left edge. */
+width:calc(100% - 20px); /* Maintains matching mobile side margins without causing horizontal scrolling. */
+}
+
+nav{
+padding:0 12px; /* Preserves room around the larger responsive logo and mobile controls. */
+}
 
 .menu-toggle{
 display:block;
