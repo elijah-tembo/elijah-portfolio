@@ -1135,18 +1135,19 @@ transform:translateY(0);
 /* ================= EXPERIENCE TIMELINE ================= */
 .section-title{
     text-align:center;
-    font-size:25px;
+    font-size:25px; /* Keeps the experience heading prominent without competing with the hero. */
+    margin-bottom:38px; /* Separates the section introduction from the timeline itself. */
 }
 .experience{
-padding: 80px 0;
-background: var(--section-bg);
+padding:80px 10%; /* Gives the professional history consistent horizontal alignment with other sections. */
+background:#f8f9fb; /* Provides a quiet contrast behind the timeline cards in light mode. */
 }
 
 /* Timeline Container */
 .timeline{
 position: relative;
-max-width: 900px;
-margin: auto;
+max-width:1000px; /* Allows the timeline cards to breathe while keeping the reading width controlled. */
+margin:0 auto; /* Centers the professional history on the page. */
 }
 
 /* Vertical Line */
@@ -1154,7 +1155,7 @@ margin: auto;
 content: '';
 position: absolute;
 width: 2px;
-background: #0097a7;
+background:#00a6b2; /* Uses the existing accent as a clear visual path through the career history. */
 top: 0;
 bottom: 0;
 left: 50%;
@@ -1163,7 +1164,7 @@ margin-left: -1px;
 
 /* Timeline Item */
 .timeline-item{
-padding: 20px 40px;
+padding:20px 42px; /* Adds space between the central line and each timeline card. */
 position: relative;
 width: 50%;
 }
@@ -1182,9 +1183,10 @@ left: 50%;
 .timeline-item::after{
 content: '';
 position: absolute;
-width: 20px;
-height: 20px;
-background: #0097a7;
+width:18px; /* Keeps the timeline marker visible without overpowering the cards. */
+height:18px; /* Keeps the marker circular and consistent. */
+background:#00bcd4; /* Uses the brighter existing accent for the active point. */
+border:4px solid #f8f9fb; /* Separates the marker from the timeline line in light mode. */
 border-radius: 50%;
 top: 20px;
 right: -10px;
@@ -1198,10 +1200,11 @@ left: -10px;
 
 /* Timeline Content */
 .timeline-content{
-padding: 20px;
-background: var(--card-bg);
-border-radius: 8px;
-box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+padding:24px; /* Gives each role enough space for its description and responsibilities. */
+background:#ffffff; /* Makes the work history easy to read against the soft section background. */
+border:1px solid rgba(0,151,167,0.12); /* Defines card edges with a restrained brand accent. */
+border-radius:10px; /* Matches the existing card language across the portfolio. */
+box-shadow:0 10px 24px rgba(24,50,58,0.07); /* Adds subtle depth without turning the timeline into floating panels. */
 max-width: 100%; /* Keeps the timeline card within its mobile column. */
 overflow-wrap: anywhere; /* Wraps long content so descriptions cannot escape the card. */
 }
@@ -1218,15 +1221,51 @@ overflow-wrap: anywhere; /* Wraps long words or URLs on narrow screens. */
 
 /* Title */
 .timeline-content h3{
-margin-bottom: 10px;
+margin-bottom:8px; /* Keeps the role title connected to its date and description. */
+font-size:1.2rem; /* Gives the role name clear visual priority. */
 }
 
 /* Date */
 .timeline-content span{
-font-size: 14px;
-color: #0097a7;
+font-size:14px; /* Keeps date metadata visually subordinate to the role title. */
+color:#0097a7; /* Uses the existing accent to make dates easy to find. */
 display: block;
-margin-bottom: 10px;
+margin-bottom:10px; /* Separates the date from the role description. */
+}
+
+.timeline-content .timeline-label{ /* Styles the new role category label independently from the date. */
+    margin-bottom:5px; /* Keeps the label close to the role title. */
+    color:#68777b; /* Uses muted text so the category supports rather than competes with the title. */
+    font-size:0.72rem; /* Keeps the category compact and scannable. */
+    font-weight:700; /* Makes the category recognizable as metadata. */
+    letter-spacing:0.08em; /* Gives the small label a clear typographic identity. */
+    text-transform:uppercase; /* Makes all timeline categories consistent. */
+}
+
+.timeline-content p{ /* Improves readability of the existing role descriptions. */
+    color:#4f5c60; /* Provides a comfortable secondary text contrast in light mode. */
+}
+
+body.dark-mode .experience{ /* Adapts the timeline section background to dark mode. */
+    background:#111819; /* Creates separation from neighboring dark sections. */
+}
+
+body.dark-mode .timeline-content{ /* Adapts timeline cards to the dark theme. */
+    background:#1a2426; /* Keeps role content distinct from the section surface. */
+    border-color:rgba(0,188,212,0.2); /* Retains the ELINOV accent edge at lower intensity. */
+    box-shadow:0 12px 26px rgba(0,0,0,0.2); /* Provides appropriate dark-mode depth. */
+}
+
+body.dark-mode .timeline-content p{ /* Keeps timeline descriptions readable in dark mode. */
+    color:#c5d0d2; /* Uses light secondary text on dark cards. */
+}
+
+body.dark-mode .timeline-content .timeline-label{ /* Keeps timeline category labels readable in dark mode. */
+    color:#8fc8cc; /* Uses a softened accent tint for metadata contrast. */
+}
+
+body.dark-mode .timeline-item::after{ /* Separates timeline markers from the dark section. */
+    border-color:#111819; /* Matches the dark timeline background around each marker. */
 }
 
 /* ================= EXPERIENCE MOBILE TIMELINE ================= */
@@ -1325,17 +1364,13 @@ left: 10px;
 /* ============================= */
 /* 3D Hover Cards */  
 .service-card,
-.portfolio-item,
-.skills-left,
-.skills-right{
+.portfolio-item{
     transition:0.4s;
     transform-style:preserve-3d;
 }
 
 .service-card:hover,
-.portfolio-item:hover,
-.skills-left:hover,
-.skills-right:hover{
+.portfolio-item:hover{
     transform:rotateY(5deg) rotateX(5deg);
 }
 
@@ -1470,7 +1505,7 @@ color: white;
 /* Portfolio Section */
 /* ============================= */
 .portfolio{
-    padding:60px 10%;
+    padding:82px 10%; /* Gives the portfolio enough room to feel like the primary proof of work. */
     /* Adds spacing inside section */
     background:#ffffff;
 }
@@ -1490,10 +1525,10 @@ color: white;
     display:grid;
     /* Creates grid layout */
 
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,minmax(0,1fr)); /* Prevents long project content from causing horizontal overflow. */
     /* 2 columns */
 
-    gap:20px;
+    gap:24px; /* Gives each project card a more editorial, less crowded presentation. */
     /* Space between items */
 }
 
@@ -1510,7 +1545,9 @@ color: white;
     background:#fff;
     /* White background */
 
-    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    box-shadow:0 10px 24px rgba(24,50,58,0.08); /* Adds polished depth while keeping the cards professional. */
+    border:1px solid rgba(0,151,167,0.12); /* Gives the project frame a quiet brand edge. */
+    transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s ease; /* Unifies hover behavior across project cards. */
     /* Subtle shadow */
 }
 
@@ -1521,18 +1558,19 @@ color: white;
     display:block;
     /* Removes spacing */
 
-    height:200px;
+    height:240px; /* Gives existing project previews more room to communicate their visual character. */
     object-fit:cover;
 
-    transition:0.5s;
+    transition:transform 0.5s ease,filter 0.5s ease; /* Makes image movement and hover contrast feel deliberate. */
     /* Smooth zoom effect */
 }
 
 .portfolio-info{
-    padding:15px;
+    padding:20px 20px 18px; /* Creates a stronger text area beneath each project image. */
     /* Padding inside */
+    background:#ffffff; /* Keeps the information area visually distinct from the image. */
 
-    text-align:center;
+    text-align:left; /* Aligns project information for easier professional scanning. */
     /* Center text */
 }
 
@@ -1546,7 +1584,8 @@ color: white;
     margin-bottom:5px;
     /* Space below */
 }
-
+    color:#667477; /* Uses readable muted text for the project description. */
+    line-height:1.55; /* Prevents multi-line descriptions from feeling compressed. */
 .portfolio-info p{
     font-size:14px;
     /* Description size */
@@ -1865,7 +1904,7 @@ body.modal-open{
 /* Skills Section */
 /* ============================= */
 .skills{
-    padding:60px 10%;
+    padding:82px 10%; /* Gives the existing skill groups enough room to read as a professional capability section. */
     /* Adds spacing inside section */
 
     background:#f8f9fb;
@@ -1890,7 +1929,7 @@ body.modal-open{
     justify-content:space-between;
     /* Space between columns */
 
-    gap:40px;
+    gap:32px; /* Keeps the two skill groups separated without creating an oversized gap. */
     /* Space between columns */
 }
 
@@ -1898,6 +1937,11 @@ body.modal-open{
 .skills-right{
     width:100%;
     /* Equal width */
+    padding:26px; /* Gives each existing skill group a clear visual frame. */
+    background:#ffffff; /* Keeps the skill content readable in light mode. */
+    border:1px solid rgba(0,151,167,0.12); /* Defines the capability groups with a subtle brand edge. */
+    border-radius:10px; /* Matches the restrained card treatment used elsewhere. */
+    box-shadow:0 10px 24px rgba(24,50,58,0.06); /* Adds quiet depth without exaggerating the skill bars. */
 }
 
 .skills-left h3,
@@ -1905,24 +1949,39 @@ body.modal-open{
     margin-bottom:20px;
     /* Space below category title */
 
-    color:#00bcd4;
+    color:#0097a7; /* Uses the established accent to identify each capability group. */
+    font-size:1.2rem; /* Gives the group heading clear hierarchy above individual skills. */
 }
 
 .skill{
-    margin-bottom:20px;
+    margin-bottom:22px; /* Adds enough vertical separation for each skill to scan comfortably. */
     /* Space between skills */
 }
 
 .skill p{
-    margin-bottom:5px;
+    margin-bottom:0; /* Lets the new skill heading row control spacing consistently. */
     /* Space above bar */
+}
+
+.skill-heading{ /* Aligns each skill name and its existing percentage on one readable row. */
+    display:flex; /* Places the skill label and level side by side. */
+    justify-content:space-between; /* Pushes the existing percentage to the edge for quick scanning. */
+    align-items:center; /* Keeps the label and level vertically aligned. */
+    gap:12px; /* Protects the row from crowding on narrow screens. */
+    margin-bottom:8px; /* Separates the heading row from its visual bar. */
+}
+
+.skill-heading span{ /* Styles the existing skill percentages as quiet metadata. */
+    color:#0097a7; /* Connects the level value to the existing accent. */
+    font-size:0.82rem; /* Keeps the percentage subordinate to the skill name. */
+    font-weight:700; /* Makes the existing level easy to identify. */
 }
 
 .skill-bar{
     background:#e5e5e5;
     /* Light background of bar */
 
-    height:8px;
+    height:9px; /* Gives the existing progress bars enough visual weight to read clearly. */
     /* Bar height */
 
     border-radius:5px;
@@ -1934,253 +1993,151 @@ body.modal-open{
 .skill-bar span{
     display:block;
     height:100%;
-    background:#00bcd4;
+    background:linear-gradient(90deg,#0097a7,#00bcd4); /* Adds a restrained brand gradient without changing the existing level values. */
     /* Skill color */
 }
 
+body.dark-mode .skills{ /* Adapts the skills section surface to dark mode. */
+    background:#111819; /* Creates separation from adjacent dark sections. */
+}
+
+body.dark-mode .skills-left, /* Targets the web capability card in dark mode. */
+body.dark-mode .skills-right{ /* Targets the graphics capability card in dark mode. */
+    background:#1a2426; /* Keeps the skill groups distinct from their section background. */
+    border-color:rgba(0,188,212,0.2); /* Preserves the existing accent edge with lower intensity. */
+    box-shadow:0 12px 26px rgba(0,0,0,0.2); /* Provides appropriate depth for dark surfaces. */
+}
+
+body.dark-mode .skill-heading span{ /* Keeps existing skill percentages visible in dark mode. */
+    color:#55d8e3; /* Uses a brighter accent tint for contrast. */
+}
+
+body.dark-mode .skill-bar{ /* Adapts skill tracks to dark mode. */
+    background:#354346; /* Keeps the unfilled track visible without becoming distracting. */
+}
+
 
 
 /* ============================= */
-/* Testimonials */
+/* Why Work With Me */
 /* ============================= */
-#testimonials {
-    padding: 80px 5%;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    position: relative;
-    overflow: hidden;
+.why-work{ /* Styles the credibility section as a distinct but familiar portfolio band. */
+    padding:80px 10%; /* Gives the section enough vertical breathing room for a premium presentation. */
+    background:linear-gradient(135deg,#f8f9fb 0%,#eef7f8 100%); /* Adds subtle ELINOV-compatible atmosphere without changing the visual identity. */
 }
 
-#testimonials::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%230097a7" opacity="0.03"/><circle cx="75" cy="75" r="1" fill="%230097a7" opacity="0.03"/><circle cx="50" cy="10" r="0.5" fill="%230097a7" opacity="0.05"/><circle cx="10" cy="50" r="0.5" fill="%230097a7" opacity="0.05"/><circle cx="90" cy="30" r="0.5" fill="%230097a7" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    pointer-events: none;
+.why-work-container{ /* Keeps the credibility content aligned with the rest of the site. */
+    max-width:1200px; /* Prevents long lines and oversized cards on wide screens. */
+    margin:0 auto; /* Centers the constrained content area. */
 }
 
-#testimonials .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
+.why-work-heading{ /* Creates a readable introduction block before the reason cards. */
+    max-width:720px; /* Keeps the introductory paragraph comfortably readable. */
+    margin:0 auto 42px; /* Centers the introduction and separates it from the grid. */
+    text-align:center; /* Establishes a clear section entry point. */
 }
 
-#testimonials h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-weight: 700;
-    position: relative;
+.section-kicker{ /* Creates a reusable small label for section context. */
+    display:inline-block; /* Allows the label to size to its content. */
+    margin-bottom:10px; /* Separates the label from the heading below it. */
+    color:#0097a7; /* Uses the existing accent color for emphasis. */
+    font-size:0.78rem; /* Keeps the kicker subordinate to the main heading. */
+    font-weight:700; /* Makes the small label legible and intentional. */
+    letter-spacing:0.08em; /* Adds restrained tracking for hierarchy. */
+    text-transform:uppercase; /* Gives repeated section labels a consistent shape. */
 }
 
-#testimonials h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, #0097a7, #00bcd4);
-    margin: 15px auto 0;
-    border-radius: 2px;
+.why-work-heading h2{ /* Styles the main credibility heading. */
+    margin-bottom:12px; /* Keeps the supporting statement close to its heading. */
+    font-size:clamp(2rem,4vw,2.8rem); /* Scales the heading across desktop and mobile without overflow. */
 }
 
-.section-subtitle {
-    text-align: center;
-    color: #6c757d;
-    font-size: 1.1rem;
-    margin-bottom: 50px;
-    font-weight: 400;
+.why-work-heading p{ /* Styles the credibility section introduction. */
+    color:#58656b; /* Provides readable secondary contrast in light mode. */
+    font-size:1.05rem; /* Gives the positioning statement more presence than card copy. */
 }
 
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+.why-work-grid{ /* Arranges the four credibility reasons in a responsive grid. */
+    display:grid; /* Enables consistent card alignment. */
+    grid-template-columns:repeat(4,minmax(0,1fr)); /* Shows four concise reasons on wide screens. */
+    gap:18px; /* Creates clear separation without excessive whitespace. */
 }
 
-.testimonial-card {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    position: relative;
-    border: 1px solid rgba(0, 151, 167, 0.1);
-    overflow: hidden;
+.why-work-card{ /* Defines the visual container for each credibility reason. */
+    padding:26px 22px; /* Gives each card comfortable internal spacing. */
+    background:#ffffff; /* Keeps the cards crisp against the lightly tinted section. */
+    border:1px solid rgba(0,151,167,0.14); /* Adds a quiet brand-colored edge for definition. */
+    border-radius:10px; /* Matches the existing site's restrained card rounding. */
+    box-shadow:0 10px 24px rgba(24,50,58,0.07); /* Adds light depth without making the section feel heavy. */
+    transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s ease; /* Keeps hover motion purposeful and restrained. */
 }
 
-.testimonial-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #0097a7, #00bcd4);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+.why-work-card:hover{ /* Provides a subtle interactive response for each reason. */
+    transform:translateY(-5px); /* Lifts the active card slightly to acknowledge pointer focus. */
+    border-color:rgba(0,151,167,0.42); /* Strengthens the brand edge on interaction. */
+    box-shadow:0 16px 30px rgba(24,50,58,0.12); /* Increases depth while preserving a calm visual style. */
 }
 
-.testimonial-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+.why-work-icon{ /* Styles the existing Font Awesome icon as a visual anchor. */
+    display:inline-flex; /* Allows the icon to sit in a stable square area. */
+    align-items:center; /* Centers the icon vertically within its anchor. */
+    justify-content:center; /* Centers the icon horizontally within its anchor. */
+    width:42px; /* Gives every icon the same visual footprint. */
+    height:42px; /* Keeps card headings aligned across different icons. */
+    margin-bottom:18px; /* Separates the icon from the reason title. */
+    border-radius:8px; /* Gives the icon treatment a compact, consistent shape. */
+    background:#e5f7f8; /* Provides a soft accent surface in light mode. */
+    color:#0097a7; /* Keeps the icon within the existing ELINOV palette. */
+    font-size:1.1rem; /* Makes the icon visible without overpowering the text. */
 }
 
-.testimonial-card:hover::before {
-    transform: scaleX(1);
+.why-work-card h3{ /* Establishes hierarchy for each reason title. */
+    margin-bottom:10px; /* Separates the title from its explanation. */
+    font-size:1.05rem; /* Fits the title comfortably inside compact cards. */
+    line-height:1.35; /* Prevents multi-line titles from feeling cramped. */
 }
 
-.testimonial-content {
-    position: relative;
-    margin-bottom: 25px;
+.why-work-card p{ /* Styles the supporting explanation for each reason. */
+    color:#58656b; /* Uses readable secondary text in light mode. */
+    font-size:0.92rem; /* Keeps the copy concise and scannable. */
+    line-height:1.65; /* Gives multi-line explanations enough breathing room. */
 }
 
-.quote-icon {
-    color: #0097a7;
-    font-size: 2rem;
-    margin-bottom: 15px;
-    opacity: 0.7;
+body.dark-mode .why-work{ /* Adapts the credibility band to the existing dark theme. */
+    background:linear-gradient(135deg,#141b1d 0%,#0f3033 100%); /* Maintains subtle atmosphere while preserving dark contrast. */
 }
 
-.testimonial-text {
-    color: #495057;
-    font-size: 1rem;
-    line-height: 1.7;
-    margin: 0;
-    font-style: italic;
-    position: relative;
+body.dark-mode .why-work-heading p, /* Targets the credibility introduction in dark mode. */
+body.dark-mode .why-work-card p{ /* Targets the credibility explanations in dark mode. */
+    color:#c5d0d2; /* Keeps supporting text readable against dark surfaces. */
 }
 
-.testimonial-text::before {
-    content: '"';
-    font-size: 4rem;
-    color: #0097a7;
-    position: absolute;
-    top: -20px;
-    left: -15px;
-    opacity: 0.1;
-    font-family: Georgia, serif;
+body.dark-mode .why-work-card{ /* Styles credibility cards for dark mode. */
+    background:#1a2426; /* Separates cards from the darker section surface. */
+    border-color:rgba(0,188,212,0.2); /* Preserves the accent edge with lower brightness. */
+    box-shadow:0 12px 26px rgba(0,0,0,0.2); /* Provides depth appropriate for dark mode. */
 }
 
-.rating {
-    margin-top: 20px;
-    color: #ffc107;
-    font-size: 1.2rem;
+body.dark-mode .why-work-icon{ /* Adapts the icon surface for dark mode. */
+    background:rgba(0,188,212,0.14); /* Keeps the icon treatment visible without a bright block. */
+    color:#55d8e3; /* Improves icon contrast on the dark card. */
 }
 
-.rating i {
-    margin-right: 2px;
-}
-
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    padding-top: 20px;
-    border-top: 1px solid #e9ecef;
-}
-
-.author-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0097a7, #00bcd4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-    color: white;
-    font-size: 1.5rem;
-    flex-shrink: 0;
-}
-
-.author-info h4 {
-    margin: 0;
-    color: #2c3e50;
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-.author-role {
-    color: #6c757d;
-    font-size: 0.9rem;
-    font-weight: 400;
-}
-
-/* Dark mode testimonials */
-.dark-mode #testimonials {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-}
-
-.dark-mode #testimonials h2 {
-    color: #ffffff;
-}
-
-.dark-mode .section-subtitle {
-    color: #adb5bd;
-}
-
-.dark-mode .testimonial-card {
-    background: #2d2d2d;
-    border-color: rgba(0, 151, 167, 0.2);
-}
-
-.dark-mode .testimonial-text {
-    color: #e9ecef;
-}
-
-.dark-mode .testimonial-author h4 {
-    color: #ffffff;
-}
-
-.dark-mode .author-role {
-    color: #adb5bd;
-}
-
-.dark-mode .testimonial-card:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive testimonials */
-@media (max-width: 768px) {
-    #testimonials {
-        padding: 60px 5%;
-    }
-
-    #testimonials h2 {
-        font-size: 2rem;
-    }
-
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .testimonial-card {
-        padding: 25px;
-    }
-
-    .testimonial-text {
-        font-size: 0.95rem;
+@media(max-width:1024px){ /* Reduces the grid density before tablet widths become cramped. */
+    .why-work-grid{ /* Adjusts the credibility grid for medium screens. */
+        grid-template-columns:repeat(2,minmax(0,1fr)); /* Keeps cards readable in two balanced columns. */
     }
 }
 
-@media (max-width: 480px) {
-    #testimonials h2 {
-        font-size: 1.8rem;
+@media(max-width:600px){ /* Handles compact mobile layouts. */
+    .why-work{ /* Reduces section padding on narrow screens. */
+        padding:62px 6%; /* Preserves breathing room without wasting mobile viewport height. */
     }
-
-    .testimonial-card {
-        padding: 20px;
+    .why-work-grid{ /* Stacks credibility cards for straightforward mobile scanning. */
+        grid-template-columns:1fr; /* Gives each reason the full available width. */
     }
-
-    .author-avatar {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
+    .why-work-heading{ /* Tightens the mobile introduction spacing. */
+        margin-bottom:30px; /* Keeps the grid close enough to the heading. */
     }
 }
 
@@ -2213,7 +2170,8 @@ body.modal-open{
     /* Form and info side by side */
 
     justify-content:space-between;
-    gap:40px;
+    gap:32px; /* Keeps the form and direct contact information balanced without excess whitespace. */
+    align-items:stretch; /* Gives both columns a consistent visual height. */
     /* Space between columns */
 }
 
@@ -2224,10 +2182,21 @@ body.modal-open{
     display:flex;
     flex-direction:column;
     /* Stack input fields vertically */
-    gap:15px;
+    gap:10px; /* Groups each label with its field while preserving comfortable form rhythm. */
     /* Space between inputs */
     font-family: Arial, Helvetica, sans-serif;
-    transition:0.3s;
+    transition:0.3s; /* Keeps the existing form transition behavior intact. */
+    padding:26px; /* Frames the existing fields as a focused project inquiry area. */
+    background:#ffffff; /* Keeps the form surface bright and familiar in both themes. */
+    border:1px solid rgba(0,151,167,0.14); /* Gives the form a subtle brand edge. */
+    border-radius:10px; /* Matches the site's existing restrained card radius. */
+    box-shadow:0 10px 24px rgba(24,50,58,0.06); /* Adds quiet depth around the form. */
+}
+
+.contact-form label{ /* Makes each field purpose visible and improves form accessibility. */
+    color:#455357; /* Uses readable label contrast in light mode. */
+    font-size:0.82rem; /* Keeps labels subordinate to the entered content. */
+    font-weight:700; /* Makes field purpose easy to scan. */
 }
 
 .contact-form input:focus,
@@ -2245,11 +2214,11 @@ body.modal-open{
 
 .contact-form input,
 .contact-form textarea{
-    padding:12px;
-    border-radius:5px;
+    padding:13px 14px; /* Gives typed content comfortable breathing room. */
+    border-radius:7px; /* Softens the fields while staying consistent with the site's card language. */
     border:1px solid rgba(0,0,0,0.12);
-    background:#f4f7fb;
-    color:#111;
+    background:#f4f7fb; /* Keeps the fields visually separated from the white form frame. */
+    color:#111; /* Ensures entered text remains readable when the field surface is white. */
     /* Light input fields */
 }
 
@@ -2277,8 +2246,17 @@ body.modal-open{
     display:flex;
     flex-direction:column;
     justify-content:center;
-    gap:10px;
-    color:#333;
+    gap:12px; /* Creates clear rhythm between the direct-contact heading, copy, and links. */
+    padding:26px; /* Gives the direct contact column the same visual weight as the form. */
+    background:#f8f9fb; /* Provides a softer companion surface beside the form. */
+    border:1px solid rgba(0,151,167,0.12); /* Defines the information column without adding clutter. */
+    border-radius:10px; /* Keeps both contact columns visually related. */
+    color:#333; /* Preserves readable light-mode contact text. */
+}
+
+.contact-info h3{ /* Establishes hierarchy for the direct conversation invitation. */
+    color:#233437; /* Makes the contact prompt prominent in light mode. */
+    font-size:1.2rem; /* Gives the prompt stronger emphasis than the supporting copy. */
 }
 
 .contact-info p{
@@ -2289,13 +2267,49 @@ body.modal-open{
 .contact-form .btn{
     background:#00bcd4;
     border-radius:5px;
-    padding:12px;
+    padding:13px 18px; /* Gives the existing submit action a more confident clickable area. */
+    align-self:flex-start; /* Keeps the action tied to the form content instead of stretching unnecessarily. */
     cursor:pointer;
     transition:0.3s;
 }
 
 .contact-form .btn:hover{
     background:#0097a7;
+}
+
+body.dark-mode .contact-intro{ /* Keeps the contact invitation readable in dark mode. */
+    color:#c5d0d2; /* Uses light secondary text against the dark section surface. */
+}
+
+body.dark-mode .contact-form{ /* Keeps the form frame visible in dark mode while its fields remain white. */
+    background:#171f21; /* Creates a dark frame around the white fields for contrast. */
+    border-color:rgba(0,188,212,0.2); /* Preserves the brand edge in dark mode. */
+}
+
+body.dark-mode .contact-form label{ /* Keeps field labels readable above white fields in dark mode. */
+    color:#d6e1e3; /* Uses light label text on the dark form frame. */
+}
+
+body.dark-mode .contact-form input, /* Targets the existing name and email fields in dark mode. */
+body.dark-mode .contact-form textarea{ /* Targets the existing project brief field in dark mode. */
+    background:#ffffff; /* Matches the white field surface already present in the dark theme. */
+    color:#000000; /* Makes typed content clearly visible on the white field surface. */
+    border-color:rgba(0,0,0,0.18); /* Gives white fields a visible boundary against the dark form frame. */
+}
+
+body.dark-mode .contact-form input:focus, /* Keeps focused text fields consistent in dark mode. */
+body.dark-mode .contact-form textarea:focus{ /* Keeps the focused project brief field consistent in dark mode. */
+    background:#ffffff; /* Prevents the focus state from changing the white field surface. */
+}
+
+body.dark-mode .contact-info{ /* Adapts the direct contact column to dark mode. */
+    background:#1a2426; /* Keeps the information column distinct from the dark section. */
+    border-color:rgba(0,188,212,0.2); /* Retains a subtle brand edge. */
+    color:#d6e1e3; /* Keeps direct-contact copy readable. */
+}
+
+body.dark-mode .contact-info h3{ /* Keeps the direct-contact heading prominent in dark mode. */
+    color:#ffffff; /* Provides strong heading contrast. */
 }
 
 
@@ -2764,10 +2778,11 @@ body.dark-mode .document-card-info p {
     .counter{
         flex-direction:column;
         gap:15px;
-        padding:30px 5%;
-    }
-
+        padding:82px 10%; /* Gives the project invitation enough space to feel intentional and welcoming. */
+        font-size:clamp(2rem,4vw,2.8rem); /* Scales the contact heading across desktop and mobile without overflow. */
+        margin-bottom:12px; /* Keeps the heading connected to its supporting invitation. */
     .counter-box{
+
         width:100%;
         max-width:250px;
         margin:0 auto;
