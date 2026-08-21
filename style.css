@@ -415,6 +415,12 @@ body.dark-mode textarea::placeholder{
 color:#888; /* Gray placeholder text */
 }
 
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea{
+color:#000000;
+caret-color:#000000;
+}
+
 /* Hero section in dark mode */
 body.dark-mode .hero::before{
 background:linear-gradient(135deg, rgba(15,15,15,0.95) 0%, rgba(25,25,25,0.95) 100%); /* Dark gradient */
