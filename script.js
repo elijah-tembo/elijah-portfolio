@@ -174,11 +174,8 @@ const faders = document.querySelectorAll(".fade-in"); /* Select all elements wit
 /* ============================= */
 /* Typing Animation */
 /* ============================= */
-const textArray = [ /* Array of texts to type */
-"Website & Graphics Designer",
-"Frontend Developer",
-"UI/UX Designer",
-"Brand Designer"
+const textArray = [ /* Keeps the existing typing animation focused on the complete, accurate professional title. */
+"Graphics Designer | Web Designer | Front-End Developer"
 ];
 /* Texts that will rotate */
 

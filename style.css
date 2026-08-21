@@ -822,11 +822,12 @@ transform:translateY(0);
 .hero-text h3{
     color:#00bcd4; /* Cyan color */
     margin-bottom:25px; /* Bottom margin */
-    font-size:24px; /* Font size */
+    font-size:clamp(1.05rem,2.1vw,1.5rem); /* Keeps the complete professional title readable across viewport sizes. */
     font-weight:300; /* Light font weight */
-    min-height:3em; /* Reserve height for animated text */
-    white-space:nowrap; /* Prevent text height changes while typing */
-    overflow:hidden; /* Hide overflow if text is wider */
+    min-height:3em; /* Reserves space for the animated title while it is being typed. */
+    max-width:620px; /* Keeps the long title within the hero text column. */
+    white-space:normal; /* Allows the complete title to wrap naturally instead of overflowing. */
+    overflow-wrap:anywhere; /* Prevents the separators and long words from breaking the hero layout. */
 }
 
 .hero-text p{
@@ -2778,9 +2779,9 @@ body.dark-mode .document-card-info p {
     .counter{
         flex-direction:column;
         gap:15px;
-        padding:82px 10%; /* Gives the project invitation enough space to feel intentional and welcoming. */
-        font-size:clamp(2rem,4vw,2.8rem); /* Scales the contact heading across desktop and mobile without overflow. */
-        margin-bottom:12px; /* Keeps the heading connected to its supporting invitation. */
+        padding:30px 5%;
+    }
+
     .counter-box{
 
         width:100%;
