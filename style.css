@@ -1631,6 +1631,38 @@ color: white;
     align-items:start;
 }
 
+.flyer-page .flyer-gallery > .flyer-category{
+    grid-column:1 / -1;
+}
+
+.flyer-page .flyer-category:nth-child(1){
+    order:3;
+}
+
+.flyer-page .flyer-category:nth-child(2){
+    order:1;
+}
+
+.flyer-page .flyer-category:nth-child(3){
+    order:2;
+}
+
+.flyer-page .flyer-category:nth-child(4){
+    order:4;
+}
+
+.flyer-page .flyer-category:nth-child(5){
+    order:5;
+}
+
+.flyer-category-description{
+    margin:8px 0 0;
+}
+
+.flyer-page .flyer-category .flyer-info{
+    display:none;
+}
+
 .flyer-card{
     display:flex;
     flex-direction:column;
