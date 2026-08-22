@@ -1,6 +1,26 @@
 <!DOCTYPE html>
+<!--
+==================================================
+ADMIN HTML CODE MAP
+==================================================
+
+1. Head       -> Page metadata and shared stylesheet
+2. Password   -> Existing client-side access prompt
+3. Form       -> Project title and image inputs
+4. List       -> Saved project output container
+5. Script     -> admin.js behavior
+
+HTML = STRUCTURE
+==================================================
+
+    This document is the small browser-based admin page. It is kept
+    separate from the public portfolio and uses admin.js to save projects
+    in localStorage so they can be displayed again in this browser.
+-->
 <html lang="en">
 <head>
+    <!-- The head contains information and linked files that support the page;
+         the visible admin controls are created later inside the body. -->
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +33,9 @@
 </head>
 
 <body>
+    <!-- The password prompt below is a simple client-side gate. It is not a
+         replacement for server-side authentication because the password is
+         visible in the page source. -->
 
     <!-- Simple password protection -->
 <!-- Blocks casual access to the admin page -->
@@ -27,22 +50,28 @@
 </script>
 
 <h2>Portfolio Admin Panel</h2>
+<!-- This heading identifies the purpose of the page for the administrator. -->
 
 <!-- Add Project -->
 
 <h3>Add Project</h3>
 
 <input type="text" id="project-title" placeholder="Project Title">
+<!-- The ID lets admin.js find the title value when addProject() runs. -->
 
 <input type="text" id="project-image" placeholder="Image URL">
+<!-- The image path is read by JavaScript and saved with the project title. -->
 
 <button onclick="addProject()">Add Project</button>
+<!-- The inline click handler calls the global addProject() function in admin.js. -->
 
 <!-- Project List -->
 
 <div id="project-list"></div>
+<!-- admin.js inserts the saved project markup into this empty container. -->
 
 <script src="admin.js"></script>
+<!-- Loads the page-specific behavior after the admin HTML elements exist. -->
 
 </body>
 </html>

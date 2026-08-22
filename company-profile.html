@@ -1,4 +1,24 @@
 <!DOCTYPE html> <!-- Declares the HTML document type -->
+<!--
+==================================================
+PAGE CODE MAP
+==================================================
+
+1. Head       -> Metadata and shared files
+2. Header     -> Site navigation and theme control
+3. Hero       -> Company-profile category introduction
+4. Documents  -> PDF cards, preview buttons and downloads
+5. Brochures  -> Reused document-card pattern
+6. Footer     -> Copyright information
+7. Script     -> Shared PDF and page interactions
+
+HTML = STRUCTURE
+==================================================
+
+    This page presents company profiles and brochures. Its document cards
+    connect button data-preview-target values to iframe IDs, allowing the
+    shared script to load each PDF only when a visitor requests a preview.
+-->
 <html lang="en"> <!-- Sets the document language to English -->
 <head> <!-- Metadata and stylesheet links for the page -->
     <meta charset="UTF-8"> <!-- Encodes the page using UTF-8 characters -->
@@ -10,6 +30,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body> <!-- Opening body tag for page content -->
+    <!-- The page uses shared navigation and theme markup, followed by hero
+         content and document sections containing the PDF controls. -->
     <header> <!-- Header area containing navigation -->
         <nav> <!-- Navigation wrapper -->
             <a href="index.html#home" class="logo" aria-label="Home">
@@ -56,7 +78,9 @@
         </div>
     </section>
 
-    <section class="documents fade-in" id="company-profiles"> <!-- Company profile documents section -->
+        <!-- fade-in is observed by script.js and styled by CSS when the document
+            section enters the viewport. -->
+        <section class="documents fade-in" id="company-profiles"> <!-- Company profile documents section -->
         <div class="portfolio-container"> <!-- Reuse container spacing -->
             <h2>Company Profile Documents</h2>
             <p class="section-subtitle">Clients can preview or download company profile booklets created for other businesses.</p>
@@ -66,6 +90,7 @@
                         <h3>Camp Communique Booklet</h3>
                         <p>Brand profile document and showcase booklet designed for Camp Communique.</p>
                         <div class="document-actions">
+                            <!-- data-preview-target names the iframe this button controls. -->
                             <button type="button" class="btn btn-preview" data-preview-target="camp-preview">Preview</button>
                             <button type="button" class="btn btn-view" data-view-target="camp-preview">View PDF</button>
                             <a href="documents/company_profiles/CAMP%20COMMUNIQUE%20Booklet%20Project.pdf" class="btn btn-outline" download>Download</a>
@@ -109,6 +134,7 @@
         </div>
     </section>
 
+    <!-- A second document section reuses the same card and preview pattern. -->
     <section class="documents fade-in" id="brochures"> <!-- Brochure documents section -->
         <div class="portfolio-container"> <!-- Reuse container spacing -->
             <h2>Brochures</h2>
@@ -212,6 +238,7 @@
         </div>
     </footer>
 
+    <!-- Loads the shared PDF, theme, navigation, and scroll behavior. -->
     <script src="script.js"></script> <!-- Shared JavaScript file included for page functionality -->
 </body>
 </html>

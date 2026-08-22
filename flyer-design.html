@@ -1,4 +1,24 @@
 <!DOCTYPE html> <!-- Defines the file as an HTML5 document -->
+<!--
+==================================================
+PAGE CODE MAP
+==================================================
+
+1. Head       -> Metadata and shared files
+2. Header     -> Site navigation and theme control
+3. Hero       -> Flyer category introduction
+4. Gallery    -> Categorized flyer cards
+5. Modal      -> Selected flyer preview
+6. Footer     -> Copyright information
+7. Script     -> Shared gallery and page interactions
+
+HTML = STRUCTURE
+==================================================
+
+    This page is the flyer category gallery. The flyer cards use data-image-src
+    as a JavaScript hook, while the shared CSS controls their grid and modal
+    appearance without changing the image files themselves.
+-->
 <html lang="en"> <!-- Root HTML element with English language attribute -->
 <head> <!-- Page metadata and stylesheet links -->
     <meta charset="UTF-8"> <!-- Character encoding set to UTF-8 -->
@@ -10,6 +30,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="flyer-page"> <!-- Page content begins here -->
+    <!-- flyer-page scopes flyer-specific CSS so shared styles can be reused
+         without affecting unrelated pages. -->
     <div class="cursor"></div>
 
      <div class="scroll-bar"></div>
@@ -57,7 +79,9 @@
         </div>
     </section>
 
-    <section class="flyers" id="flyers">
+        <!-- Each category contains links to original images. script.js prevents
+            normal link navigation and opens the selected image in a modal. -->
+        <section class="flyers" id="flyers">
         <div class="portfolio-container"> <!-- Container for the flyer gallery section -->
             <h2>Flyer Gallery</h2>
             <p class="section-subtitle">A selection of flyer designs created for clients.</p>
@@ -154,7 +178,9 @@
         </div>
     </section>
 
-    <div class="image-modal" id="image-modal">
+        <!-- This modal starts hidden in CSS. JavaScript adds active and places the
+            clicked card's data-image-src into modal-image. -->
+        <div class="image-modal" id="image-modal">
         <div class="image-modal-content">
             <img id="modal-image" src="" alt="Flyer preview">
             <button class="modal-close" id="modal-close" aria-label="Close image preview">✕</button>
@@ -176,6 +202,7 @@
         <img class="lightbox-img" id="lightbox-img">
     </div>
 
+        <!-- The shared script also handles the flyer modal and theme control. -->
         <script src="script.js"></script> <!-- Shared JavaScript file for interactive page behavior -->
 </body>
 </html>

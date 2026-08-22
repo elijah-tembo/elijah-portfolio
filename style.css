@@ -27,6 +27,7 @@ JavaScript = BEHAVIOUR / INTERACTIVITY
     RESET AND GLOBAL STYLES
     ================================================== */
 *{
+    /* The universal selector applies these base rules to every HTML element. */
     margin:0; /* Remove default margins */
     padding:0; /* Remove default padding */
     box-sizing:border-box; /* Include padding and border in element's total width and height */
@@ -39,6 +40,7 @@ JavaScript = BEHAVIOUR / INTERACTIVITY
 /* ============================= */
 
 :root{
+/* :root stores reusable custom properties for the whole document. */
 --bg-color:#ffffff;
 /* Light mode background */
 --text-color:#111111;
@@ -49,6 +51,7 @@ JavaScript = BEHAVIOUR / INTERACTIVITY
 
 /* Dark Mode */
 body.dark-mode{
+/* Adding dark-mode to <body> changes these variables for the entire page. */
 --bg-color:#0b0b0b;
 /* Dark background */
 --text-color:#ffffff;
@@ -60,6 +63,8 @@ body.dark-mode{
 /* Body styling */
 
 body{
+    /* The body is the main page surface, so these inherited values establish
+       the default background, text colour, font and reading rhythm. */
     background:#f7f7f7; /* Light neutral background for the full page */
     color:#111; /* Dark text for readability */
     font-family: Arial, Helvetica, sans-serif; /* Set font family */
@@ -67,6 +72,7 @@ body{
 }
 
 html{
+    /* Smooth scrolling affects anchor links such as the navigation targets. */
     scroll-behavior:smooth; /* Enable smooth scrolling */
 }
 
@@ -74,6 +80,7 @@ html{
 /* Loading Screen */
 /* ============================= */
 #loader{
+/* This ID selects the full-screen loading element from the HTML. */
 position:fixed; /* Fixed position covers entire screen */
 width:100%; /* Full width */
 height:100%; /* Full height */
@@ -85,6 +92,7 @@ z-index:9999; /* High z-index to stay on top */
 }
 
 .spinner{
+/* A bordered circle plus the spin keyframe creates the loading indicator. */
 width:50px; /* Spinner width */
 height:50px; /* Spinner height */
 border:5px solid rgba(0,0,0,0.1); /* Light border color */
@@ -104,6 +112,7 @@ animation:spin 1s linear infinite; /* Apply spinning animation */
 Custom Cursor Animation (Premium Feel)
 ================================ */
 .cursor{
+/* This element is the visual custom pointer; JavaScript can position it. */
     position:fixed; /* Fixed position follows mouse */
     width:15px; /* Cursor width */
     height:15px; /* Cursor height */
@@ -126,6 +135,7 @@ html, body{
 /* Sticky Navbar */
 /* ============================= */
 header{
+/* The fixed header stays visible while the visitor scrolls through sections. */
     position:fixed; /* Always fixed at top */
     top:18px; /* Adds breathing room above the sticky navbar so it does not touch the viewport edge. */
     left:16px; /* Separates the navbar from the left viewport edge. */
@@ -140,6 +150,7 @@ header{
 
 /* Navigation styling */
 nav{
+/* Flexbox keeps the logo, theme control and menu aligned in one row. */
     display:flex; /* Places items in one row */
     justify-content:space-between; /* Space between logo and menu */
     align-items:center; /* Align vertically */
@@ -157,6 +168,7 @@ nav{
 /* PROFESSIONAL MOBILE MENU */
 /* ============================= */
 .menu-toggle{
+/* Hidden on wide screens and shown by the mobile media query. */
 display:none;
 /* Hide hamburger on desktop */
 width:35px;
@@ -173,6 +185,7 @@ z-index:1001;
 
 /* Hamburger Lines */
 .menu-toggle span{
+/* Each span is one visible line of the hamburger icon. */
 position:absolute;
 /* Allows free positioning */
 width:100%;
@@ -255,6 +268,7 @@ background:#00bcd4;
 /* Dark Mode Toggle */
 /* ============================= */
 .dark-mode-toggle{
+/* This class styles the Font Awesome icon that JavaScript updates on click. */
 cursor:pointer; /* Shows pointer cursor */
 font-size:22px; /* Icon size */
 color:#333; /* Icon color in light mode */
@@ -719,6 +733,7 @@ ul li a.nav-active::after{
 
 /* Logo styling */
 .logo{
+/* The logo link is a stable box so swapping theme images does not move the nav. */
     display:block; /* Keeps the logo link as a stable navbar item for consistent alignment. */
     width:230px; /* Makes the desktop logo wide enough for the ELINOV name and tagline to be readable. */
     height:64px; /* Gives the navbar a stable height while leaving enough room for the logo artwork. */
@@ -733,6 +748,7 @@ ul li a.nav-active::after{
 }
 
 .logo-image-dark{
+/* The dark logo starts hidden and is selected by body.dark-mode. */
     display:none;
 }
 
@@ -801,6 +817,7 @@ transform:translateY(0);
 /* Hero Section */
 /* ============================= */
 .hero{
+/* The hero is the first major content band and contains the introduction. */
     padding:80px 10% 60px; /* Top, sides, bottom padding */
     margin-top:80px; /* Top margin to account for fixed header */
     position:relative; /* For pseudo-elements */
@@ -808,6 +825,7 @@ transform:translateY(0);
 }
 
 .hero::before{
+/* This pseudo-element creates the existing hero background without extra HTML. */
     content:''; /* Empty content for background overlay */
     position:absolute; /* Absolute positioning */
     top:0; /* Top edge */
@@ -819,6 +837,7 @@ transform:translateY(0);
 }
 
 .hero-content{
+/* Flexbox groups hero text and image and allows them to wrap responsively. */
     display:flex; /* Flexbox layout */
     justify-content:space-between; /* Space between items */
     align-items:center; /* Vertical alignment */
@@ -836,6 +855,7 @@ transform:translateY(0);
 }
 
 .hero-text h1{
+/* The heading uses a clipped gradient to create the existing accent effect. */
     font-size:55px; /* Large font size */
     margin-bottom:15px; /* Bottom margin */
     background:linear-gradient(135deg, #00bcd4, #0097a7); /* Gradient text background */
@@ -965,6 +985,7 @@ transform:translateY(0);
 /* Button Styling */
 /* ============================= */
 .btn{
+/* Links with btn are reusable calls to action throughout the pages. */
     display:inline-block; 
     /* Makes link behave like button */
 
@@ -990,6 +1011,7 @@ transform:translateY(0);
 
 /* Outline Button */
 .btn-outline{
+/* This modifier changes a filled button into the outlined variant. */
     background:transparent; 
     /* Transparent background */
 
@@ -1032,6 +1054,7 @@ transform:translateY(0);
 /* About Section */
 /* ============================= */
 .about{
+/* The about section groups the profile image and explanatory text. */
     padding:80px 10%; /* Top/bottom and left/right padding */
     background:#ffffff; /* White section background */
     position:relative; /* For pseudo-elements */
@@ -1179,6 +1202,7 @@ margin:0 auto; /* Centers the professional history on the page. */
 
 /* Vertical Line */
 .timeline::after{
+/* The pseudo-element draws the central timeline line without extra HTML. */
 content: '';
 position: absolute;
 width: 2px;
@@ -1317,6 +1341,7 @@ left: 10px;
 
 /* =================== COUNTER SECTION ==================  */
 .counter{
+/* Flexbox distributes the statistic boxes across this section. */
     padding:60px 10%;
     display:flex;
     justify-content:space-around;
@@ -1414,6 +1439,7 @@ left: 10px;
 
 
 .services{
+/* This section contains the reusable service-card components. */
     padding:60px 10%; /* Top/bottom and left/right padding */
     /* Adds spacing inside section */
 
@@ -1549,6 +1575,7 @@ color: white;
 }
 
 .portfolio-grid{
+/* CSS Grid creates consistent project columns and gaps. */
     display:grid;
     /* Creates grid layout */
 
@@ -1560,6 +1587,7 @@ color: white;
 }
 
 .portfolio-item{
+/* Each project card is positioned relative to its overlay and image content. */
     position:relative;
     /* Needed for overlay */
 
@@ -1823,6 +1851,7 @@ body.modal-open{
 
 /* Overlay Styling */
 .portfolio-overlay{
+/* The overlay sits above a project image and appears on hover. */
     position:absolute;
     /* Position over image */
 
@@ -1896,6 +1925,7 @@ body.modal-open{
 }
 
 .skills-content{
+/* Flexbox places the web and graphics skill groups beside each other on wide screens. */
     display:flex;
     /* Two column layout */
 
@@ -1964,6 +1994,7 @@ body.modal-open{
 }
 
 .skill-bar span{
+/* The inline width on each span represents the existing skill percentage. */
     display:block;
     height:100%;
     background:linear-gradient(90deg,#0097a7,#00bcd4); /* Adds a restrained brand gradient without changing the existing level values. */
@@ -2120,6 +2151,7 @@ body.dark-mode .why-work-icon{ /* Adapts the icon surface for dark mode. */
 /* Contact Section */
 /* ============================= */
 .contact{
+/* The contact band contains the EmailJS form and direct contact details. */
     padding:60px 10%;
     /* Adds spacing inside section */
 
@@ -2187,6 +2219,7 @@ body.dark-mode .why-work-icon{ /* Adapts the icon surface for dark mode. */
 
 .contact-form input,
 .contact-form textarea{
+/* These selectors style both single-line fields and the message field. */
     padding:13px 14px; /* Gives typed content comfortable breathing room. */
     border-radius:7px; /* Softens the fields while staying consistent with the site's card language. */
     border:1px solid rgba(0,0,0,0.12);
@@ -2290,6 +2323,7 @@ body.dark-mode .contact-info h3{ /* Keeps the direct-contact heading prominent i
 /* Success Popup Styling */
 /* ============================= */
 .success-popup {
+/* This full-screen layer displays success or error feedback above the page. */
     position: fixed; /* Fix position on screen */
     top: 0; /* Align to top */
     left: 0; /* Align to left */
@@ -2357,6 +2391,7 @@ body.dark-mode .contact-info h3{ /* Keeps the direct-contact heading prominent i
 /* Footer Styling */
 /* ============================= */
 footer{
+/* Footer rules style the closing information and social links. */
     background:#f5f6f8;
     /* Light footer background */
 
@@ -2509,6 +2544,7 @@ box-shadow:0 4px 12px rgba(0,188,212,0.5); /* Enhanced shadow in dark mode */
 }
 
 .whatsapp{
+/* This fixed link remains available as a direct WhatsApp contact action. */
 position:fixed;
 bottom:20px;
 right:20px;

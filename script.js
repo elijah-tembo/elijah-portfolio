@@ -29,7 +29,11 @@ JavaScript = BEHAVIOUR / INTERACTIVITY
    page is displayed.
 */
 if (localStorage.getItem("darkMode") === "true") {
+    // getItem() reads the saved value as text; the comparison checks the exact
+    // value written when the visitor last changed the theme.
     document.body.classList.add("dark-mode");
+    // classList.add() changes the body class, allowing body.dark-mode CSS rules
+    // to control the colours and other theme-dependent appearance.
 }
 
 /* ==================================================
@@ -40,7 +44,10 @@ if (localStorage.getItem("darkMode") === "true") {
    the shared script safe on the other pages.
 */
 if (typeof emailjs !== "undefined") {
+    // typeof safely checks whether the optional EmailJS global exists before
+    // calling its API, because only index.html loads the EmailJS library.
     emailjs.init("aiuy-9Ek4VkNl-1pj");
+    // init() connects this page to the existing EmailJS public configuration.
 }
 
 /* ==================================================
@@ -51,22 +58,34 @@ if (typeof emailjs !== "undefined") {
    field names and sends them with the configured service/template.
 */
 const contactForm = document.getElementById("contact-form");
+// getElementById() searches the HTML document for the form's unique ID and
+// returns the element so JavaScript can attach behavior to that form.
 
 if (contactForm) {
+    // The condition prevents errors on pages that do not contain the form.
     contactForm.addEventListener("submit", function (event) {
+        // addEventListener() registers a callback that runs when the form is submitted.
         event.preventDefault();
+        // preventDefault() stops a normal page reload so EmailJS can handle the send.
 
         emailjs.sendForm("service_lfgf17s", "template_mafunjl", this)
+            // sendForm() reads the existing named fields and returns a Promise,
+            // which lets the following callbacks handle success or failure.
             .then(function () {
+                // This callback runs after EmailJS reports a successful send.
                 contactForm.reset();
+                // reset() clears the user's values after they have been sent.
 
                 const successPopup = document.getElementById("success-popup");
                 if (successPopup) {
                     successPopup.style.display = "flex";
+                    // The CSS normally hides this popup; flex makes it visible
+                    // while preserving its centering layout.
                 }
 
                 setTimeout(closePopup, 3000);
             }, function (error) {
+                // This callback receives the error object when the Promise fails.
                 console.error("EmailJS error:", error);
 
                 const errorPopup = document.createElement("div");
@@ -74,6 +93,7 @@ if (contactForm) {
                 errorPopup.style.display = "flex";
                 errorPopup.innerHTML = "<div class=\"popup-content\" style=\"border-color: #ff6b6b;\"><h3 style=\"color: #ff6b6b;\">Message Failed</h3><p>Unable to send your message. Please try again or contact via email.</p><button onclick=\"this.parentElement.parentElement.remove()\">Close</button></div>";
                 document.body.appendChild(errorPopup);
+                // appendChild() adds the generated error message to the visible page.
             });
     });
 }
@@ -87,14 +107,19 @@ if (contactForm) {
 */
 function toggleMenu() {
     const navMenu = document.querySelector("nav ul");
+    // querySelector() returns the first navigation list matching the CSS selector.
     const menuToggle = document.querySelector(".menu-toggle");
+    // This finds the hamburger element whose active class drives its animation.
 
     if (!navMenu || !menuToggle) {
         return;
     }
 
     navMenu.classList.toggle("active");
+    // toggle() adds active when absent and removes it when present; CSS uses this
+    // state to slide the mobile menu into view.
     menuToggle.classList.toggle("active");
+    // The same state change transforms the three hamburger lines into a close icon.
 }
 
 function closeMobileMenu() {
@@ -106,13 +131,16 @@ function closeMobileMenu() {
     }
 
     navMenu.classList.remove("active");
+    // remove() guarantees that the mobile menu returns to its hidden state.
     menuToggle.classList.remove("active");
+    // Removing the class also returns the hamburger icon to its normal shape.
 }
 
 /* ==================================================
    PAGE LOADER
    ================================================== */
 window.addEventListener("load", function () {
+    // The load event waits until page resources finish loading before hiding the loader.
     const loader = document.getElementById("loader");
 
     if (loader) {
@@ -127,13 +155,17 @@ window.addEventListener("load", function () {
    CSS controls the visual transition for that class.
 */
 const faders = document.querySelectorAll(".fade-in");
+// querySelectorAll() returns every matching section as a NodeList for the scroll loop.
 
 window.addEventListener("scroll", function () {
+    // The scroll event repeats this viewport check as the visitor moves down the page.
     faders.forEach(function (element) {
         const top = element.getBoundingClientRect().top;
+        // getBoundingClientRect() measures the element relative to the viewport.
 
         if (top < window.innerHeight - 100) {
             element.classList.add("show");
+            // CSS uses .show to reveal the element with its existing transition.
         }
     });
 });
@@ -144,9 +176,12 @@ window.addEventListener("scroll", function () {
 const textArray = [
     "Graphics Designer | Web Designer | Front-End Developer"
 ];
+// An array stores the text values that the typing functions can display in sequence.
 
 let typingIndex = 0;
+// let is used because the current text position changes while the animation runs.
 let charIndex = 0;
+// This second index tracks the next character within the selected text.
 
 function typeText() {
     const typingElement = document.getElementById("typing");

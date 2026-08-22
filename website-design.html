@@ -1,4 +1,24 @@
 <!DOCTYPE html>
+<!--
+==================================================
+PAGE CODE MAP
+==================================================
+
+1. Head       -> Metadata and shared files
+2. Header     -> Site navigation and theme control
+3. Hero       -> Website design category introduction
+4. Case study -> Project explanation and images
+5. Portfolio  -> Related website projects
+6. Footer     -> Copyright information
+7. Script     -> Shared page interactions
+
+HTML = STRUCTURE
+==================================================
+
+    This page presents the website-design project category. It reuses the
+    shared stylesheet and script so navigation, theme controls, animations,
+    and other common behavior stay consistent with the homepage.
+-->
 <html lang="en"> <!-- Root HTML element with language set to English -->
 <head>
     <meta charset="UTF-8"> <!-- Defines UTF-8 character encoding for the page -->
@@ -10,6 +30,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body> <!-- Page body begins -->
+    <!-- The body contains the visible project story: shared navigation,
+         a category hero, case-study content, related work, and the footer. -->
     <header> <!-- Header container for the navigation bar -->
         <nav> <!-- Navigation wrapper holds logo and menu links -->
             <a href="index.html#home" class="logo" aria-label="Home">
@@ -39,6 +61,7 @@
         </nav>
     </header>
 
+    <!-- The hero uses id="home" so shared home navigation can target it. -->
     <section id="home" class="hero"> <!-- Hero section that introduces the website design category -->
         <div class="hero-content"> <!-- Layout container for hero text and image -->
             <div class="hero-text"> <!-- Text block inside hero section -->
@@ -56,7 +79,9 @@
         </div>
     </section>
 
-    <section class="case-study fade-in"> <!-- Case study section to show project details and outcomes -->
+        <!-- fade-in is a JavaScript hook; CSS supplies the transition after the
+            script adds the show class when this section enters the viewport. -->
+        <section class="case-study fade-in"> <!-- Case study section to show project details and outcomes -->
         <div class="case-study-container"> <!-- Container for the case study text and images -->
             <div class="case-study-text"> <!-- Text content for the case study -->
                 <h2>Website Case Study</h2> <!-- Section heading for the case study -->
@@ -109,6 +134,8 @@
         </div>
     </footer>
 
-    <script src="script.js"></script> <!-- Link to the shared JavaScript file -->
+        <!-- Loading the shared script here lets it find the page elements while
+            safely skipping features that this page does not contain. -->
+        <script src="script.js"></script> <!-- Link to the shared JavaScript file -->
 </body>
 </html>
