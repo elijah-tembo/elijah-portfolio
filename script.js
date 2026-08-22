@@ -1,581 +1,462 @@
+/*
+==================================================
+JAVASCRIPT CODE MAP
+==================================================
 
+1. Early theme restore       -> Prevents a flash of light mode
+2. EmailJS setup             -> Connects the contact form to EmailJS
+3. Mobile navigation         -> Opens and closes the mobile menu
+4. Page loader               -> Hides the loading screen after page load
+5. Scroll animations         -> Reveals sections as they enter the viewport
+6. Typing animation          -> Types the professional title in the hero
+7. Page interactions         -> Handles PDFs, flyer previews and navigation
+8. Dark/light mode           -> Saves and restores the selected theme
+9. Counter animation         -> Counts statistics when they become visible
+10. Portfolio lightbox       -> Opens project images in a larger view
+11. Project filter           -> Supports filter buttons when present
 
+HTML = STRUCTURE
+CSS = APPEARANCE
+JavaScript = BEHAVIOUR / INTERACTIVITY
+==================================================
+*/
 
-
-/* ============================= */
-/* Dark Mode — Early Restore     */
-/* ============================= */
-
-/* This runs immediately when the script loads, before the page renders.     */
-/* It checks if the user previously chose dark mode and applies it right     */
-/* away — preventing a flash of white/light mode on page load.               */
-
+/* ==================================================
+   EARLY THEME RESTORE
+   ==================================================
+   localStorage remembers the visitor's theme choice.
+   This runs early so dark mode is applied before the
+   page is displayed.
+*/
 if (localStorage.getItem("darkMode") === "true") {
     document.body.classList.add("dark-mode");
 }
 
-
-/* ============================= */
-/* EmailJS Initialisation        */
-/* ============================= */
-
-/* Only initialise EmailJS if the library has been loaded on this page.  */
-/* Sub-pages like flyer-design.html don't include the EmailJS SDK,        */
-/* so without this check the script crashes immediately and nothing else  */
-/* in this file runs — including dark mode, the mobile menu, etc.         */
-
+/* ==================================================
+   EMAILJS SETUP
+   ==================================================
+   EmailJS sends the contact form directly from the browser.
+   The SDK is included only on index.html, so this check keeps
+   the shared script safe on the other pages.
+*/
 if (typeof emailjs !== "undefined") {
     emailjs.init("aiuy-9Ek4VkNl-1pj");
 }
 
-/* =============================
-Contact Form Submission Script
-============================= */
+/* ==================================================
+   CONTACT FORM / EMAILJS
+   ==================================================
+   preventDefault() stops the browser's normal form submission,
+   which would reload the page. EmailJS receives the existing
+   field names and sends them with the configured service/template.
+*/
+const contactForm = document.getElementById("contact-form");
 
-const contactForm = document.getElementById('contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(event){ /* Get form element and listen for submit */
-        // Select the form using id="contact-form"
-        // Add event listener to detect form submission
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-        event.preventDefault(); /* Prevent default form behavior */
-        // Prevent default form submission
-        // Stops page reload when clicking submit
+        emailjs.sendForm("service_lfgf17s", "template_mafunjl", this)
+            .then(function () {
+                contactForm.reset();
 
-        emailjs.sendForm('service_lfgf17s', 'template_mafunjl', this) /* Send form data using EmailJS */
-        // Send form data using EmailJS
-        // 'service_lfgf17s' → Your Service ID
-        // 'template_mafunjl' → Your Template ID
-        // 'this' → Refers to the form element
+                const successPopup = document.getElementById("success-popup");
+                if (successPopup) {
+                    successPopup.style.display = "flex";
+                }
 
-    .then(function(){ /* Success callback */
-        // This runs if message is sent successfully
-        contactForm.reset(); /* Reset form fields after successful send */
-        document.getElementById("success-popup").style.display = "flex"; /* Show success popup */
-        // Show success alert
-        
-        // Auto-close popup after 3 seconds
-        setTimeout(function(){ /* Set timeout for auto-close */
-            closePopup(); /* Call close function */
-        }, 3000); /* 3 seconds */
-        
-    }, function(error){ /* Error callback */
-        // This runs if message fails to send
-        console.error('EmailJS error:', error); /* Log error to console */
-        
-        // Show error popup instead of alert
-        var errorPopup = document.createElement('div'); /* Create error popup element */
-        errorPopup.className = 'success-popup'; /* Set class for styling */
-        errorPopup.style.display = 'flex'; /* Make it visible */
-        errorPopup.innerHTML = '<div class="popup-content" style="border-color: #ff6b6b;"><h3 style="color: #ff6b6b;">Message Failed</h3><p>Unable to send your message. Please try again or contact via email.</p><button onclick="this.parentElement.parentElement.remove()">Close</button></div>'; /* Set popup content */
-        document.body.appendChild(errorPopup); /* Add to page */
-    });
+                setTimeout(closePopup, 3000);
+            }, function (error) {
+                console.error("EmailJS error:", error);
+
+                const errorPopup = document.createElement("div");
+                errorPopup.className = "success-popup";
+                errorPopup.style.display = "flex";
+                errorPopup.innerHTML = "<div class=\"popup-content\" style=\"border-color: #ff6b6b;\"><h3 style=\"color: #ff6b6b;\">Message Failed</h3><p>Unable to send your message. Please try again or contact via email.</p><button onclick=\"this.parentElement.parentElement.remove()\">Close</button></div>";
+                document.body.appendChild(errorPopup);
+            });
     });
 }
 
-function closePopup(){ /* Function to close success popup */
-    document.getElementById("success-popup").style.display = "none"; /* Hide popup by setting display to none */
-    // Hide success popup when close button is clicked
-}
+/* ==================================================
+   MOBILE NAVIGATION
+   ==================================================
+   The HTML calls toggleMenu() from the hamburger's onclick
+   attribute. CSS uses the active class to show the menu and
+   transform the hamburger icon.
+*/
+function toggleMenu() {
+    const navMenu = document.querySelector("nav ul");
+    const menuToggle = document.querySelector(".menu-toggle");
 
-
-
-
-/* ============================= */
-/* PROFESSIONAL MOBILE MENU */
-/* ============================= */
-function toggleMenu(){
-/* Select mobile menu */
-
-const navMenu = document.querySelector("nav ul");
-/* Select hamburger */
-
-const menuToggle = document.querySelector(".menu-toggle");
-/* Toggle menu */
-
-navMenu.classList.toggle("active");
-/* Toggle animated icon */
-
-menuToggle.classList.toggle("active");
-
-}
-
-/* ============================= */
-/* CLOSE MOBILE MENU AFTER CLICK */
-/* ============================= */
-
-/* Select all menu links */
-
-const navLinks = document.querySelectorAll("nav ul li a");
-
-/* Loop through links */
-
-navLinks.forEach(link =>{
-
-link.addEventListener("click", ()=>{
-
-/* Select elements */
-
-const navMenu = document.querySelector("nav ul");
-const menuToggle = document.querySelector(".menu-toggle");
-
-/* Remove active classes */
-
-navMenu.classList.remove("active");
-menuToggle.classList.remove("active");
-
-});
-
-});
-
-function closeMobileMenu(){
-    const menu = document.querySelector('nav ul');
-    const toggle = document.getElementById('menu-toggle');
-    if(!menu || !toggle) return;
-    if(menu.classList.contains('active')){
-        menu.classList.remove('active');
-        toggle.textContent = '☰';
+    if (!navMenu || !menuToggle) {
+        return;
     }
+
+    navMenu.classList.toggle("active");
+    menuToggle.classList.toggle("active");
 }
 
-/* ============================= */
-/* Loader Screen */
-/* ============================= */
-window.addEventListener("load", function(){ /* Wait for page to fully load */
+function closeMobileMenu() {
+    const navMenu = document.querySelector("nav ul");
+    const menuToggle = document.querySelector(".menu-toggle");
+
+    if (!navMenu || !menuToggle) {
+        return;
+    }
+
+    navMenu.classList.remove("active");
+    menuToggle.classList.remove("active");
+}
+
+/* ==================================================
+   PAGE LOADER
+   ================================================== */
+window.addEventListener("load", function () {
     const loader = document.getElementById("loader");
+
     if (loader) {
-        loader.style.display = "none"; /* Hide loader */
+        loader.style.display = "none";
     }
 });
 
-/* ============================= */
-/* Cursor Animation */
-/* ============================= */
-// document.addEventListener("mousemove", function(e){ /* Listen for mouse movement */
-// document.querySelector(".cursor").style.left = e.pageX + "px"; /* Update cursor position X */
-// document.querySelector(".cursor").style.top = e.pageY + "px"; /* Update cursor position Y */
-// });
+/* ==================================================
+   SCROLL REVEAL ANIMATION
+   ==================================================
+   Elements with fade-in receive show when they enter the viewport.
+   CSS controls the visual transition for that class.
+*/
+const faders = document.querySelectorAll(".fade-in");
 
+window.addEventListener("scroll", function () {
+    faders.forEach(function (element) {
+        const top = element.getBoundingClientRect().top;
 
-
-/* Fade Animation */
-const faders = document.querySelectorAll(".fade-in"); /* Select all elements with fade-in class */
-    window.addEventListener("scroll", ()=>{ /* Listen for scroll events */
-        faders.forEach(el=>{ /* Loop through each fade element */
-        const top = el.getBoundingClientRect().top; /* Get element's top position */
-            if(top < window.innerHeight - 100){ /* Check if element is in viewport */
-            el.classList.add("show"); /* Add show class to trigger animation */
-            }
+        if (top < window.innerHeight - 100) {
+            element.classList.add("show");
+        }
     });
 });
 
-
-
-/* ============================= */
-/* Typing Animation */
-/* ============================= */
-const textArray = [ /* Keeps the existing typing animation focused on the complete, accurate professional title. */
-"Graphics Designer | Web Designer | Front-End Developer"
+/* ==================================================
+   TYPING ANIMATION
+   ================================================== */
+const textArray = [
+    "Graphics Designer | Web Designer | Front-End Developer"
 ];
-/* Texts that will rotate */
 
-let typingIndex = 0; /* Index for current text in array */
-let charIndex = 0; /* Index for current character in text */
+let typingIndex = 0;
+let charIndex = 0;
 
-function typeText(){ /* Function to type text character by character */
+function typeText() {
+    const typingElement = document.getElementById("typing");
 
-if(charIndex < textArray[typingIndex].length){ /* Check if there are more characters to type */
+    if (!typingElement) {
+        return;
+    }
 
-/* Guard: only run if the #typing element exists on this page */
-/* Sub-pages don't have a #typing element, so without this check */
-/* the script crashes here and nothing below this point runs */
-const typingEl = document.getElementById("typing");
-if (!typingEl) return; /* Stop if element not found */
-typingEl.textContent += textArray[typingIndex].charAt(charIndex);
-
-charIndex++; /* Increment character index */
-
-setTimeout(typeText, 80); /* Call function again after delay */
-/* Speed of typing */
-
+    if (charIndex < textArray[typingIndex].length) {
+        typingElement.textContent += textArray[typingIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeText, 80);
+    } else {
+        setTimeout(eraseText, 1500);
+    }
 }
 
-else{ /* If text is complete */
+function eraseText() {
+    const typingElement = document.getElementById("typing");
 
-setTimeout(eraseText, 1500); /* Wait then start erasing */
-/* Wait before deleting */
+    if (!typingElement) {
+        return;
+    }
 
+    if (charIndex > 0) {
+        typingElement.textContent = textArray[typingIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseText, 40);
+    } else {
+        typingIndex++;
+
+        if (typingIndex >= textArray.length) {
+            typingIndex = 0;
+        }
+
+        setTimeout(typeText, 200);
+    }
 }
 
-}
+/* ==================================================
+   DOM-READY PAGE INTERACTIONS
+   ================================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    if (textArray.length) {
+        setTimeout(typeText, 1000);
+    }
 
-function eraseText(){ /* Function to erase text character by character */
+    const navLinks = document.querySelectorAll("nav ul li a");
+    const sections = document.querySelectorAll("section[id]");
 
-if(charIndex > 0){ /* Check if there are characters to erase */
+    navLinks.forEach(function (link) {
+        link.addEventListener("click", closeMobileMenu);
+    });
 
-/* Same guard for the erase function */
-const typingEl = document.getElementById("typing");
-if (!typingEl) return;
-typingEl.textContent = textArray[typingIndex].substring(0, charIndex-1);
+    const homeLinks = document.querySelectorAll('a[href="#home"]');
+    const homeSection = document.getElementById("home");
 
-charIndex--; /* Decrement character index */
-
-setTimeout(eraseText, 40); /* Call function again after delay */
-
-}
-
-else{ /* If text is erased */
-
-typingIndex++; /* Move to next text */
-
-if(typingIndex >= textArray.length) /* If at end of array */
-typingIndex = 0; /* Reset to beginning */
-
-setTimeout(typeText, 200); /* Start typing next text */
-
-}
-
-}
-
-
-document.addEventListener("DOMContentLoaded", function(){ /* Wait for DOM to load */
-
-    if(textArray.length) /* If there are texts to type */
-        setTimeout(typeText, 1000); /* Start typing after 1 second */
-
-    const homeLinks = document.querySelectorAll('a[href="#home"]'); /* Select all home links */
-    const homeSection = document.getElementById('home'); /* Get home section */
-
-    if (homeSection && homeLinks.length) { /* Check if elements exist */
-        homeLinks.forEach(link => { /* Loop through each link */
-            link.addEventListener('click', function(event) { /* Add click listener */
-                event.preventDefault(); /* Prevent default anchor behavior */
-                homeSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); /* Smooth scroll to home */
+    if (homeSection && homeLinks.length) {
+        homeLinks.forEach(function (link) {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                homeSection.scrollIntoView({ behavior: "smooth", block: "start" });
             });
         });
     }
 
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const sections = document.querySelectorAll('section[id]');
+    /* ---------- PDF preview and view buttons ---------- */
+    document.querySelectorAll(".btn-preview").forEach(function (button) {
+        button.addEventListener("click", function () {
+            const targetId = this.dataset.previewTarget;
+            const iframe = document.getElementById(targetId);
+            const wrapper = iframe ? iframe.closest(".document-preview-wrapper") : null;
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu); /* Close mobile menu when a navigation link is clicked */
+            if (!iframe || !wrapper) {
+                return;
+            }
+
+            if (wrapper.classList.contains("active")) {
+                wrapper.classList.remove("active");
+                iframe.src = "";
+                this.textContent = "Preview";
+                return;
+            }
+
+            const card = this.closest(".document-card");
+            const downloadLink = card ? card.querySelector("a[download]") : null;
+
+            if (!downloadLink) {
+                return;
+            }
+
+            iframe.src = downloadLink.getAttribute("href") + "#toolbar=1";
+            wrapper.classList.add("active");
+            this.textContent = "Close Preview";
+            wrapper.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        });
     });
 
-/* ============================= */
-/* PDF Preview & View Buttons    */
-/* ============================= */
+    document.querySelectorAll(".btn-view").forEach(function (button) {
+        button.addEventListener("click", function () {
+            const card = this.closest(".document-card");
+            const downloadLink = card ? card.querySelector("a[download]") : null;
 
-/* Select all Preview buttons */
-const previewButtons = document.querySelectorAll('.btn-preview');
+            if (downloadLink) {
+                window.open(downloadLink.getAttribute("href"), "_blank");
+            }
+        });
+    });
 
-previewButtons.forEach(button => {
-    button.addEventListener('click', function() {
+    /* ---------- Flyer image modal ---------- */
+    const imageModal = document.getElementById("image-modal");
+    const modalImage = document.getElementById("modal-image");
+    const modalClose = document.getElementById("modal-close");
 
-        /* Get the id of the iframe to target */
-        /* e.g. data-preview-target="camp-preview" */
-        const targetId = this.dataset.previewTarget;
-
-        /* Find the iframe element */
-        const iframe = document.getElementById(targetId);
-
-        /* Find the wrapper div that contains the iframe */
-        const wrapper = iframe ? iframe.closest('.document-preview-wrapper') : null;
-
-        if (!iframe || !wrapper) return;
-
-        /* If preview is already showing, hide it (toggle behaviour) */
-        if (wrapper.classList.contains('active')) {
-            wrapper.classList.remove('active');
-            iframe.src = ''; /* Clear the PDF to save memory */
-            this.textContent = 'Preview'; /* Reset button text */
+    function closeImageModal() {
+        if (!imageModal) {
             return;
         }
 
-        /* Get the PDF path from the download link in the same card */
-        /* We reuse the href from the download button so there's only one source of truth */
-        const card = this.closest('.document-card');
-        const downloadLink = card ? card.querySelector('a[download]') : null;
+        imageModal.classList.remove("active");
+        document.body.classList.remove("modal-open");
 
-        if (!downloadLink) return;
-
-        /* Build the PDF src — append #toolbar=1 to show PDF controls */
-        const pdfSrc = downloadLink.getAttribute('href') + '#toolbar=1';
-
-        /* Set the iframe src — this triggers the PDF to load */
-        iframe.src = pdfSrc;
-
-        /* Show the wrapper */
-        wrapper.classList.add('active');
-
-        /* Update button text so user knows they can click again to close */
-        this.textContent = 'Close Preview';
-
-        /* Smoothly scroll down to the preview */
-        wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-});
-
-
-/* Select all View PDF buttons */
-const viewButtons = document.querySelectorAll('.btn-view');
-
-viewButtons.forEach(button => {
-    button.addEventListener('click', function() {
-
-        /* Get the download link from the same card */
-        const card = this.closest('.document-card');
-        const downloadLink = card ? card.querySelector('a[download]') : null;
-
-        if (!downloadLink) return;
-
-        /* Open the PDF in a new browser tab */
-        /* The browser will display it using its built-in PDF viewer */
-        window.open(downloadLink.getAttribute('href'), '_blank');
-    });
-});
-
-
-
-
-
-
-
-    const imageModal = document.getElementById('image-modal');
-    const modalImage = document.getElementById('modal-image');
-    const modalClose = document.getElementById('modal-close');
-
-    console.log('Modal elements found:', {imageModal, modalImage, modalClose});
-
-    function closeImageModal(){
-        if(!imageModal) return;
-        imageModal.classList.remove('active');
-        document.body.classList.remove('modal-open');
-        if(modalImage) modalImage.src = '';
-        console.log('Modal closed');
+        if (modalImage) {
+            modalImage.src = "";
+        }
     }
 
-    document.querySelectorAll('.flyer-card').forEach(card => {
-        card.addEventListener('click', function(event) {
+    document.querySelectorAll(".flyer-card").forEach(function (card) {
+        card.addEventListener("click", function (event) {
             event.preventDefault();
-            const src = this.dataset.imageSrc || this.querySelector('img')?.src;
-            console.log('Modal triggered for:', src);
-            if (!src || !imageModal || !modalImage) {
-                console.error('Modal elements missing:', {src, imageModal, modalImage});
+
+            const source = this.dataset.imageSrc || this.querySelector("img")?.src;
+
+            if (!source || !imageModal || !modalImage) {
                 return;
             }
-            modalImage.src = src;
-            imageModal.classList.add('active');
-            document.body.classList.add('modal-open');
-            console.log('Modal opened');
+
+            modalImage.src = source;
+            imageModal.classList.add("active");
+            document.body.classList.add("modal-open");
         });
     });
 
-    modalClose?.addEventListener('click', function(event) {
-        event.stopPropagation();
-        console.log('Close button clicked');
-        closeImageModal();
-    });
+    if (modalClose) {
+        modalClose.addEventListener("click", closeImageModal);
+    }
 
-    // Also add direct event listener as backup
-    const modalCloseDirect = document.getElementById('modal-close');
-    if (modalCloseDirect) {
-        modalCloseDirect.addEventListener('click', function(event) {
-            event.stopPropagation();
-            console.log('Close button clicked (direct)');
-            closeImageModal();
+    if (imageModal) {
+        imageModal.addEventListener("click", function (event) {
+            if (event.target === imageModal) {
+                closeImageModal();
+            }
         });
     }
-    imageModal?.addEventListener('click', function(event) {
-        if (event.target === imageModal) {
-            console.log('Modal background clicked');
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && imageModal?.classList.contains("active")) {
             closeImageModal();
         }
     });
 
-    // Add keyboard support for closing modal
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && imageModal?.classList.contains('active')) {
-            console.log('Escape key pressed');
-            closeImageModal();
-        }
-    });
-
-    const observerOptions = {
-        root: null,
-        threshold: 0.35,
-    };
-
-    function clearActiveNav(){
-        navLinks.forEach(link => link.classList.remove('nav-active'));
-    }
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const sectionId = entry.target.getAttribute('id');
+    /* ---------- Active navigation link ---------- */
+    const sectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            const sectionId = entry.target.getAttribute("id");
             const navLink = document.querySelector(`nav ul li a[href="#${sectionId}"]`);
 
-            if(!navLink) return;
+            if (!navLink) {
+                return;
+            }
 
-            if(entry.isIntersecting){
-                clearActiveNav();
-                navLink.classList.add('nav-active');
+            if (entry.isIntersecting) {
+                navLinks.forEach(function (link) {
+                    link.classList.remove("nav-active");
+                });
+                navLink.classList.add("nav-active");
             }
         });
-    }, observerOptions);
+    }, { root: null, threshold: 0.35 });
 
-    sections.forEach(section => sectionObserver.observe(section));
+    sections.forEach(function (section) {
+        sectionObserver.observe(section);
+    });
 
-    /* ============================= */
-    /* Dark Mode Toggle */
-    /* ============================= */
-    // Restore dark mode preference on page load
-    if (localStorage.getItem("darkMode") === "true") {
-        document.body.classList.add("dark-mode");
-    }
-
+    /* ---------- Dark/light mode ---------- */
     const darkModeIcon = document.getElementById("dark-mode-icon");
 
-    if (darkModeIcon) {
-        // Sync icon to current theme state
-        if (document.body.classList.contains("dark-mode")) {
-            darkModeIcon.classList.remove("fa-moon");
-            darkModeIcon.classList.add("fa-sun");
-        } else {
-            darkModeIcon.classList.remove("fa-sun");
-            darkModeIcon.classList.add("fa-moon");
+    function updateThemeIcon() {
+        if (!darkModeIcon) {
+            return;
         }
-        
-        darkModeIcon.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-            const isDark = document.body.classList.contains("dark-mode");
-            localStorage.setItem("darkMode", isDark);
-            
-            if (isDark) {
-                darkModeIcon.classList.remove("fa-moon");
-                darkModeIcon.classList.add("fa-sun");
-            } else {
-                darkModeIcon.classList.remove("fa-sun");
-                darkModeIcon.classList.add("fa-moon");
-            }
-        });
+
+        const isDark = document.body.classList.contains("dark-mode");
+        darkModeIcon.classList.toggle("fa-sun", isDark);
+        darkModeIcon.classList.toggle("fa-moon", !isDark);
     }
 
+    updateThemeIcon();
+
+    if (darkModeIcon) {
+        darkModeIcon.addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+            updateThemeIcon();
+        });
+    }
 });
 
-/* ============================= */
-/* Counter Animation */
-/* ============================= */
-function startCounter(counterElement) {
-    counterElement.innerText = "0"; /* Start from 0 */
-    const target = +counterElement.getAttribute("data-target"); /* Get target number */
-    
-    const updateCounter = () => { /* Function to update counter */
-        const count = +counterElement.innerText; /* Get current number */
-        const increment = target / 200; /* Calculate increment */
-        
-        if (count < target) { /* If not reached target */
-            counterElement.innerText = Math.ceil(count + increment); /* Update display */
-            setTimeout(updateCounter, 10); /* Call again after delay */
-        } else {
-            counterElement.innerText = target; /* Set final value */
-        }
-    };
-    updateCounter(); /* Start the animation */
+/* ==================================================
+   SUCCESS POPUP
+   ==================================================
+   closePopup() is global because the Close button in index.html
+   calls it through an inline onclick attribute.
+*/
+function closePopup() {
+    const successPopup = document.getElementById("success-popup");
+
+    if (successPopup) {
+        successPopup.style.display = "none";
+    }
 }
 
-window.addEventListener("load", function() { /* Wait for page load */
-    const counters = document.querySelectorAll(".count"); /* Select all counter elements */
-    
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+/* ==================================================
+   COUNTER ANIMATION
+   ================================================== */
+function startCounter(counterElement) {
+    counterElement.innerText = "0";
+    const target = +counterElement.getAttribute("data-target");
+
+    function updateCounter() {
+        const count = +counterElement.innerText;
+        const increment = target / 200;
+
+        if (count < target) {
+            counterElement.innerText = Math.ceil(count + increment);
+            setTimeout(updateCounter, 10);
+        } else {
+            counterElement.innerText = target;
+        }
+    }
+
+    updateCounter();
+}
+
+window.addEventListener("load", function () {
+    const counters = document.querySelectorAll(".count");
+
+    const counterObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
             if (entry.isIntersecting) {
                 startCounter(entry.target);
                 counterObserver.unobserve(entry.target);
             }
         });
     });
-    
-    counters.forEach(counter => counterObserver.observe(counter));
+
+    counters.forEach(function (counter) {
+        counterObserver.observe(counter);
+    });
 });
 
-
-
-/* ============================= */
-/* Lightbox */
-/* ============================= */
-/* Select all portfolio images */
+/* ==================================================
+   PORTFOLIO LIGHTBOX
+   ================================================== */
 const portfolioImages = document.querySelectorAll(".portfolio-item img");
-
-/* Select lightbox */
 const lightbox = document.getElementById("lightbox");
-
-/* Select lightbox image */
-const lightboxImg = document.getElementById("lightbox-img");
-
-/* Select close button */
+const lightboxImage = document.getElementById("lightbox-img");
 const closeLightbox = document.querySelector(".close-lightbox");
 
-/* Loop images */
-portfolioImages.forEach(image => {
-
-image.addEventListener("click", () => {
-
-/* Show lightbox */
-lightbox.style.display = "flex";
-
-/* Set image */
-lightboxImg.src = image.src;
-
+portfolioImages.forEach(function (image) {
+    image.addEventListener("click", function () {
+        if (lightbox && lightboxImage) {
+            lightbox.style.display = "flex";
+            lightboxImage.src = image.src;
+        }
+    });
 });
 
-});
-
-/* Close lightbox */
 if (closeLightbox) {
-    closeLightbox.addEventListener("click", () => {
-        lightbox.style.display = "none";
+    closeLightbox.addEventListener("click", function () {
+        if (lightbox) {
+            lightbox.style.display = "none";
+        }
     });
 }
 
-
-
-// ================= PROJECT FILTER =================
-const filterBtns = document.querySelectorAll(".filter-btn");
+/* ==================================================
+   PROJECT FILTER
+   ==================================================
+   These listeners remain available for pages that contain the
+   older filter controls and project-item class.
+*/
+const filterButtons = document.querySelectorAll(".filter-btn");
 const projects = document.querySelectorAll(".project-item");
 
-filterBtns.forEach(btn => {
+filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        filterButtons.forEach(function (filterButton) {
+            filterButton.classList.remove("active");
+        });
 
-btn.addEventListener("click", ()=>{
+        button.classList.add("active");
+        const filter = button.getAttribute("data-filter");
 
-// remove active class
-filterBtns.forEach(button =>{
-button.classList.remove("active");
+        projects.forEach(function (project) {
+            if (filter === "all" || project.getAttribute("data-category") === filter) {
+                project.style.display = "block";
+            } else {
+                project.style.display = "none";
+            }
+        });
+    });
 });
-
-// add active class
-btn.classList.add("active");
-
-const filter = btn.getAttribute("data-filter");
-
-projects.forEach(project => {
-
-if(filter === "all"){
-project.style.display = "block";
-}
-else if(project.getAttribute("data-category") === filter){
-project.style.display = "block";
-}
-else{
-project.style.display = "none";
-}
-
-});
-
-});
-
-});
-
-
-
-

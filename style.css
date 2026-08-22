@@ -1,4 +1,31 @@
-/* Reset default browser styles */
+/*
+==================================================
+CSS CODE MAP
+==================================================
+
+1. Reset and global rules       -> Browser normalization and shared defaults
+2. Theme variables              -> Light and dark colour values
+3. Navigation and logo          -> Header, links, menu and theme control
+4. Loader and cursor            -> Page-loading and pointer visuals
+5. Hero and buttons             -> Introduction sections and calls to action
+6. About and experience         -> Profile and timeline layout
+7. Counters and services        -> Statistics and service cards
+8. Portfolio and documents      -> Projects, flyers and PDF cards
+9. Skills and credibility       -> Skills bars and Why Work With Me
+10. Contact and popup           -> Form, direct contact and feedback
+11. Footer and floating links   -> Footer, top button and WhatsApp link
+12. Animations                  -> Keyframes and reveal states
+13. Responsive design           -> Tablet, mobile and small-screen overrides
+
+HTML = STRUCTURE
+CSS = APPEARANCE
+JavaScript = BEHAVIOUR / INTERACTIVITY
+==================================================
+*/
+
+/* ==================================================
+    RESET AND GLOBAL STYLES
+    ================================================== */
 *{
     margin:0; /* Remove default margins */
     padding:0; /* Remove default padding */
@@ -370,7 +397,6 @@ body.dark-mode .flyer-info{
 body.dark-mode .flyer-info h3{
     color:#ffffff;
     /* White text in dark mode */
-}
 }
 
 
@@ -1585,14 +1611,15 @@ color: white;
     margin-bottom:5px;
     /* Space below */
 }
-    color:#667477; /* Uses readable muted text for the project description. */
-    line-height:1.55; /* Prevents multi-line descriptions from feeling compressed. */
 .portfolio-info p{
     font-size:14px;
     /* Description size */
 
     color:#666;
     /* Lighter color */
+
+    color:#667477; /* Uses readable muted text for the project description. */
+    line-height:1.55; /* Prevents multi-line descriptions from feeling compressed. */
 }
 
 .documents{
@@ -1611,61 +1638,6 @@ color: white;
     max-width:700px;
     color:#666;
     text-align:center;
-}
-
-.document-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
-    gap:24px;
-}
-
-.document-card{
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-    border-radius:18px;
-    background:#fff;
-    box-shadow:0 18px 45px rgba(0,0,0,0.08);
-    transition:transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.document-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 24px 60px rgba(0,0,0,0.10);
-}
-
-.document-card-info{
-    padding:28px;
-}
-
-.document-card-info h3{
-    font-size:24px;
-    margin-bottom:12px;
-    color:#111;
-}
-
-.document-card-info p{
-    margin-bottom:20px;
-    line-height:1.75;
-    color:#555;
-}
-
-.document-actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-}
-
-.document-preview-wrapper{
-    min-height:360px;
-    background:#f9f9f9;
-}
-
-.document-preview{
-    width:100%;
-    height:100%;
-    border:none;
-    min-height:360px;
 }
 
 .flyer-gallery{
